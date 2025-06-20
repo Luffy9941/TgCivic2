@@ -28,6 +28,15 @@ const ProtectedRoute = ({
     );
   }
 
+  // Debug logging
+  console.log("ProtectedRoute State:", {
+    isAuthenticated,
+    user,
+    requiredRole,
+    requireAuth,
+    isLoading,
+  });
+
   // Redirect to login if authentication is required but user is not authenticated
   if (requireAuth && !isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
