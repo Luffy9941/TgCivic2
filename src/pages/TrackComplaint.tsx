@@ -197,17 +197,14 @@ const TrackComplaint = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Search className="w-5 h-5" />
-              Search Complaint
+              {t("search_complaints")}
             </CardTitle>
-            <CardDescription>
-              Enter your complaint ID (e.g., TSC2024001234) or registered phone
-              number
-            </CardDescription>
+            <CardDescription>{t("search_placeholder")}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex space-x-4">
               <Input
-                placeholder="Complaint ID or Phone Number"
+                placeholder={t("search_placeholder")}
                 className="flex-1"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
