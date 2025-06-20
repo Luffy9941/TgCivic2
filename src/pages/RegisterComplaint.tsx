@@ -266,41 +266,27 @@ const RegisterComplaint = () => {
       // Convert images to base64
       const imageBase64 = await convertFilesToBase64(formData.images);
 
-      // Submit complaint
-      const id = addComplaint({
-        title: formData.title,
-        description: formData.description,
-        category: formData.category,
-        subcategory: formData.subcategory,
-        location: formData.location,
-        landmark: formData.landmark,
-        priority: formData.priority,
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        images: imageBase64,
-        latitude: formData.latitude,
-        longitude: formData.longitude,
-      });
+      // Submit complaint with automatic admin notification
+      const id = addComplaint(
+        {
+          title: formData.title,
+          description: formData.description,
+          category: formData.category,
+          subcategory: formData.subcategory,
+          location: formData.location,
+          landmark: formData.landmark,
+          priority: formData.priority,
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          images: imageBase64,
+          latitude: formData.latitude,
+          longitude: formData.longitude,
+        },
+        addNotification,
+      ); // Pass the notification callback
 
-      // Send notification to admins about new complaint
-      addNotification({
-        type: "complaint_submitted",
-        title: `🚨 New ${formData.priority === "high" ? "HIGH PRIORITY" : formData.priority.toUpperCase()} Complaint`,
-        message: `${formData.category.toUpperCase()}: "${formData.title}" - Submitted by ${formData.name} (${formData.phone}) at ${formData.landmark || formData.location}. ${formData.description.substring(0, 100)}${formData.description.length > 100 ? "..." : ""}`,
-        complaintId: id,
-        userId: "all-admins", // Target all admin users
-        userRole: "admin",
-        priority:
-          formData.priority === "high"
-            ? "high"
-            : formData.priority === "medium"
-              ? "medium"
-              : "low",
-        actionUrl: "/dashboard",
-      });
-
-      // Also send a general notification for all officials
+      // Also send a notification for all officials
       addNotification({
         type: "complaint_submitted",
         title: "📋 New Complaint Assigned",
