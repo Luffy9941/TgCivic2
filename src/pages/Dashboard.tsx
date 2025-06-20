@@ -337,25 +337,16 @@ const Dashboard = () => {
                     Category Distribution
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  {categoryData.map((category, index) => (
-                    <div key={category.name} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-gray-700">
-                          {category.name}
-                        </span>
-                        <span className="text-sm font-medium text-gray-900">
-                          {category.count}
-                        </span>
-                      </div>
-                      <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
-                        <div
-                          className={`absolute top-0 left-0 h-full ${category.color} rounded-full transition-all duration-1000 ease-out`}
-                          style={{ width: `${category.percentage}%` }}
-                        />
-                      </div>
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <h3 className="text-sm font-medium text-gray-600 mb-2">
+                      {t("total_complaints")}
+                    </h3>
+                    <div className="text-4xl font-bold text-blue-600 mb-1">
+                      {totalComplaints}
                     </div>
-                  ))}
+                    <p className="text-xs text-gray-500">{t("all")}</p>
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>
