@@ -409,7 +409,11 @@ const Register = () => {
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Create a strong password"
+                    placeholder={
+                      formData.userType === "admin"
+                        ? "Create a strong password (min 8 chars)"
+                        : "Create a strong password (min 6 chars)"
+                    }
                     value={formData.password}
                     onChange={(e) =>
                       setFormData({ ...formData, password: e.target.value })
