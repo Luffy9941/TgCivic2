@@ -530,14 +530,372 @@ const Dashboard = () => {
             </TabsContent>
 
             {/* Other tabs content would be implemented similarly */}
-            <TabsContent value="analytics">
-              <Card className="bg-white p-8 text-center">
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  Analytics Dashboard
-                </h3>
-                <p className="text-gray-600">
-                  Detailed analytics and reporting features coming soon.
-                </p>
+            {/* Analytics Tab */}
+            <TabsContent value="analytics" className="space-y-6">
+              {/* Analytics Header */}
+              <div className="flex justify-between items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Analytics Dashboard
+                  </h2>
+                  <p className="text-gray-600">
+                    Insights and performance metrics
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <Select defaultValue="30days">
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder="Time Period" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="7days">Last 7 days</SelectItem>
+                      <SelectItem value="30days">Last 30 days</SelectItem>
+                      <SelectItem value="90days">Last 90 days</SelectItem>
+                      <SelectItem value="1year">Last year</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Button variant="outline">
+                    <Download className="w-4 h-4 mr-2" />
+                    Export Report
+                  </Button>
+                </div>
+              </div>
+
+              {/* Key Performance Indicators */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <Card className="bg-gradient-to-br from-blue-500 to-blue-700 text-white">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-blue-100">Total Complaints</p>
+                        <p className="text-3xl font-bold">2,847</p>
+                        <p className="text-sm text-blue-200">
+                          +18% vs last month
+                        </p>
+                      </div>
+                      <FileText className="w-10 h-10 text-blue-200" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-green-500 to-green-700 text-white">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-green-100">Resolution Rate</p>
+                        <p className="text-3xl font-bold">94.2%</p>
+                        <p className="text-sm text-green-200">
+                          +2.1% improvement
+                        </p>
+                      </div>
+                      <Target className="w-10 h-10 text-green-200" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-orange-500 to-orange-700 text-white">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-orange-100">Avg Resolution</p>
+                        <p className="text-3xl font-bold">3.2 days</p>
+                        <p className="text-sm text-orange-200">
+                          -0.8 days faster
+                        </p>
+                      </div>
+                      <Clock className="w-10 h-10 text-orange-200" />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-purple-500 to-purple-700 text-white">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-purple-100">User Satisfaction</p>
+                        <p className="text-3xl font-bold">4.8★</p>
+                        <p className="text-sm text-purple-200">
+                          +0.3 rating increase
+                        </p>
+                      </div>
+                      <Star className="w-10 h-10 text-purple-200" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Charts Row */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Complaints Trend Chart */}
+                <Card className="bg-white">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <TrendingUp className="w-5 h-5 text-blue-600" />
+                      Complaints Trend
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg">
+                      <div className="text-center">
+                        <BarChart3 className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                        <p className="text-gray-500">
+                          Monthly complaint trends
+                        </p>
+                        <p className="text-sm text-gray-400">
+                          Interactive chart visualization
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Category Distribution Chart */}
+                <Card className="bg-white">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <PieChart className="w-5 h-5 text-green-600" />
+                      Category Distribution
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg">
+                      <div className="text-center">
+                        <PieChart className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                        <p className="text-gray-500">
+                          Complaint categories breakdown
+                        </p>
+                        <p className="text-sm text-gray-400">
+                          Pie chart visualization
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Department Performance */}
+              <Card className="bg-white">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Settings className="w-5 h-5 text-purple-600" />
+                    Department Performance
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        name: "GHMC Roads",
+                        complaints: 156,
+                        resolved: 148,
+                        rate: 94.8,
+                        avg: 2.8,
+                      },
+                      {
+                        name: "Water Board",
+                        complaints: 134,
+                        resolved: 128,
+                        rate: 95.5,
+                        avg: 3.1,
+                      },
+                      {
+                        name: "Electricity",
+                        complaints: 67,
+                        resolved: 61,
+                        rate: 91.0,
+                        avg: 4.2,
+                      },
+                      {
+                        name: "Sanitation",
+                        complaints: 45,
+                        resolved: 43,
+                        rate: 95.5,
+                        avg: 2.1,
+                      },
+                      {
+                        name: "Street Lights",
+                        complaints: 23,
+                        resolved: 22,
+                        rate: 95.6,
+                        avg: 1.8,
+                      },
+                    ].map((dept, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
+                      >
+                        <div className="flex-1">
+                          <h4 className="font-medium text-gray-900">
+                            {dept.name}
+                          </h4>
+                          <p className="text-sm text-gray-600">
+                            {dept.complaints} total complaints
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-6">
+                          <div className="text-center">
+                            <p className="text-lg font-bold text-green-600">
+                              {dept.rate}%
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              Resolution Rate
+                            </p>
+                          </div>
+                          <div className="text-center">
+                            <p className="text-lg font-bold text-blue-600">
+                              {dept.avg} days
+                            </p>
+                            <p className="text-xs text-gray-500">Avg Time</p>
+                          </div>
+                          <div className="w-32">
+                            <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div
+                                className="bg-green-500 h-2 rounded-full transition-all duration-500"
+                                style={{ width: `${dept.rate}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Geographic Insights */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <Card className="bg-white lg:col-span-2">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Globe className="w-5 h-5 text-blue-600" />
+                      Geographic Distribution
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-48 flex items-center justify-center bg-gray-50 rounded-lg">
+                      <div className="text-center">
+                        <Globe className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                        <p className="text-gray-500">Telangana state map</p>
+                        <p className="text-sm text-gray-400">
+                          Heat map of complaint density
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Activity className="w-5 h-5 text-orange-600" />
+                      Top Areas
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {[
+                        { area: "Hyderabad", count: 342, change: "+12%" },
+                        { area: "Secunderabad", count: 287, change: "+8%" },
+                        { area: "Warangal", count: 156, change: "+15%" },
+                        { area: "Nizamabad", count: 134, change: "+5%" },
+                        { area: "Karimnagar", count: 98, change: "+22%" },
+                      ].map((area, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between"
+                        >
+                          <div>
+                            <p className="font-medium text-gray-900">
+                              {area.area}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {area.count} complaints
+                            </p>
+                          </div>
+                          <Badge className="bg-green-100 text-green-800">
+                            {area.change}
+                          </Badge>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Recent Activity */}
+              <Card className="bg-white">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-yellow-600" />
+                    Recent Activity
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {[
+                      {
+                        time: "2 minutes ago",
+                        action: "New complaint registered",
+                        details: "ROADS: Pothole in Hitec City",
+                        type: "new",
+                      },
+                      {
+                        time: "15 minutes ago",
+                        action: "Complaint resolved",
+                        details: "WATER: Supply issue in Jubilee Hills",
+                        type: "resolved",
+                      },
+                      {
+                        time: "1 hour ago",
+                        action: "Status updated",
+                        details: "SANITATION: Waste collection in Ameerpet",
+                        type: "updated",
+                      },
+                      {
+                        time: "2 hours ago",
+                        action: "New user registered",
+                        details: "Citizen account created",
+                        type: "user",
+                      },
+                      {
+                        time: "3 hours ago",
+                        action: "Complaint assigned",
+                        details: "ELECTRICITY: Power outage in Gachibowli",
+                        type: "assigned",
+                      },
+                    ].map((activity, index) => (
+                      <div
+                        key={index}
+                        className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg"
+                      >
+                        <div
+                          className={`w-2 h-2 rounded-full mt-2 ${
+                            activity.type === "new"
+                              ? "bg-blue-500"
+                              : activity.type === "resolved"
+                                ? "bg-green-500"
+                                : activity.type === "updated"
+                                  ? "bg-yellow-500"
+                                  : activity.type === "user"
+                                    ? "bg-purple-500"
+                                    : "bg-orange-500"
+                          }`}
+                        ></div>
+                        <div className="flex-1">
+                          <p className="font-medium text-gray-900">
+                            {activity.action}
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            {activity.details}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            {activity.time}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
               </Card>
             </TabsContent>
 
