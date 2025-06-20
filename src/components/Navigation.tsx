@@ -162,12 +162,12 @@ const Navigation = () => {
                   TG Civic
                 </span>
                 <span
-                  className={`text-xs sm:text-sm text-gray-600 flex items-center space-x-1 max-w-[140px] truncate ${
+                  className={`text-xs sm:text-sm text-gray-600 flex items-center space-x-1 ${
                     language === "te" ? "telugu-text" : ""
                   }`}
                 >
                   <Sparkles className="w-3 h-3 text-yellow-500 flex-shrink-0" />
-                  <span className="truncate">{t("citizen_services")}</span>
+                  <span>{t("citizen_services")}</span>
                 </span>
               </div>
             </Link>
