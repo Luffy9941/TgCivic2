@@ -241,7 +241,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const userNotifications = user
-    ? getNotificationsByUser(user.id, user.role)
+    ? getNotificationsByUser(user.id, user.userType)
     : [];
 
   const unreadCount = userNotifications.filter((n) => !n.isRead).length;
