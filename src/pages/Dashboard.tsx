@@ -643,45 +643,111 @@ const Dashboard = () => {
 
             {/* Complaints Tab */}
             <TabsContent value="complaints" className="space-y-6">
+              {/* Complaints Management Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Complaint Management
+                  </h2>
+                  <p className="text-gray-600">
+                    Assign, track, and manage citizen complaints
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Select defaultValue="all">
+                    <SelectTrigger className="w-48">
+                      <SelectValue placeholder="Filter by Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Complaints</SelectItem>
+                      <SelectItem value="pending">Pending</SelectItem>
+                      <SelectItem value="assigned">Assigned</SelectItem>
+                      <SelectItem value="in-progress">In Progress</SelectItem>
+                      <SelectItem value="resolved">Resolved</SelectItem>
+                      <SelectItem value="closed">Closed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      const deletedCount = deleteResolvedComplaints();
+                      alert(`Deleted ${deletedCount} resolved complaints`);
+                    }}
+                  >
+                    <Trash2 className="w-4 h-4 mr-2" />
+                    Clean Resolved
+                  </Button>
+                </div>
+              </div>
+
+              {/* Complaints Table */}
               <Card className="bg-white">
-                <CardHeader>
-                  <CardTitle>Recent Complaints</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {complaints.slice(0, 5).map((complaint) => (
-                      <div
-                        key={complaint.id}
-                        className="flex items-center justify-between p-4 border rounded-lg"
-                      >
-                        <div className="flex-1">
-                          <h3 className="font-medium text-gray-900">
-                            {complaint.title}
-                          </h3>
-                          <p className="text-sm text-gray-600">
-                            {complaint.category} • {complaint.location}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1">
-                            By {complaint.name} • {complaint.id}
-                          </p>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <Badge
-                            className={
-                              complaint.priority === "high"
-                                ? "bg-red-100 text-red-800"
-                                : complaint.priority === "medium"
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : "bg-green-100 text-green-800"
-                            }
-                          >
-                            {complaint.priority}
-                          </Badge>
-                          <Badge variant="outline">{complaint.status}</Badge>
-                        </div>
-                      </div>
-                    ))}
+                <CardContent className="p-0">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-gray-200 bg-gray-50">
+                          <th className="text-left py-4 px-6 font-medium text-gray-700">
+                            Complaint Details
+                          </th>
+                          <th className="text-left py-4 px-6 font-medium text-gray-700">
+                            Citizen Info
+                          </th>
+                          <th className="text-left py-4 px-6 font-medium text-gray-700">
+                            Priority & Category
+                          </th>
+                          <th className="text-left py-4 px-6 font-medium text-gray-700">
+                            Status & Assignment
+                          </th>
+                          <th className="text-left py-4 px-6 font-medium text-gray-700">
+                            Actions
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {complaints.map((complaint) => (
+                          <ComplaintRow
+                            key={complaint.id}
+                            complaint={complaint}
+                            onUpdateStatus={(id, status, notes, assignedTo) => {
+                              updateComplaintStatus(
+                                id,
+                                status,
+                                notes,
+                                assignedTo || "Admin",
+                                addNotification,
+                              );
+                              if (assignedTo) {
+                                updateComplaint(id, { assignedTo });
+                              }
+                            }}
+                            onDelete={(id) => {
+                              if (
+                                window.confirm(
+                                  "Are you sure you want to delete this complaint?",
+                                )
+                              ) {
+                                deleteComplaint(id);
+                              }
+                            }}
+                          />
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
+
+                  {complaints.length === 0 && (
+                    <div className="text-center py-12">
+                      <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                      <h4 className="text-xl font-medium text-gray-600 mb-2">
+                        No Complaints Yet
+                      </h4>
+                      <p className="text-gray-500">
+                        When citizens submit complaints, they will appear here
+                        for management.
+                      </p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>
