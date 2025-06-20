@@ -552,14 +552,14 @@ const Dashboard = () => {
               <Card className="bg-white">
                 <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle className="text-lg font-semibold text-gray-900">
-                    Recent Complaints
+                    {t("recent_complaints")}
                   </CardTitle>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setActiveTab("complaints")}
                   >
-                    View All ({complaints.length})
+                    {t("view_all")} ({complaints.length})
                   </Button>
                 </CardHeader>
                 <CardContent>
