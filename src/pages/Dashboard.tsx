@@ -65,6 +65,7 @@ const Dashboard = () => {
     markAsRead,
     markAllAsRead,
   } = useNotifications();
+  const { t } = useLanguage();
   const {
     schemes,
     getTotalViews,
