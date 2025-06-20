@@ -390,7 +390,7 @@ const RegisterComplaint = () => {
 
               {formData.category && (
                 <div className="mt-4">
-                  <Label htmlFor="subcategory">Subcategory</Label>
+                  <Label htmlFor="subcategory">{t("subcategory")}</Label>
                   <Select
                     value={formData.subcategory}
                     onValueChange={(value) =>
