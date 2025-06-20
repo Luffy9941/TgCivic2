@@ -203,7 +203,9 @@ const Register = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <UserPlus className="w-5 h-5" />
-              Citizen Registration
+              {formData.userType === "admin"
+                ? "Admin Registration"
+                : "Citizen Registration"}
             </CardTitle>
             <CardDescription>
               Create your account to access civic services
@@ -226,6 +228,35 @@ const Register = () => {
                   </AlertDescription>
                 </Alert>
               )}
+
+              <div className="space-y-3">
+                <Label>Account Type</Label>
+                <RadioGroup
+                  value={formData.userType}
+                  onValueChange={(value: UserType) =>
+                    setFormData({ ...formData, userType: value })
+                  }
+                  className="flex gap-4"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="citizen" id="citizen" />
+                    <Label
+                      htmlFor="citizen"
+                      className="flex items-center gap-2"
+                    >
+                      <User className="w-4 h-4" />
+                      Citizen
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="admin" id="admin" />
+                    <Label htmlFor="admin" className="flex items-center gap-2">
+                      <Shield className="w-4 h-4" />
+                      Admin
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
 
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
