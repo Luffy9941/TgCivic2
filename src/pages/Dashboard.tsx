@@ -101,6 +101,26 @@ const Dashboard = () => {
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Scheme management state
+  const [currentTab, setCurrentTab] = useState<"complaints" | "schemes">(
+    "complaints",
+  );
+  const [showSchemeDialog, setShowSchemeDialog] = useState(false);
+  const [selectedScheme, setSelectedScheme] = useState<any>(null);
+  const [showDeleteSchemeDialog, setShowDeleteSchemeDialog] = useState(false);
+  const [schemeForm, setSchemeForm] = useState({
+    name: "",
+    description: "",
+    category: "",
+    eligibility: "",
+    requiredDocuments: "",
+    benefits: "",
+    applicationProcess: "",
+    applyLink: "",
+    department: "",
+    validUntil: "",
+  });
+
   // Action form state
   const [actionForm, setActionForm] = useState({
     status: "",
