@@ -1222,14 +1222,122 @@ const Dashboard = () => {
             </TabsContent>
 
             <TabsContent value="notifications">
-              <Card className="bg-white p-8 text-center">
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  Notification Center
-                </h3>
-                <p className="text-gray-600">
-                  You have {unreadCount} unread notifications.
-                </p>
-              </Card>
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Admin Notifications
+                  </h3>
+                  <div className="flex items-center gap-3">
+                    <Badge
+                      variant="outline"
+                      className="bg-red-50 text-red-700 border-red-200"
+                    >
+                      {unreadCount} Unread
+                    </Badge>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => (window.location.href = "/notifications")}
+                    >
+                      View All
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="grid gap-4">
+                  {notifications.slice(0, 10).map((notification) => (
+                    <Card
+                      key={notification.id}
+                      className={`${!notification.isRead ? "border-l-4 border-l-red-500 bg-red-50/30" : "bg-white"}`}
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <h4 className="font-medium text-gray-900">
+                                {notification.title}
+                              </h4>
+                              <Badge
+                                variant={
+                                  notification.priority === "high"
+                                    ? "destructive"
+                                    : notification.priority === "medium"
+                                      ? "default"
+                                      : "secondary"
+                                }
+                                className="text-xs"
+                              >
+                                {notification.priority}
+                              </Badge>
+                              {!notification.isRead && (
+                                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                              )}
+                            </div>
+                            <p className="text-sm text-gray-600 mb-2">
+                              {notification.message}
+                            </p>
+                            <div className="flex items-center gap-4 text-xs text-gray-500">
+                              <span>
+                                {new Date(
+                                  notification.createdAt,
+                                ).toLocaleString()}
+                              </span>
+                              {notification.complaintId && (
+                                <span className="flex items-center gap-1">
+                                  <FileText className="w-3 h-3" />
+                                  {notification.complaintId}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          {notification.complaintId && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => {
+                                // Find and scroll to the complaint in the complaints tab
+                                setActiveTab("complaints");
+                                // You could add more sophisticated navigation here
+                              }}
+                            >
+                              <Eye className="w-4 h-4 mr-1" />
+                              View
+                            </Button>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+
+                  {notifications.length === 0 && (
+                    <Card className="bg-gray-50">
+                      <CardContent className="p-8 text-center">
+                        <AlertTriangle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                        <h4 className="text-lg font-medium text-gray-600 mb-2">
+                          No Notifications
+                        </h4>
+                        <p className="text-gray-500">
+                          New complaint notifications will appear here when
+                          citizens submit complaints.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {notifications.length > 10 && (
+                    <div className="text-center">
+                      <Button
+                        variant="outline"
+                        onClick={() =>
+                          (window.location.href = "/notifications")
+                        }
+                      >
+                        View All {notifications.length} Notifications
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
             </TabsContent>
           </Tabs>
 
