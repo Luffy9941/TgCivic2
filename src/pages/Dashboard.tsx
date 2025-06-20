@@ -1237,6 +1237,27 @@ const Dashboard = () => {
                     <Button
                       variant="outline"
                       size="sm"
+                      onClick={() => {
+                        // Add a demo notification for testing
+                        const { addNotification } = useNotifications();
+                        addNotification({
+                          type: "complaint_submitted",
+                          title: "🚨 NEW HIGH PRIORITY COMPLAINT",
+                          message:
+                            "ROADS: 'Dangerous pothole causing accidents' - Submitted by Test User (9999999999) at Test Location. This is a test notification to demonstrate the system working.",
+                          complaintId: "TGC2024TEST",
+                          userId: "all-admins",
+                          userRole: "admin",
+                          priority: "high",
+                          actionUrl: "/dashboard",
+                        });
+                      }}
+                    >
+                      + Add Test Notification
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
                       onClick={() => (window.location.href = "/notifications")}
                     >
                       View All
