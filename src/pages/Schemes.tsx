@@ -27,6 +27,7 @@ import {
 const Schemes = () => {
   const { schemes, getAllCategories, searchSchemes, incrementViews } =
     useSchemes();
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [filteredSchemes, setFilteredSchemes] = useState(schemes);
