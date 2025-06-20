@@ -216,15 +216,13 @@ const Dashboard = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">
-                Admin Dashboard
+                {t("admin_dashboard")}
               </h1>
-              <p className="text-gray-600 mt-1">
-                Complete platform management and oversight
-              </p>
+              <p className="text-gray-600 mt-1">{t("platform_management")}</p>
             </div>
             <div className="flex items-center space-x-3 mt-4 sm:mt-0">
               <Button size="sm" className="bg-red-600 hover:bg-red-700">
-                Administrator Access
+                {t("administrator_access")}
               </Button>
             </div>
           </div>
