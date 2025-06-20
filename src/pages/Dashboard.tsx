@@ -50,21 +50,8 @@ import { AdminSchemeModal } from "@/components/AdminSchemeModal";
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const {
-    complaints,
-    getComplaintStats,
-    updateComplaint,
-    deleteComplaint,
-    updateComplaintStatus,
-    deleteResolvedComplaints,
-  } = useComplaints();
-  const {
-    notifications,
-    unreadCount,
-    addNotification,
-    markAsRead,
-    markAllAsRead,
-  } = useNotifications();
+  const { complaints, getComplaintStats, updateComplaint, deleteComplaint, updateComplaintStatus, deleteResolvedComplaints } = useComplaints();
+  const { notifications, unreadCount, addNotification, markAsRead, markAllAsRead } = useNotifications();
   const { t } = useLanguage();
   const {
     schemes,
@@ -162,7 +149,9 @@ const Dashboard = () => {
               <p className="text-sm text-gray-700">
                 <strong>User Type:</strong> {user.userType}
               </p>
-              <p className="text-sm text-gray-500 mt-2">Required: admin</p>
+              <p className="text-sm text-gray-500 mt-2">
+                Required: admin
+              </p>
             </div>
             <AdminLoginHelper />
           </div>
@@ -218,7 +207,9 @@ const Dashboard = () => {
               <h1 className="text-3xl font-bold text-gray-900">
                 {t("admin_dashboard")}
               </h1>
-              <p className="text-gray-600 mt-1">{t("platform_management")}</p>
+              <p className="text-gray-600 mt-1">
+                {t("platform_management")}
+              </p>
             </div>
             <div className="flex items-center space-x-3 mt-4 sm:mt-0">
               <Button size="sm" className="bg-red-600 hover:bg-red-700">
@@ -337,17 +328,17 @@ const Dashboard = () => {
                     Category Distribution
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <h3 className="text-sm font-medium text-gray-600 mb-2">
-                      {t("total_complaints")}
-                    </h3>
-                    <div className="text-4xl font-bold text-blue-600 mb-1">
-                      {totalComplaints}
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <h3 className="text-sm font-medium text-gray-600 mb-2">
+                        {t("total_complaints")}
+                      </h3>
+                      <div className="text-4xl font-bold text-blue-600 mb-1">
+                        {totalComplaints}
+                      </div>
+                      <p className="text-xs text-gray-500">{t("all")}</p>
                     </div>
-                    <p className="text-xs text-gray-500">{t("all")}</p>
-                  </div>
-                </CardContent>
+                  </CardContent>
               </Card>
             </TabsContent>
 
@@ -426,19 +417,19 @@ const Dashboard = () => {
                 </Card>
 
                 <Card className="bg-white">
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm text-gray-600">Categories</p>
-                        <p className="text-2xl font-bold text-gray-900">
-                          {schemesData.categories}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          Different categories
-                        </p>
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <h3 className="text-sm font-medium text-gray-600 mb-2">
+                        {t("pending_complaints")}
+                      </h3>
+                      <div className="text-4xl font-bold text-yellow-600 mb-1">
+                        {stats.pending}
                       </div>
-                      <Filter className="w-5 h-5 text-gray-400" />
+                      <p className="text-xs text-gray-500">
+                        {t("awaiting_assignment", "Awaiting assignment")}
+                      </p>
                     </div>
+                  </CardContent>
                   </CardContent>
                 </Card>
               </div>
@@ -558,7 +549,7 @@ const Dashboard = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setActiveTab("complaints")}
+                    onClick={() => setActiveTab('complaints')}
                   >
                     View All ({complaints.length})
                   </Button>
@@ -577,11 +568,8 @@ const Dashboard = () => {
                             </h4>
                             <Badge
                               variant={
-                                complaint.priority === "high"
-                                  ? "destructive"
-                                  : complaint.priority === "medium"
-                                    ? "default"
-                                    : "secondary"
+                                complaint.priority === 'high' ? 'destructive' :
+                                complaint.priority === 'medium' ? 'default' : 'secondary'
                               }
                               className="text-xs"
                             >
@@ -589,11 +577,8 @@ const Dashboard = () => {
                             </Badge>
                             <Badge
                               variant={
-                                complaint.status === "resolved"
-                                  ? "default"
-                                  : complaint.status === "in-progress"
-                                    ? "secondary"
-                                    : "outline"
+                                complaint.status === 'resolved' ? 'default' :
+                                complaint.status === 'in-progress' ? 'secondary' : 'outline'
                               }
                               className="text-xs"
                             >
@@ -602,28 +587,21 @@ const Dashboard = () => {
                           </div>
                           <p className="text-sm text-gray-600 mb-1">
                             {complaint.description.length > 100
-                              ? complaint.description.substring(0, 100) + "..."
+                              ? complaint.description.substring(0, 100) + '...'
                               : complaint.description}
                           </p>
                           <div className="flex items-center gap-4 text-xs text-gray-500">
                             <span>By: {complaint.name}</span>
                             <span>Phone: {complaint.phone}</span>
-                            <span>
-                              Location:{" "}
-                              {complaint.landmark || complaint.location}
-                            </span>
-                            <span>
-                              {new Date(
-                                complaint.createdAt,
-                              ).toLocaleDateString()}
-                            </span>
+                            <span>Location: {complaint.landmark || complaint.location}</span>
+                            <span>{new Date(complaint.createdAt).toLocaleDateString()}</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 ml-4">
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => setActiveTab("complaints")}
+                            onClick={() => setActiveTab('complaints')}
                           >
                             View Details
                           </Button>
@@ -716,26 +694,16 @@ const Dashboard = () => {
                             key={complaint.id}
                             complaint={complaint}
                             onUpdateStatus={(id, status, notes, assignedTo) => {
-                              updateComplaintStatus(
-                                id,
-                                status,
-                                notes,
-                                assignedTo || "Admin",
-                                addNotification,
-                              );
+                              updateComplaintStatus(id, status, notes, assignedTo || "Admin", addNotification);
                               if (assignedTo) {
                                 updateComplaint(id, { assignedTo });
                               }
-                              if (status === "resolved") {
+                              if (status === 'resolved') {
                                 updateComplaint(id, { resolutionNotes: notes });
                               }
                             }}
                             onDelete={(id) => {
-                              if (
-                                window.confirm(
-                                  "Are you sure you want to delete this complaint?",
-                                )
-                              ) {
+                              if (window.confirm('Are you sure you want to delete this complaint?')) {
                                 deleteComplaint(id);
                               }
                             }}
@@ -752,8 +720,7 @@ const Dashboard = () => {
                         No Complaints Yet
                       </h4>
                       <p className="text-gray-500">
-                        When citizens submit complaints, they will appear here
-                        for management.
+                        When citizens submit complaints, they will appear here for management.
                       </p>
                     </div>
                   )}
@@ -1412,10 +1379,7 @@ const Dashboard = () => {
                     Admin Notifications
                   </h3>
                   <div className="flex items-center gap-3">
-                    <Badge
-                      variant="outline"
-                      className="bg-red-50 text-red-700 border-red-200"
-                    >
+                    <Badge variant="outline" className="bg-red-50 text-red-700 border-red-200">
                       {unreadCount} Unread
                     </Badge>
                     {unreadCount > 0 && (
@@ -1432,7 +1396,7 @@ const Dashboard = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => (window.location.href = "/notifications")}
+                      onClick={() => window.location.href = "/notifications"}
                     >
                       View All
                     </Button>
@@ -1443,7 +1407,7 @@ const Dashboard = () => {
                   {notifications.slice(0, 10).map((notification) => (
                     <Card
                       key={notification.id}
-                      className={`cursor-pointer transition-all duration-200 hover:shadow-md ${!notification.isRead ? "border-l-4 border-l-red-500 bg-red-50/30" : "bg-white"}`}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-md ${!notification.isRead ? 'border-l-4 border-l-red-500 bg-red-50/30' : 'bg-white'}`}
                       onClick={() => {
                         // Mark as read when clicked
                         if (!notification.isRead) {
@@ -1459,13 +1423,7 @@ const Dashboard = () => {
                                 {notification.title}
                               </h4>
                               <Badge
-                                variant={
-                                  notification.priority === "high"
-                                    ? "destructive"
-                                    : notification.priority === "medium"
-                                      ? "default"
-                                      : "secondary"
-                                }
+                                variant={notification.priority === 'high' ? 'destructive' : notification.priority === 'medium' ? 'default' : 'secondary'}
                                 className="text-xs"
                               >
                                 {notification.priority}
@@ -1479,9 +1437,7 @@ const Dashboard = () => {
                             </p>
                             <div className="flex items-center gap-4 text-xs text-gray-500">
                               <span>
-                                {new Date(
-                                  notification.createdAt,
-                                ).toLocaleString()}
+                                {new Date(notification.createdAt).toLocaleString()}
                               </span>
                               {notification.complaintId && (
                                 <span className="flex items-center gap-1">
@@ -1515,7 +1471,7 @@ const Dashboard = () => {
                                   if (!notification.isRead) {
                                     markAsRead(notification.id);
                                   }
-                                  setActiveTab("complaints");
+                                  setActiveTab('complaints');
                                 }}
                               >
                                 <Eye className="w-4 h-4 mr-1" />
@@ -1536,8 +1492,7 @@ const Dashboard = () => {
                           No Notifications
                         </h4>
                         <p className="text-gray-500">
-                          New complaint notifications will appear here when
-                          citizens submit complaints.
+                          New complaint notifications will appear here when citizens submit complaints.
                         </p>
                       </CardContent>
                     </Card>
@@ -1547,9 +1502,7 @@ const Dashboard = () => {
                     <div className="text-center">
                       <Button
                         variant="outline"
-                        onClick={() =>
-                          (window.location.href = "/notifications")
-                        }
+                        onClick={() => window.location.href = "/notifications"}
                       >
                         View All {notifications.length} Notifications
                       </Button>
@@ -1576,18 +1529,9 @@ const Dashboard = () => {
 };
 
 // ComplaintRow component for managing individual complaints
-const ComplaintRow = ({
-  complaint,
-  onUpdateStatus,
-  onDelete,
-}: {
+const ComplaintRow = ({ complaint, onUpdateStatus, onDelete }: {
   complaint: any;
-  onUpdateStatus: (
-    id: string,
-    status: string,
-    notes: string,
-    assignedTo?: string,
-  ) => void;
+  onUpdateStatus: (id: string, status: string, notes: string, assignedTo?: string) => void;
   onDelete: (id: string) => void;
 }) => {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -1620,31 +1564,21 @@ const ComplaintRow = ({
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "pending":
-        return "bg-yellow-100 text-yellow-800";
-      case "assigned":
-        return "bg-blue-100 text-blue-800";
-      case "in-progress":
-        return "bg-purple-100 text-purple-800";
-      case "resolved":
-        return "bg-green-100 text-green-800";
-      case "closed":
-        return "bg-gray-100 text-gray-800";
-      default:
-        return "bg-gray-100 text-gray-800";
+      case 'pending': return 'bg-yellow-100 text-yellow-800';
+      case 'assigned': return 'bg-blue-100 text-blue-800';
+      case 'in-progress': return 'bg-purple-100 text-purple-800';
+      case 'resolved': return 'bg-green-100 text-green-800';
+      case 'closed': return 'bg-gray-100 text-gray-800';
+      default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case "high":
-        return "bg-red-100 text-red-800";
-      case "medium":
-        return "bg-yellow-100 text-yellow-800";
-      case "low":
-        return "bg-green-100 text-green-800";
-      default:
-        return "bg-gray-100 text-gray-800";
+      case 'high': return 'bg-red-100 text-red-800';
+      case 'medium': return 'bg-yellow-100 text-yellow-800';
+      case 'low': return 'bg-green-100 text-green-800';
+      default: return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -1661,16 +1595,12 @@ const ComplaintRow = ({
                 onClick={() => setShowDetails(!showDetails)}
                 className="text-blue-600 hover:text-blue-800"
               >
-                {showDetails ? (
-                  <ChevronDown className="w-4 h-4" />
-                ) : (
-                  <ArrowUpRight className="w-4 h-4" />
-                )}
+                {showDetails ? <ChevronDown className="w-4 h-4" /> : <ArrowUpRight className="w-4 h-4" />}
               </Button>
             </div>
             <p className="text-sm text-gray-600 max-w-md">
               {complaint.description.length > 100
-                ? complaint.description.substring(0, 100) + "..."
+                ? complaint.description.substring(0, 100) + '...'
                 : complaint.description}
             </p>
             <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -1699,7 +1629,9 @@ const ComplaintRow = ({
             <div className="text-sm font-medium text-gray-700">
               {complaint.category.toUpperCase()}
             </div>
-            <div className="text-xs text-gray-500">{complaint.subcategory}</div>
+            <div className="text-xs text-gray-500">
+              {complaint.subcategory}
+            </div>
           </div>
         </td>
 
@@ -1726,11 +1658,10 @@ const ComplaintRow = ({
               onClick={() => setShowDetails(!showDetails)}
             >
               <Eye className="w-4 h-4 mr-1" />
-              {showDetails ? "Hide" : "View"}
+              {showDetails ? 'Hide' : 'View'}
             </Button>
 
-            {complaint.status === "resolved" ||
-            complaint.status === "closed" ? (
+            {complaint.status === 'resolved' || complaint.status === 'closed' ? (
               <Button
                 variant="outline"
                 size="sm"
@@ -1762,23 +1693,12 @@ const ComplaintRow = ({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Complaint Details */}
               <div className="space-y-4">
-                <h4 className="font-semibold text-gray-900">
-                  Complaint Details
-                </h4>
+                <h4 className="font-semibold text-gray-900">Complaint Details</h4>
                 <div className="space-y-2 text-sm">
-                  <p>
-                    <strong>Full Description:</strong> {complaint.description}
-                  </p>
-                  <p>
-                    <strong>Location:</strong> {complaint.location}
-                  </p>
-                  <p>
-                    <strong>Landmark:</strong> {complaint.landmark}
-                  </p>
-                  <p>
-                    <strong>Category:</strong> {complaint.category} /{" "}
-                    {complaint.subcategory}
-                  </p>
+                  <p><strong>Full Description:</strong> {complaint.description}</p>
+                  <p><strong>Location:</strong> {complaint.location}</p>
+                  <p><strong>Landmark:</strong> {complaint.landmark}</p>
+                  <p><strong>Category:</strong> {complaint.category} / {complaint.subcategory}</p>
                 </div>
 
                 {/* History */}
@@ -1789,18 +1709,13 @@ const ComplaintRow = ({
                       <div key={index} className="bg-white p-3 rounded text-sm">
                         <div className="flex justify-between items-start">
                           <div>
-                            <Badge
-                              className={getStatusColor(entry.status)}
-                              variant="outline"
-                            >
+                            <Badge className={getStatusColor(entry.status)} variant="outline">
                               {entry.status}
                             </Badge>
                             <p className="mt-1">{entry.notes}</p>
                           </div>
                           <div className="text-xs text-gray-500">
-                            <div>
-                              {new Date(entry.timestamp).toLocaleString()}
-                            </div>
+                            <div>{new Date(entry.timestamp).toLocaleString()}</div>
                             <div>by {entry.updatedBy}</div>
                           </div>
                         </div>
@@ -1811,105 +1726,97 @@ const ComplaintRow = ({
               </div>
 
               {/* Management Panel */}
-              {complaint.status !== "resolved" &&
-                complaint.status !== "closed" && (
-                  <div className="space-y-4">
-                    <h4 className="font-semibold text-gray-900">
-                      Manage Complaint
-                    </h4>
+              {complaint.status !== 'resolved' && complaint.status !== 'closed' && (
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-gray-900">Manage Complaint</h4>
 
-                    {/* Status Update */}
-                    <div className="space-y-3">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Update Status
-                        </label>
-                        <Select value={newStatus} onValueChange={setNewStatus}>
-                          <SelectTrigger>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="pending">Pending</SelectItem>
-                            <SelectItem value="assigned">Assigned</SelectItem>
-                            <SelectItem value="in-progress">
-                              In Progress
+                  {/* Status Update */}
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Update Status
+                      </label>
+                      <Select value={newStatus} onValueChange={setNewStatus}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="pending">Pending</SelectItem>
+                          <SelectItem value="assigned">Assigned</SelectItem>
+                          <SelectItem value="in-progress">In Progress</SelectItem>
+                          <SelectItem value="resolved">Resolved</SelectItem>
+                          <SelectItem value="closed">Closed</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Assign to Official */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Assign to Official/Department
+                      </label>
+                      <Select value={assignTo} onValueChange={setAssignTo}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select department or official" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {officials.map((official) => (
+                            <SelectItem key={official} value={official}>
+                              {official}
                             </SelectItem>
-                            <SelectItem value="resolved">Resolved</SelectItem>
-                            <SelectItem value="closed">Closed</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                      {/* Assign to Official */}
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Assign to Official/Department
-                        </label>
-                        <Select value={assignTo} onValueChange={setAssignTo}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select department or official" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {officials.map((official) => (
-                              <SelectItem key={official} value={official}>
-                                {official}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
+                    {/* Notes */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Update Notes (Required)
+                      </label>
+                      <Textarea
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
+                        placeholder="Add notes about this status update..."
+                        rows={3}
+                      />
+                    </div>
 
-                      {/* Notes */}
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Update Notes (Required)
-                        </label>
-                        <Textarea
-                          value={notes}
-                          onChange={(e) => setNotes(e.target.value)}
-                          placeholder="Add notes about this status update..."
-                          rows={3}
-                        />
-                      </div>
+                    {/* Action Buttons */}
+                    <div className="flex gap-3">
+                      <Button
+                        onClick={handleStatusUpdate}
+                        disabled={isUpdating || !notes.trim()}
+                        className="bg-blue-600 hover:bg-blue-700"
+                      >
+                        {isUpdating ? (
+                          <>
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                            Updating...
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle className="w-4 h-4 mr-2" />
+                            Update Status
+                          </>
+                        )}
+                      </Button>
 
-                      {/* Action Buttons */}
-                      <div className="flex gap-3">
-                        <Button
-                          onClick={handleStatusUpdate}
-                          disabled={isUpdating || !notes.trim()}
-                          className="bg-blue-600 hover:bg-blue-700"
-                        >
-                          {isUpdating ? (
-                            <>
-                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                              Updating...
-                            </>
-                          ) : (
-                            <>
-                              <CheckCircle className="w-4 h-4 mr-2" />
-                              Update Status
-                            </>
-                          )}
-                        </Button>
-
-                        <Button
-                          variant="outline"
-                          onClick={() => setShowDetails(false)}
-                        >
-                          Cancel
-                        </Button>
-                      </div>
+                      <Button
+                        variant="outline"
+                        onClick={() => setShowDetails(false)}
+                      >
+                        Cancel
+                      </Button>
                     </div>
                   </div>
-                )}
+                </div>
+              )}
 
               {/* Resolved/Closed Actions */}
-              {(complaint.status === "resolved" ||
-                complaint.status === "closed") && (
+              {(complaint.status === 'resolved' || complaint.status === 'closed') && (
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-gray-900">
-                    Completed Complaint
-                  </h4>
+                  <h4 className="font-semibold text-gray-900">Completed Complaint</h4>
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle className="w-5 h-5 text-green-600" />
@@ -1919,8 +1826,7 @@ const ComplaintRow = ({
                     </div>
                     {complaint.resolutionNotes && (
                       <p className="text-sm text-green-700 mb-3">
-                        <strong>Resolution Notes:</strong>{" "}
-                        {complaint.resolutionNotes}
+                        <strong>Resolution Notes:</strong> {complaint.resolutionNotes}
                       </p>
                     )}
                     <Button
@@ -1977,8 +1883,12 @@ const AdminLoginHelper = () => {
           <p className="text-sm text-blue-800">
             <strong>Admin Credentials:</strong>
           </p>
-          <p className="text-sm text-blue-700">Email: admin@tgcivic.gov.in</p>
-          <p className="text-sm text-blue-700">Password: admin123</p>
+          <p className="text-sm text-blue-700">
+            Email: admin@tgcivic.gov.in
+          </p>
+          <p className="text-sm text-blue-700">
+            Password: admin123
+          </p>
         </div>
         <Button
           onClick={handleAdminLogin}
@@ -2001,7 +1911,7 @@ const AdminLoginHelper = () => {
       <div className="text-center">
         <Button
           variant="outline"
-          onClick={() => (window.location.href = "/login")}
+          onClick={() => window.location.href = "/login"}
           className="w-full"
         >
           Go to Login Page
