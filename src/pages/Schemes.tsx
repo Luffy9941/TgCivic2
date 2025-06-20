@@ -251,6 +251,14 @@ const Schemes = () => {
           </div>
         </div>
       </div>
+
+      {/* Scheme Detail Modal */}
+      <SchemeDetailModal
+        scheme={selectedScheme}
+        isOpen={isDetailModalOpen}
+        onClose={() => setIsDetailModalOpen(false)}
+        onViewIncrement={incrementViews}
+      />
     </div>
   );
 };
