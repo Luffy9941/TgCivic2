@@ -26,6 +26,14 @@ import {
   Edit,
   Trash2,
   ArrowUpRight,
+  User,
+  Shield,
+  Activity,
+  Calendar,
+  Globe,
+  Zap,
+  Target,
+  PieChart,
 } from "lucide-react";
 import { AdminSchemeModal } from "@/components/AdminSchemeModal";
 
