@@ -30,6 +30,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -67,6 +68,11 @@ import {
   RefreshCw,
   Search,
   MoreVertical,
+  Gift,
+  Plus,
+  ExternalLink,
+  Save,
+  X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
