@@ -358,11 +358,9 @@ const RegisterComplaint = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FileText className="w-5 h-5" />
-                Issue Category
+                {t("issue_category")}
               </CardTitle>
-              <CardDescription>
-                Choose the category related to your issue
-              </CardDescription>
+              <CardDescription>{t("select_category")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
