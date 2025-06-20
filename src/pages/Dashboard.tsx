@@ -30,7 +30,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -89,8 +94,13 @@ const Dashboard = () => {
     getComplaintStats,
     getComplaintsByCategory,
   } = useComplaints();
-  const { schemes, addScheme, updateScheme, deleteScheme, toggleSchemeStatus } =
-    useSchemes();
+  const {
+    schemes,
+    addScheme,
+    updateScheme,
+    deleteScheme,
+    toggleSchemeStatus,
+  } = useSchemes();
 
   // State management
   const [selectedComplaint, setSelectedComplaint] = useState<Complaint | null>(
@@ -108,9 +118,7 @@ const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Scheme management state
-  const [currentTab, setCurrentTab] = useState<"complaints" | "schemes">(
-    "complaints",
-  );
+  const [currentTab, setCurrentTab] = useState<"complaints" | "schemes">("complaints");
   const [showSchemeDialog, setShowSchemeDialog] = useState(false);
   const [selectedScheme, setSelectedScheme] = useState<any>(null);
   const [showDeleteSchemeDialog, setShowDeleteSchemeDialog] = useState(false);
@@ -416,12 +424,8 @@ const Dashboard = () => {
       name: schemeForm.name,
       description: schemeForm.description,
       category: schemeForm.category,
-      eligibility: schemeForm.eligibility
-        .split("\n")
-        .filter((item) => item.trim()),
-      requiredDocuments: schemeForm.requiredDocuments
-        .split("\n")
-        .filter((item) => item.trim()),
+      eligibility: schemeForm.eligibility.split('\n').filter(item => item.trim()),
+      requiredDocuments: schemeForm.requiredDocuments.split('\n').filter(item => item.trim()),
       benefits: schemeForm.benefits,
       applicationProcess: schemeForm.applicationProcess,
       applyLink: schemeForm.applyLink,
@@ -450,7 +454,7 @@ const Dashboard = () => {
     "Housing",
     "Women & Child Development",
     "Senior Citizens",
-    "Disabled Welfare",
+    "Disabled Welfare"
   ];
 
   return (
@@ -548,8 +552,25 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* Admin Controls */}
-        {isAdmin && (
+        {/* Main Content Tabs */}
+        <Tabs value={currentTab} onValueChange={(value: "complaints" | "schemes") => setCurrentTab(value)} className="space-y-6">
+          <TabsList className="grid w-full grid-cols-2 max-w-md">
+            <TabsTrigger value="complaints" className="flex items-center gap-2">
+              <FileText className="w-4 h-4" />
+              Complaints
+            </TabsTrigger>
+            {isAdmin && (
+              <TabsTrigger value="schemes" className="flex items-center gap-2">
+                <Gift className="w-4 h-4" />
+                Schemes
+              </TabsTrigger>
+            )}
+          </TabsList>
+
+          {/* Complaints Tab */}
+          <TabsContent value="complaints" className="space-y-6">
+            {/* Admin Controls */}
+            {isAdmin && (
           <Card className="mb-6 bg-red-50 border-red-200">
             <CardHeader className="pb-3 sm:pb-6">
               <CardTitle className="flex items-center gap-2 text-red-900 text-base sm:text-lg">
