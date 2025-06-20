@@ -101,13 +101,16 @@ const Dashboard = () => {
   if (!user) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            No User Found
-          </h1>
-          <p className="text-gray-600">
-            Please log in to access the dashboard.
-          </p>
+        <div className="max-w-md mx-auto text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+              Admin Dashboard Access
+            </h1>
+            <p className="text-gray-600 mb-6">
+              Please log in with admin credentials to access the dashboard.
+            </p>
+            <AdminLoginHelper />
+          </div>
         </div>
       </div>
     );
@@ -116,17 +119,28 @@ const Dashboard = () => {
   if (user.userType !== "admin") {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Access Denied
-          </h1>
-          <p className="text-gray-600">
-            This page is only accessible to admin users. Your user type:{" "}
-            {user.userType}
-          </p>
-          <p className="text-sm text-gray-500 mt-2">
-            Current user: {user.name} ({user.email})
-          </p>
+        <div className="max-w-md mx-auto text-center">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+              Access Denied
+            </h1>
+            <p className="text-gray-600 mb-4">
+              This page is only accessible to admin users.
+            </p>
+            <div className="bg-gray-50 rounded-lg p-4 mb-6">
+              <p className="text-sm text-gray-700">
+                <strong>Current user:</strong> {user.name}
+              </p>
+              <p className="text-sm text-gray-700">
+                <strong>Email:</strong> {user.email}
+              </p>
+              <p className="text-sm text-gray-700">
+                <strong>User Type:</strong> {user.userType}
+              </p>
+              <p className="text-sm text-gray-500 mt-2">Required: admin</p>
+            </div>
+            <AdminLoginHelper />
+          </div>
         </div>
       </div>
     );
