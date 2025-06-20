@@ -110,3 +110,16 @@
       sans-serif;
   }
 }
+
+@layer utilities {
+  .telugu-text {
+    font-family: "Noto Sans Telugu", sans-serif;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+
+  .nav-text {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
