@@ -1239,7 +1239,6 @@ const Dashboard = () => {
                       size="sm"
                       onClick={() => {
                         // Add a demo notification for testing
-                        const { addNotification } = useNotifications();
                         addNotification({
                           type: "complaint_submitted",
                           title: "🚨 NEW HIGH PRIORITY COMPLAINT",
