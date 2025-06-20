@@ -289,7 +289,10 @@ const Dashboard = () => {
                     Manage government schemes and track their performance
                   </p>
                 </div>
-                <Button className="bg-blue-600 hover:bg-blue-700">
+                <Button
+                  className="bg-blue-600 hover:bg-blue-700"
+                  onClick={handleCreateScheme}
+                >
                   <Plus className="w-4 h-4 mr-2" />
                   Add New Scheme
                 </Button>
