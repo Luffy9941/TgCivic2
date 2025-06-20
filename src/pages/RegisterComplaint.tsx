@@ -279,6 +279,8 @@ const RegisterComplaint = () => {
         phone: formData.phone,
         email: formData.email,
         images: imageBase64,
+        latitude: formData.latitude,
+        longitude: formData.longitude,
       });
 
       // Send notification to admins about new complaint
