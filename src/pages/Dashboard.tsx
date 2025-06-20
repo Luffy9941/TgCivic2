@@ -634,10 +634,10 @@ const Dashboard = () => {
                       <div className="text-center py-8">
                         <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                         <h4 className="text-lg font-medium text-gray-600 mb-2">
-                          No Complaints Yet
+                          {t("no_complaints_yet")}
                         </h4>
                         <p className="text-gray-500">
-                          New complaints from citizens will appear here.
+                          {t("complaints_will_appear")}
                         </p>
                       </div>
                     )}
