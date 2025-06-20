@@ -236,21 +236,21 @@ const Dashboard = () => {
             <TabsList className="grid w-full grid-cols-6 bg-white">
               <TabsTrigger value="overview" className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" />
-                Overview
+                {t("overview")}
               </TabsTrigger>
               <TabsTrigger
                 value="complaints"
                 className="flex items-center gap-2"
               >
                 <FileText className="w-4 h-4" />
-                Complaints
+                {t("complaints")}
               </TabsTrigger>
               <TabsTrigger
                 value="notifications"
                 className="flex items-center gap-2 relative"
               >
                 <AlertTriangle className="w-4 h-4" />
-                Notifications
+                {t("notifications")}
                 {unreadCount > 0 && (
                   <Badge className="ml-1 px-1.5 py-0.5 text-xs bg-red-500 text-white">
                     {unreadCount}
@@ -259,18 +259,18 @@ const Dashboard = () => {
               </TabsTrigger>
               <TabsTrigger value="schemes" className="flex items-center gap-2">
                 <Settings className="w-4 h-4" />
-                Schemes
+                {t("schemes")}
               </TabsTrigger>
               <TabsTrigger
                 value="analytics"
                 className="flex items-center gap-2"
               >
                 <TrendingUp className="w-4 h-4" />
-                Analytics
+                {t("analytics")}
               </TabsTrigger>
               <TabsTrigger value="users" className="flex items-center gap-2">
                 <Users className="w-4 h-4" />
-                Users
+                {t("users")}
               </TabsTrigger>
               <TabsTrigger
                 value="notifications"
