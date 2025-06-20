@@ -1240,4 +1240,72 @@ const Dashboard = () => {
   );
 };
 
+// Helper component for quick admin login during development
+const AdminLoginHelper = () => {
+  const { login } = useAuth();
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const handleAdminLogin = async () => {
+    setIsLoggingIn(true);
+    try {
+      // Use the default admin credentials
+      const success = await login("admin@tgcivic.gov.in", "admin123", "admin");
+      if (success) {
+        // Reload the page to reflect the new auth state
+        window.location.reload();
+      } else {
+        alert("Failed to log in as admin. Please check the credentials.");
+      }
+    } catch (error) {
+      console.error("Admin login error:", error);
+      alert("Error logging in as admin: " + error);
+    } finally {
+      setIsLoggingIn(false);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="border-t border-gray-200 pt-4">
+        <p className="text-sm text-gray-600 mb-3">
+          For demo purposes, you can quickly log in as admin:
+        </p>
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+          <p className="text-sm text-blue-800">
+            <strong>Admin Credentials:</strong>
+          </p>
+          <p className="text-sm text-blue-700">Email: admin@tgcivic.gov.in</p>
+          <p className="text-sm text-blue-700">Password: admin123</p>
+        </div>
+        <Button
+          onClick={handleAdminLogin}
+          disabled={isLoggingIn}
+          className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700"
+        >
+          {isLoggingIn ? (
+            <>
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+              Logging in...
+            </>
+          ) : (
+            <>
+              <Shield className="w-4 h-4 mr-2" />
+              Quick Admin Login
+            </>
+          )}
+        </Button>
+      </div>
+      <div className="text-center">
+        <Button
+          variant="outline"
+          onClick={() => (window.location.href = "/login")}
+          className="w-full"
+        >
+          Go to Login Page
+        </Button>
+      </div>
+    </div>
+  );
+};
+
 export default Dashboard;
