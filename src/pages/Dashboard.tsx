@@ -659,26 +659,34 @@ const Dashboard = () => {
                 <div className="flex items-center gap-3">
                   <Select defaultValue="all">
                     <SelectTrigger className="w-48">
-                      <SelectValue placeholder="Filter by Status" />
+                      <SelectValue placeholder={t("filter_by_status")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">All Complaints</SelectItem>
-                      <SelectItem value="pending">Pending</SelectItem>
-                      <SelectItem value="assigned">Assigned</SelectItem>
-                      <SelectItem value="in-progress">In Progress</SelectItem>
-                      <SelectItem value="resolved">Resolved</SelectItem>
-                      <SelectItem value="closed">Closed</SelectItem>
+                      <SelectItem value="all">{t("all_complaints")}</SelectItem>
+                      <SelectItem value="pending">
+                        {t("pending_complaints")}
+                      </SelectItem>
+                      <SelectItem value="assigned">{t("assigned")}</SelectItem>
+                      <SelectItem value="in-progress">
+                        {t("in_progress")}
+                      </SelectItem>
+                      <SelectItem value="resolved">
+                        {t("resolved_complaints")}
+                      </SelectItem>
+                      <SelectItem value="closed">{t("closed")}</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button
                     variant="outline"
                     onClick={() => {
                       const deletedCount = deleteResolvedComplaints();
-                      alert(`Deleted ${deletedCount} resolved complaints`);
+                      alert(
+                        `${t("delete", "Deleted")} ${deletedCount} ${t("resolved_complaints").toLowerCase()}`,
+                      );
                     }}
                   >
                     <Trash2 className="w-4 h-4 mr-2" />
-                    Clean Resolved
+                    {t("clean_resolved")}
                   </Button>
                 </div>
               </div>
