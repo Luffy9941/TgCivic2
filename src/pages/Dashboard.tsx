@@ -729,6 +729,9 @@ const Dashboard = () => {
                               if (assignedTo) {
                                 updateComplaint(id, { assignedTo });
                               }
+                              if (status === "resolved") {
+                                updateComplaint(id, { resolutionNotes: notes });
+                              }
                             }}
                             onDelete={(id) => {
                               if (
