@@ -60,6 +60,10 @@ interface ComplaintContextType {
     updatedBy: string,
     notificationCallback?: (notification: any) => void,
   ) => void;
+  addFeedback: (
+    complaintId: string,
+    feedback: { rating: number; comment?: string },
+  ) => void;
   bulkUpdateStatus: (
     ids: string[],
     status: Complaint["status"],
