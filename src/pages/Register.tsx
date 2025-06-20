@@ -36,7 +36,7 @@ import {
   Shield,
   IdCard,
 } from "lucide-react";
-import { UserType } from "@/services/authService";
+import { UserType } from "@/services/clientStorage";
 
 const Register = () => {
   const navigate = useNavigate();
