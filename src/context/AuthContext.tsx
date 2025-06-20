@@ -113,11 +113,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
 
     try {
+      console.log("AuthContext - Login attempt:", { email, userType });
       const loginData: LoginData = { email, password, userType };
       const authUser = await clientStorageService.login(loginData);
+      console.log("AuthContext - Login response:", authUser);
 
       if (authUser) {
         const user = convertAuthUser(authUser);
+        console.log("AuthContext - Converted user:", user);
         setUser(user);
         return true;
       }
