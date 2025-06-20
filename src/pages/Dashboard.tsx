@@ -27,6 +27,7 @@ import {
   Trash2,
   ArrowUpRight,
 } from "lucide-react";
+import { AdminSchemeModal } from "@/components/AdminSchemeModal";
 
 const Dashboard = () => {
   const { user } = useAuth();
