@@ -73,43 +73,43 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
         {
           id: "notification-001",
           type: "complaint_submitted",
-          title: "🚨 New High Priority Complaint",
+          title: "🚨 NEW HIGH PRIORITY COMPLAINT",
           message:
-            "ROADS complaint: 'Dangerous pothole causing accidents' submitted by Rajesh Kumar in Hitec City. Priority: HIGH",
+            "ROADS: 'Dangerous pothole causing accidents' - Submitted by Rajesh Kumar (9876543210) at Hitec City, Cyber Towers. This pothole is causing multiple accidents daily and needs immediate attention.",
           complaintId: "TGC2024001234",
           userId: "all-admins",
           userRole: "admin",
           priority: "high",
           actionUrl: "/dashboard",
-          createdAt: "2024-01-16T09:30:00Z",
+          createdAt: new Date(Date.now() - 30 * 60 * 1000).toISOString(), // 30 minutes ago
           isRead: false,
         },
         {
           id: "notification-004",
           type: "complaint_submitted",
-          title: "📋 New Water Supply Complaint",
+          title: "📋 NEW MEDIUM PRIORITY COMPLAINT",
           message:
-            "WATER complaint: 'No water for 3 days' submitted by Priya Sharma in Jubilee Hills. Priority: MEDIUM",
+            "WATER: 'No water supply for 3 days' - Submitted by Priya Sharma (9876543211) at Jubilee Hills Check Post. Entire colony affected, residents requesting immediate action.",
           complaintId: "TGC2024001235",
           userId: "all-admins",
           userRole: "admin",
           priority: "medium",
           actionUrl: "/dashboard",
-          createdAt: "2024-01-16T08:15:00Z",
+          createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
           isRead: false,
         },
         {
           id: "notification-005",
           type: "complaint_submitted",
-          title: "🚨 Urgent Street Light Issue",
+          title: "🚨 NEW HIGH PRIORITY COMPLAINT",
           message:
-            "STREET-LIGHTS complaint: 'Dark street causing safety concerns' submitted by Mohammed Ali in Gachibowli. Priority: HIGH",
+            "STREET-LIGHTS: 'Dark street causing safety concerns' - Submitted by Mohammed Ali (9876543212) at Gachibowli Main Road. Multiple street lights not working, safety risk for pedestrians.",
           complaintId: "TGC2024001236",
           userId: "all-admins",
           userRole: "admin",
           priority: "high",
           actionUrl: "/dashboard",
-          createdAt: "2024-01-16T07:45:00Z",
+          createdAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(), // 4 hours ago
           isRead: false,
         },
         {
