@@ -54,7 +54,7 @@ const RegisterComplaint = () => {
   const navigate = useNavigate();
   const { addComplaint } = useComplaints();
   const { addNotification } = useNotifications();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [complaintId, setComplaintId] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
