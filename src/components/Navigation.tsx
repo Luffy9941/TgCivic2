@@ -74,7 +74,8 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems: NavItem[] = [
+  // Base navigation items available to all users
+  const baseNavItems: NavItem[] = [
     {
       href: "/",
       label: t("home"),
@@ -95,12 +96,23 @@ const Navigation = () => {
       label: t("schemes"),
       icon: <Gift className="w-4 h-4" />,
     },
+  ];
+
+  // Admin-only navigation items
+  const adminNavItems: NavItem[] = [
     {
       href: "/dashboard",
       label: t("dashboard"),
       icon: <BarChart3 className="w-4 h-4" />,
-      badge: user?.role === "admin" ? 5 : undefined,
+      badge: 5,
     },
+  ];
+
+  // Combine nav items based on user type
+  const navItems = [
+    ...baseNavItems,
+    // Only show dashboard to admin users
+    ...(user?.userType === "admin" ? adminNavItems : []),
   ];
 
   const isActiveRoute = (href: string) => {
@@ -445,7 +457,7 @@ const Navigation = () => {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="en">🇺🇸 English</SelectItem>
-                          <SelectItem value="hi">🇮🇳 हिंदी</SelectItem>
+                          <SelectItem value="hi">🇮🇳 ���िंदी</SelectItem>
                           <SelectItem value="te">🏛️ తెలుగు</SelectItem>
                         </SelectContent>
                       </Select>
