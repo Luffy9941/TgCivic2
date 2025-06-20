@@ -62,7 +62,8 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, isAuthenticated, logout } = useAuth();
-  const { unreadCount } = useNotifications();
+  const { unreadCount, notifications, markAsRead, markAllAsRead } =
+    useNotifications();
   const { language, setLanguage, t } = useLanguage();
 
   // Handle scroll effect
@@ -457,7 +458,7 @@ const Navigation = () => {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="en">🇺🇸 English</SelectItem>
-                          <SelectItem value="hi">🇮🇳 ���िंदी</SelectItem>
+                          <SelectItem value="hi">🇮🇳 हिंदी</SelectItem>
                           <SelectItem value="te">🏛️ తెలుగు</SelectItem>
                         </SelectContent>
                       </Select>
