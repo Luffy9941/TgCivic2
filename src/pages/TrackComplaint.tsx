@@ -42,6 +42,7 @@ const TrackComplaint = () => {
   const navigate = useNavigate();
   const { complaints, getComplaintById, getComplaintsByPhone } =
     useComplaints();
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(complaints.slice(0, 5));
   const [selectedComplaint, setSelectedComplaint] = useState<any>(null);
