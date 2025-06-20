@@ -508,6 +508,66 @@ const Index = () => {
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     },
+    {
+      name: "Anita Reddy",
+      role: "Senior Citizen",
+      location: "Banjara Hills",
+      quote:
+        "Street lighting issue near my home was addressed promptly. I feel much safer now during evening walks.",
+      rating: 5,
+      avatar: "AR",
+      bgGradient: "from-purple-500 to-pink-600",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    },
+    {
+      name: "Vikram Singh",
+      role: "Community Leader",
+      location: "Jubilee Hills",
+      quote:
+        "Multiple residents in our colony reported waste management issues. All were resolved within a week!",
+      rating: 5,
+      avatar: "VS",
+      bgGradient: "from-emerald-500 to-teal-600",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+    },
+    {
+      name: "Sunita Devi",
+      role: "Homemaker",
+      location: "Kukatpally",
+      quote:
+        "The mobile app is so easy to use! I reported a broken sewage line and got regular updates until it was fixed.",
+      rating: 5,
+      avatar: "SD",
+      bgGradient: "from-rose-500 to-orange-600",
+      image:
+        "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=150&h=150&fit=crop&crop=face",
+    },
+    {
+      name: "Dr. Kiran Patel",
+      role: "Medical Professional",
+      location: "Hitec City",
+      quote:
+        "Road maintenance near the hospital was completed quickly. Patients can now access our facility without hassle.",
+      rating: 5,
+      avatar: "KP",
+      bgGradient: "from-cyan-500 to-blue-600",
+      image:
+        "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop&crop=face",
+    },
+    {
+      name: "Ramesh Gupta",
+      role: "Retired Teacher",
+      location: "Ameerpet",
+      quote:
+        "Park maintenance in our area has improved dramatically. Children have a safe place to play again.",
+      rating: 5,
+      avatar: "RG",
+      bgGradient: "from-indigo-500 to-purple-600",
+      image:
+        "https://images.unsplash.com/photo-1543132220-4bf3de6e10ae?w=150&h=150&fit=crop&crop=face",
+    },
   ];
 
   return (
