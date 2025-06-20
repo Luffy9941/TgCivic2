@@ -542,6 +542,103 @@ const Dashboard = () => {
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Recent Complaints Overview */}
+              <Card className="bg-white">
+                <CardHeader className="flex flex-row items-center justify-between">
+                  <CardTitle className="text-lg font-semibold text-gray-900">
+                    Recent Complaints
+                  </CardTitle>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setActiveTab("complaints")}
+                  >
+                    View All ({complaints.length})
+                  </Button>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {complaints.slice(0, 5).map((complaint) => (
+                      <div
+                        key={complaint.id}
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
+                      >
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-medium text-gray-900">
+                              {complaint.title}
+                            </h4>
+                            <Badge
+                              variant={
+                                complaint.priority === "high"
+                                  ? "destructive"
+                                  : complaint.priority === "medium"
+                                    ? "default"
+                                    : "secondary"
+                              }
+                              className="text-xs"
+                            >
+                              {complaint.priority}
+                            </Badge>
+                            <Badge
+                              variant={
+                                complaint.status === "resolved"
+                                  ? "default"
+                                  : complaint.status === "in-progress"
+                                    ? "secondary"
+                                    : "outline"
+                              }
+                              className="text-xs"
+                            >
+                              {complaint.status}
+                            </Badge>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-1">
+                            {complaint.description.length > 100
+                              ? complaint.description.substring(0, 100) + "..."
+                              : complaint.description}
+                          </p>
+                          <div className="flex items-center gap-4 text-xs text-gray-500">
+                            <span>By: {complaint.name}</span>
+                            <span>Phone: {complaint.phone}</span>
+                            <span>
+                              Location:{" "}
+                              {complaint.landmark || complaint.location}
+                            </span>
+                            <span>
+                              {new Date(
+                                complaint.createdAt,
+                              ).toLocaleDateString()}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 ml-4">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setActiveTab("complaints")}
+                          >
+                            View Details
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+
+                    {complaints.length === 0 && (
+                      <div className="text-center py-8">
+                        <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                        <h4 className="text-lg font-medium text-gray-600 mb-2">
+                          No Complaints Yet
+                        </h4>
+                        <p className="text-gray-500">
+                          New complaints from citizens will appear here.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             {/* Complaints Tab */}
