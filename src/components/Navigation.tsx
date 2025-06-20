@@ -45,6 +45,7 @@ import {
   Sparkles,
   Bell,
   Shield,
+  Gift,
 } from "lucide-react";
 
 interface NavItem {
