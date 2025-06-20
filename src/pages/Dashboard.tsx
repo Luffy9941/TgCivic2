@@ -218,7 +218,7 @@ const Dashboard = () => {
             onValueChange={setActiveTab}
             className="space-y-6"
           >
-            <TabsList className="grid w-full grid-cols-5 bg-white">
+            <TabsList className="grid w-full grid-cols-6 bg-white">
               <TabsTrigger value="overview" className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" />
                 Overview
@@ -229,6 +229,18 @@ const Dashboard = () => {
               >
                 <FileText className="w-4 h-4" />
                 Complaints
+              </TabsTrigger>
+              <TabsTrigger
+                value="notifications"
+                className="flex items-center gap-2 relative"
+              >
+                <AlertTriangle className="w-4 h-4" />
+                Notifications
+                {unreadCount > 0 && (
+                  <Badge className="ml-1 px-1.5 py-0.5 text-xs bg-red-500 text-white">
+                    {unreadCount}
+                  </Badge>
+                )}
               </TabsTrigger>
               <TabsTrigger value="schemes" className="flex items-center gap-2">
                 <Settings className="w-4 h-4" />
