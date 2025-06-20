@@ -143,6 +143,7 @@ const Schemes = () => {
             <Card
               key={scheme.id}
               className="bg-white hover:shadow-lg transition-all duration-300 border-0 shadow-sm group cursor-pointer"
+              onClick={() => handleSchemeClick(scheme)}
             >
               <CardContent className="p-6">
                 {/* Header */}
