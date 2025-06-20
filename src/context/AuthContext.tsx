@@ -79,10 +79,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // Load user from localStorage on mount
   useEffect(() => {
+    console.log("AuthContext - Loading user from localStorage");
     const savedUser = localStorage.getItem("tg-civic-user");
+    console.log("AuthContext - Saved user:", savedUser);
+
     if (savedUser) {
       try {
         const userData = JSON.parse(savedUser);
+        console.log("AuthContext - Parsed user data:", userData);
         setUser(userData);
       } catch (error) {
         console.error("Error loading user from localStorage:", error);
