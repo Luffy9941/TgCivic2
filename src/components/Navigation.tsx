@@ -238,20 +238,144 @@ const Navigation = () => {
               {/* Authentication */}
               {isAuthenticated ? (
                 <div className="flex items-center space-x-3">
-                  {/* Notifications */}
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => navigate("/notifications")}
-                    className="relative hover:bg-gray-100 transition-all duration-300 hover:scale-105"
-                  >
-                    <Bell className="w-5 h-5" />
-                    {unreadCount > 0 && (
-                      <span className="absolute -top-1 -right-1 min-w-[20px] h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse font-medium">
-                        {unreadCount > 99 ? "99+" : unreadCount}
-                      </span>
-                    )}
-                  </Button>
+                  {/* Notifications Dropdown */}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="relative hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+                      >
+                        <Bell className="w-5 h-5" />
+                        {unreadCount > 0 && (
+                          <span className="absolute -top-1 -right-1 min-w-[20px] h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse font-medium">
+                            {unreadCount > 99 ? "99+" : unreadCount}
+                          </span>
+                        )}
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      className="w-96 bg-white/95 backdrop-blur-lg border border-gray-200 shadow-xl max-h-96 overflow-y-auto"
+                      align="end"
+                      side="bottom"
+                      sideOffset={8}
+                    >
+                      <div className="p-4 border-b border-gray-200">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-semibold text-gray-900">
+                            Notifications
+                          </h3>
+                          <div className="flex items-center gap-2">
+                            {unreadCount > 0 && (
+                              <>
+                                <span className="text-xs text-gray-500">
+                                  {unreadCount} unread
+                                </span>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    markAllAsRead();
+                                  }}
+                                  className="text-xs text-blue-600 hover:text-blue-800"
+                                >
+                                  Mark all read
+                                </Button>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="max-h-80 overflow-y-auto">
+                        {notifications.length > 0 ? (
+                          notifications.slice(0, 8).map((notification) => (
+                            <div
+                              key={notification.id}
+                              className={`p-4 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors ${
+                                !notification.isRead
+                                  ? "bg-blue-50/50 border-l-4 border-l-blue-500"
+                                  : ""
+                              }`}
+                              onClick={() => {
+                                if (!notification.isRead) {
+                                  markAsRead(notification.id);
+                                }
+                                if (notification.complaintId) {
+                                  navigate("/dashboard");
+                                }
+                              }}
+                            >
+                              <div className="flex items-start gap-3">
+                                <div className="flex-shrink-0">
+                                  {notification.type ===
+                                    "complaint_submitted" && (
+                                    <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                      <FileText className="w-4 h-4 text-red-600" />
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <p className="font-medium text-gray-900 text-sm truncate">
+                                      {notification.title}
+                                    </p>
+                                    {!notification.isRead && (
+                                      <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
+                                    )}
+                                  </div>
+                                  <p className="text-xs text-gray-600 line-clamp-2">
+                                    {notification.message}
+                                  </p>
+                                  <div className="flex items-center justify-between mt-2">
+                                    <span className="text-xs text-gray-500">
+                                      {new Date(
+                                        notification.createdAt,
+                                      ).toLocaleDateString()}
+                                    </span>
+                                    {!notification.isRead && (
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          markAsRead(notification.id);
+                                        }}
+                                        className="text-xs text-blue-600 hover:text-blue-800 px-2 py-1"
+                                      >
+                                        Mark read
+                                      </Button>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="p-8 text-center">
+                            <Bell className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                            <p className="text-gray-500">
+                              No notifications yet
+                            </p>
+                          </div>
+                        )}
+                      </div>
+
+                      {notifications.length > 8 && (
+                        <div className="p-3 border-t border-gray-200 bg-gray-50">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => navigate("/notifications")}
+                            className="w-full text-blue-600 hover:text-blue-800"
+                          >
+                            View all {notifications.length} notifications
+                          </Button>
+                        </div>
+                      )}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
 
                   {/* User Info Display - Desktop */}
                   <div className="hidden md:flex flex-col text-right">
