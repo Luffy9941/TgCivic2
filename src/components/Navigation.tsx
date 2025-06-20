@@ -148,9 +148,9 @@ const Navigation = () => {
                 <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   TG Civic
                 </span>
-                <span className="text-sm text-gray-600 flex items-center space-x-1">
-                  <Sparkles className="w-3 h-3 text-yellow-500" />
-                  <span>{t("citizen_services")}</span>
+                <span className="text-xs sm:text-sm text-gray-600 flex items-center space-x-1 max-w-[140px] truncate">
+                  <Sparkles className="w-3 h-3 text-yellow-500 flex-shrink-0" />
+                  <span className="truncate">{t("citizen_services")}</span>
                 </span>
               </div>
             </Link>
