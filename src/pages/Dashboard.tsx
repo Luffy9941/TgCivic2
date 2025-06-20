@@ -83,6 +83,8 @@ const Dashboard = () => {
     getComplaintStats,
     getComplaintsByCategory,
   } = useComplaints();
+  const { schemes, addScheme, updateScheme, deleteScheme, toggleSchemeStatus } =
+    useSchemes();
 
   // State management
   const [selectedComplaint, setSelectedComplaint] = useState<Complaint | null>(
