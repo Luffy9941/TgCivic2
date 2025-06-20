@@ -155,7 +155,7 @@ const translations = {
   },
   safety: {
     en: "Public Safety",
-    hi: "सार्वजनिक सुरक्षा",
+    hi: "सार्वजनिक सुरक���षा",
     te: "ప్రజా భద్రత",
   },
 
@@ -277,7 +277,7 @@ const translations = {
   no_notifications_found: {
     en: "No notifications found",
     hi: "कोई सूचना नहीं मिली",
-    te: "నోటిఫికేషన్‌లు కనుగొనబడలేదు",
+    te: "నోటిఫికేషన్‌��ు కనుగొనబడలేదు",
   },
   all_caught_up: {
     en: "You're all caught up! No unread notifications.",
@@ -365,7 +365,7 @@ const translations = {
   // AI Chatbot Translations
   ai_greeting: {
     en: "Hello! I'm your TG Civic AI assistant. I can help you with complaint registration, tracking, and answer your questions. How can I assist you today?",
-    hi: "न����्ते! मैं आपका TG Civic AI सहायक हूं। मैं शिकायत पंजीकरण, ट्रैकिंग में आपकी मदद कर सकता हूं और आपके प्रश्नों का उत्तर दे सकता हूं। आज मैं आपकी कैसे सहायता कर सकता हूं?",
+    hi: "न����्ते! मैं आपका TG Civic AI सहायक हूं। मैं शिकायत पंजीकरण, ट्रैकिंग में आपकी मदद कर सकता हूं और आपके प्रश्नों का उत्तर दे सकता हूं। आज मैं आपकी कैसे सहायता कर ���कता हूं?",
     te: "నమస్కారం! నేను మీ TG Civic AI అసిస్టెంట్. నేను ఫిర్యాదు నమోదు, ట్రాకింగ్‌లో మీకు స���ాయం చేయగలను మరియు మీ ప్రశ్నలకు సమాధానాలు ఇవ్వగలను. ఈ రోజు నేను మీకు ఎలా సహాయం చేయగలను?",
   },
   ai_online_status: {
@@ -376,12 +376,12 @@ const translations = {
   ai_register_help: {
     en: "To register a complaint: 1) Click 'Register Complaint' in the navigation, 2) Select your issue category (roads, water, etc.), 3) Fill in all details including photos and location, 4) Submit to get your tracking ID. Would you like me to guide you through a specific step?",
     hi: "शिकायत दर्ज करने के लिए: 1) नेवीगेशन में 'शिकायत दर्ज करें' पर क्लिक करें, 2) अपनी समस्या की श्रेणी चुनें (सड़कें, पानी, आदि), 3) फोटो और स्थान सहित सभी विवरण भरें, 4) अपना ट्रैकिंग ID प्राप्त करने के लिए सबमिट करें। क्या आप चाहेंगे कि मैं आपको किसी विशेष चरण के माध्यम से मार्गदर्शन करूं?",
-    te: "ఫిర్యాదు నమోదు చేయడానికి: 1) నావిగేషన్‌లో 'ఫిర్యాదు నమోదు' మీద క్లిక్ చేయండి, 2) మీ సమస్య వర్గాన్ని ఎంచుకోండి (రోడ్లు, నీరు, మొదలైనవి), 3) ఫోటోలు మరియు లొకేషన్‌తో సహా అన్ని వివరాలను పూరించండి, 4) మీ ట్రాకింగ్ ID పొందడానికి సమర్పించండి. నేను మిమ్మల్ని ఏదైనా నిర్దిష్ట దశ ద్వారా మార్గదర్శనం చేయాలని మీరు అనుకుంటున్నారా?",
+    te: "ఫిర్యాదు నమోదు చేయడానికి: 1) నావిగేషన్‌లో 'ఫిర్యాదు నమోదు' మీద క్లిక్ చేయండి, 2) మీ సమస్య వర్గాన్ని ఎంచుకోండి (రోడ్లు, నీరు, మొదలైనవి), 3) ఫోటోలు మరియు లొకేషన్‌తో సహా అన్ని వివరాలను పూరించండి, 4) మీ ట్రాకింగ్ ID పొందడానికి సమర్పించండి. నేను మిమ్మల్ని ఏదైనా నిర���దిష్ట దశ ద్వారా మార్గదర్శనం చేయాలని మీరు అనుకుంటున్నారా?",
   },
   ai_track_help: {
     en: "To track your complaint: 1) Go to 'Track Complaint' page, 2) Enter your complaint ID (format: TGC2024XXXXXX) or phone number, 3) View complete status history and details. Do you have your complaint ID?",
     hi: "अपनी शिकायत को ट्रैक करने के लिए: 1) 'शिकायत ट्र���क करें' पेज पर जाएं, 2) अपना शिकायत ID (प्रारूप: TGC2024XXXXXX) या फोन नंबर दर्ज करें, 3) पूर्ण स्थिति इतिहास और विवरण देखें। क्या आपके पास अपना शिकायत ID है?",
-    te: "మీ ఫిర్యాదును ట్రాక్ చేయడానికి: 1) 'ఫిర్యాదు ట్రాక్ చేయండి' పేజీకి వెళ్లండి, 2) మీ ఫిర్యాదు ID (ఫార్మాట్: TGC2024XXXXXX) లేదా ఫోన్ నంబర్ నమోదు చేయండ��, 3) పూర్తి స్థితి చరిత్ర మరియు వివరాలను చూడండి. మీ దగ్గర మీ ఫిర్యాదు ID ఉందా?",
+    te: "మీ ఫిర్యాదును ట్రాక్ చేయడానికి: 1) 'ఫిర్యాదు ట్రాక్ చేయండి' పేజీకి వెళ్లండి, 2) మీ ఫిర్యాదు ID (ఫార్మాట్: TGC2024XXXXXX) లేదా ఫోన్ నంబర్ నమోదు చేయండ��, 3) పూర్తి స్థితి చరిత్ర మరియు వివరాల��ు చూడండి. మీ దగ్గర మీ ఫిర్యాదు ID ఉందా?",
   },
   ai_time_help: {
     en: "Resolution times vary by issue type: Roads (3-7 days), Water (2-5 days), Street lights (1-2 days), Sanitation (1-3 days). You'll receive SMS/email updates throughout the process. Is there a specific type of issue you're asking about?",
@@ -391,7 +391,7 @@ const translations = {
   ai_photo_help: {
     en: "You can upload up to 5 photos during complaint registration. Photos help officials understand the problem better. Supported formats: JPG, PNG, WebP. Click the camera icon or drag photos to the upload area.",
     hi: "शिकायत पंजीकरण के दौरान आप 5 तक फोटो अपलोड कर सकते हैं। फोटो अधिकारियों को समस्या को बेहतर ढंग से समझने में मदद करती हैं। समर्थित प्रारूप: JPG, PNG, WebP। कैमरा आइकन पर क्लिक करें या फोटो को अपलोड क्षेत्र में खींचें।",
-    te: "ఫిర్యాదు నమోదు సమయంలో మీరు 5 ఫోటోలు వరకు అప్‌లోడ్ చేయవచ్చు. ఫోటోలు అధికారు��కు ��మస్యను బాగా అర్థం చేసుకోవడంలో సహాయపడతాయి. మద్దతు ఉన్న ఫార్మాట్‌లు: JPG, PNG, WebP. కెమెరా ఐకాన్‌పై క్లిక్ చేయండి లేదా ఫోటోలను అప్‌లోడ్ ప్రాంతానికి లాగండి.",
+    te: "ఫిర్యాదు నమోదు సమయంలో మీరు 5 ఫోటోలు వరకు అప్‌లోడ్ చేయవచ్చు. ఫోటోలు అధికారు��కు ��మస్యను బాగా అర్థం చేసుకోవడంలో సహాయపడతాయి. మద్దతు ఉన్న ఫార్మాట్‌లు: JPG, PNG, WebP. కెమెరా ఐ���ాన్‌పై క్లిక్ చేయండి లేదా ఫోటోలను అప్‌లోడ్ ప్రాంతానికి లాగండి.",
   },
   ai_location_help: {
     en: "For location: 1) Use 'My Location' button for automatic GPS detection, 2) Or manually enter your address, 3) Add nearby landmarks for better identification. Accurate location helps officials reach the right spot quickly.",
@@ -406,7 +406,7 @@ const translations = {
   ai_thanks: {
     en: "You're welcome! I'm here to help with any questions about TG Civic. Feel free to ask about complaint registration, tracking, or any other civic services. Is there anything else you'd like to know?",
     hi: "आपका स्वागत है! मैं TG Civic के बारे में किसी भी प्रश्न में मदद के लिए यहां हूं। शिकायत पंजीकरण, ट्रैकिंग, या किसी अन्य नागरिक सेवा के बारे में बेझिझक पूछें। क्या कुछ और है जो आप जानना चाहते हैं?",
-    te: "మీకు స్వాగతం! TG Civic గురించి ఏవైనా ప్రశ్నలతో సహాయం చేయడానికి నేను ఇక్కడ ఉన్నాను. ఫిర్యాదు నమోదు, ట్రాకింగ్ లేదా ఏవైనా ఇతర పౌర సేవల గురించి అడగడానికి వెనుకాడకండి. మీరు తెలుసుకోవాలని అనుకునే ఇంకేమైనా ఉందా?",
+    te: "మీకు స్వాగతం! TG Civic గురించి ఏవైనా ప్రశ్నలతో సహాయం చేయడానికి నేను ఇక్కడ ఉన్నాను. ఫిర్యాదు నమోదు, ట్రాకింగ్ ల���దా ఏవైనా ఇతర పౌర సేవల గురించి అడగడానికి వెనుకాడకండి. మీరు తెలుసుకోవాలని అనుకునే ఇంకేమైనా ఉందా?",
   },
   ai_emergency: {
     en: "For emergencies: 🚨 Call 100 (Police), 🚒 Call 101 (Fire), 🚑 Call 108 (Ambulance). For urgent civic issues, register a complaint and mark it as 'High Priority'. Emergency complaints are processed immediately.",
@@ -416,7 +416,7 @@ const translations = {
   ai_default: {
     en: "I'd be happy to help! I can assist you with: 1) Registering complaints, 2) Tracking complaint status, 3) Understanding the resolution process, 4) Technical support. Could you please be more specific about what you need help with?",
     hi: "मैं खुशी से मदद करूंगा! मैं आपकी सहायता कर सकता हूं: 1) शिकायतें दर्ज करना, 2) शिकायत की स्थिति ट्रैक करना, 3) समाधान प्रक्रिया को समझना, 4) तकनीकी सहायता। क्या आप कृपया अधिक विशिष्ट बता सकते हैं कि आपको किस चीज़ में मदद चाहिए?",
-    te: "నేను సంతోషంగా సహాయం చేస్తాను! నేను మీకు ఈ విషయాలలో సహాయం చేయగలను: 1) ఫిర్యాదులు నమోదు చేయడం, 2) ఫిర్యాదు స్థితిని ట్రాక్ ��ేయడం, 3) పరిష్కార ప్రక్రియను అర్థం చేసుకోవడం, 4) సాంకేతిక మద్దతు. దయచేసి మీక��� ఏ విషయంలో సహాయం కావాలో మరింత నిర్దిష్టంగా చెప్పగలరా?",
+    te: "నేను సంతోషంగా సహాయం చేస్తాను! న���ను మీకు ఈ విషయాలలో సహాయం చేయగలను: 1) ఫిర్యాదులు నమోదు చేయడం, 2) ఫిర్యాదు స్థితిని ట్రాక్ ��ేయడం, 3) పరిష్కార ప్రక్రియను అర్థం చేసుకోవడం, 4) సాంకేతిక మద్దతు. దయచేసి మీక��� ఏ విషయంలో సహాయం కావాలో మరింత నిర్దిష్టంగా చెప్పగలరా?",
   },
   ai_quick_register: {
     en: "How to register complaint?",
@@ -556,7 +556,7 @@ const translations = {
   },
   testimonial_4_quote: {
     en: "Street lighting issue near my home was addressed promptly. I feel much safer now during evening walks.",
-    hi: "मेरे घर के पास स्ट्रीट लाइटिंग की समस्या का तुरंत समाधान किया गया। अब मैं शाम की सैर के दौरान बहुत सुरक्षित महसूस करती हूं।",
+    hi: "मेरे घ��� के पास स्ट्रीट लाइटिंग की समस्या का तुरंत समाधान किया गया। अब मैं शाम की सैर के दौरान बहुत सुरक्षित महसूस करती हूं।",
     te: "నా ఇంటి దగ్గర వీధి దీపాల సమస్య వెంటనే పరిష్కరించబడింది. ఇప్పుడు సాయంత్రం నడుచుకునే సమయంలో చాలా సురక్షితంగా అనిపిస్తుంది.",
   },
   testimonial_5_name: {
@@ -596,7 +596,7 @@ const translations = {
   },
   testimonial_6_quote: {
     en: "The mobile app is so easy to use! I reported a broken sewage line and got regular updates until it was fixed.",
-    hi: "मोबाइल ऐप का उपयोग करना बहुत आसान है! मैंने एक टूटी हुई सीवेज लाइन की रिपोर्ट की और ठीक होने तक नियमित अपडेट मिलते रहे।",
+    hi: "मोबाइल ऐप का उपयोग करना बहुत आसान है! मैंने एक टूटी हुई सीवेज लाइन की रिपोर्ट की और ठीक होने तक नियम���त अपडेट मिलते रहे।",
     te: "మొబైల్ యాప్ వాడుకోవడం చాలా సులభం! నేను మునిగిపోయిన మురుగు కాలువను రిపోర్ట్ చేశాను మరియు అది సరిదిద్దబడే వరకు రెగ్యులర్ అప్‌డేట్‌లు వచ్చాయి.",
   },
   testimonial_7_name: {
@@ -721,7 +721,7 @@ const translations = {
   eta_tracking: {
     en: "ETA Tracking",
     hi: "ETA ट्रैकिंग",
-    te: "ETA ట్రాకింగ్",
+    te: "ETA ట్రాక��ంగ్",
   },
   three_languages: {
     en: "3 Languages",
@@ -752,6 +752,203 @@ const translations = {
     en: "Smart Routing",
     hi: "स्मार्ट रूटिंग",
     te: "స్మార్ట్ రూటింగ్",
+  },
+
+  // Dashboard specific translations
+  admin_dashboard: {
+    en: "Admin Dashboard",
+    hi: "एडमिन डैशबोर्��",
+    te: "అడ్మిన్ డాష్‌బోర్డ్",
+  },
+  platform_management: {
+    en: "Complete platform management and oversight",
+    hi: "पूर्ण प्लेटफॉर्म प्रबंधन और निरीक्षण",
+    te: "పూర్తి ప్లాట్‌ఫారమ్ నిర్వహణ మరియు పర్యవేక్షణ",
+  },
+  administrator_access: {
+    en: "Administrator Access",
+    hi: "प्रशासक पहुंच",
+    te: "అడ్మినిస్ట్రేటర్ యాక్సెస్",
+  },
+  overview: {
+    en: "Overview",
+    hi: "अवलोकन",
+    te: "అవలోకనం",
+  },
+  complaints: {
+    en: "Complaints",
+    hi: "शिकायतें",
+    te: "ఫిర్యాదులు",
+  },
+  analytics: {
+    en: "Analytics",
+    hi: "एनालिटिक्स",
+    te: "అనాలిటిక్స్",
+  },
+  users: {
+    en: "Users",
+    hi: "उपयोगकर्ता",
+    te: "వినియోగదారులు",
+  },
+  total_complaints: {
+    en: "Total Complaints",
+    hi: "कुल शिकायतें",
+    te: "మొత్తం ఫిర్యాదులు",
+  },
+  pending_complaints: {
+    en: "Pending",
+    hi: "लंबित",
+    te: "పెండింగ్",
+  },
+  resolved_complaints: {
+    en: "Resolved",
+    hi: "हल किए गए",
+    te: "పరిష్కరించబడ్డాయి",
+  },
+  in_progress: {
+    en: "In Progress",
+    hi: "प्रगति में",
+    te: "పురోగతిలో",
+  },
+  resolution_rate: {
+    en: "Resolution Rate",
+    hi: "समाधान दर",
+    te: "రిజల్యూషన్ రేట్",
+  },
+  avg_resolution_time: {
+    en: "Avg Resolution Time",
+    hi: "औसत समाधान समय",
+    te: "సగటు రిజల్యూషన్ సమయం",
+  },
+  days_average: {
+    en: "Days on average",
+    hi: "औसत दिन",
+    te: "సగటున రోజులు",
+  },
+  user_satisfaction: {
+    en: "User Satisfaction",
+    hi: "उपयोगकर्ता संतुष्टि",
+    te: "వినియోగదారు సంతృప్తి",
+  },
+  average_rating: {
+    en: "Average rating",
+    hi: "औसत रेटिंग",
+    te: "సగటు రేటింగ్",
+  },
+  recent_complaints: {
+    en: "Recent Complaints",
+    hi: "हाल की शिकायतें",
+    te: "ఇటీవలి ఫిర్య���దులు",
+  },
+  view_all: {
+    en: "View All",
+    hi: "सभी देखें",
+    te: "అన్నీ చూడండి",
+  },
+  complaint_management: {
+    en: "Complaint Management",
+    hi: "शिकायत प्रबंधन",
+    te: "ఫిర్యాదు నిర్వహణ",
+  },
+  assign_track_manage: {
+    en: "Assign, track, and manage citizen complaints",
+    hi: "नागरिक शिकायतों को असाइन, ट्रैक और प्रबंधित करें",
+    te: "పౌర ఫిర్యాదులను కేటాయించండి, ట్రాక్ చేయండి మరియు నిర్వహించండి",
+  },
+  filter_by_status: {
+    en: "Filter by Status",
+    hi: "स्थिति के अनुसार फ़िल्टर करें",
+    te: "స్థితి ఆధారంగా ఫిల్టర్ చేయండి",
+  },
+  all_complaints: {
+    en: "All Complaints",
+    hi: "सभी शिकायतें",
+    te: "అన్ని ఫిర్యాదులు",
+  },
+  assigned: {
+    en: "Assigned",
+    hi: "असाइन किया गया",
+    te: "కేటాయించబడింది",
+  },
+  closed: {
+    en: "Closed",
+    hi: "बंद",
+    te: "మూసివేయబడింది",
+  },
+  clean_resolved: {
+    en: "Clean Resolved",
+    hi: "हल किए गए साफ़ करें",
+    te: "రిజాల్వ్డ్ క్లీన్ చేయండి",
+  },
+  complaint_details: {
+    en: "Complaint Details",
+    hi: "शिकायत विवरण",
+    te: "ఫిర్యాదు వివరాలు",
+  },
+  citizen_info: {
+    en: "Citizen Info",
+    hi: "नागरिक जानकारी",
+    te: "పౌరుడి సమాచారం",
+  },
+  priority_category: {
+    en: "Priority & Category",
+    hi: "प्राथमिकता और श्रेणी",
+    te: "ప్రాధాన్యత మరియు వర్గం",
+  },
+  status_assignment: {
+    en: "Status & Assignment",
+    hi: "स्थिति और असाइनमेंट",
+    te: "స్థితి మరియు కేటాయింపు",
+  },
+  actions: {
+    en: "Actions",
+    hi: "कार्य",
+    te: "చర్యలు",
+  },
+  high: {
+    en: "HIGH",
+    hi: "उच्च",
+    te: "అధిక",
+  },
+  medium: {
+    en: "MEDIUM",
+    hi: "मध्यम",
+    te: "మధ్యమ",
+  },
+  low: {
+    en: "LOW",
+    hi: "कम",
+    te: "తక్కువ",
+  },
+  assigned_to: {
+    en: "Assigned to",
+    hi: "को असाइन क��या गया",
+    te: "కేటాయించబడింది",
+  },
+  manage: {
+    en: "Manage",
+    hi: "प्रबंधित करें",
+    te: "నిర్వహించండి",
+  },
+  hide: {
+    en: "Hide",
+    hi: "छुपाएं",
+    te: "దాచండి",
+  },
+  mark_all_read: {
+    en: "Mark All Read",
+    hi: "सभी को पढ़ा गया चिह्नित करें",
+    te: "అన్నింటినీ చదివినట్లు గుర్తు పెట్టండి",
+  },
+  no_complaints_yet: {
+    en: "No Complaints Yet",
+    hi: "अभी तक कोई शिकायत नहीं",
+    te: "ఇంకా ఫిర్యాదులు లేవు",
+  },
+  complaints_will_appear: {
+    en: "When citizens submit complaints, they will appear here for management.",
+    hi: "जब नागरिक शिकायतें जमा करते हैं, तो वे प्रबंधन के लिए यहां दिखाई देंगी।",
+    te: "పౌరులు ఫిర్యాదులు సమర్పించినప్పుడు, అవి నిర్వహణ కోసం ఇక్కడ కనిపిస్తాయి.",
   },
 };
 
