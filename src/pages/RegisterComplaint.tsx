@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useComplaints } from "@/context/ComplaintContext";
 import { useNotifications } from "@/context/NotificationContext";
+import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -43,6 +44,10 @@ import {
   AlertCircle,
   CheckCircle2,
   Copy,
+  Mic,
+  MicOff,
+  Navigation,
+  Loader2,
 } from "lucide-react";
 
 const RegisterComplaint = () => {
