@@ -90,8 +90,30 @@ const Dashboard = () => {
     setIsSchemeModalOpen(false);
   };
 
+  // Debug logging
+  console.log("Dashboard - User info:", {
+    user,
+    userType: user?.userType,
+    isAuthenticated: !!user,
+  });
+
   // Redirect non-admin users
-  if (!user || user.userType !== "admin") {
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            No User Found
+          </h1>
+          <p className="text-gray-600">
+            Please log in to access the dashboard.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (user.userType !== "admin") {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -99,7 +121,11 @@ const Dashboard = () => {
             Access Denied
           </h1>
           <p className="text-gray-600">
-            This page is only accessible to admin users.
+            This page is only accessible to admin users. Your user type:{" "}
+            {user.userType}
+          </p>
+          <p className="text-sm text-gray-500 mt-2">
+            Current user: {user.name} ({user.email})
           </p>
         </div>
       </div>
