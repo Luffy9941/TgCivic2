@@ -313,6 +313,95 @@ const Register = () => {
                 </div>
               </div>
 
+              {/* Admin-specific fields */}
+              {formData.userType === "admin" && (
+                <>
+                  <div className="space-y-2">
+                    <Label htmlFor="employeeId">Employee ID</Label>
+                    <div className="relative">
+                      <IdCard className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Input
+                        id="employeeId"
+                        type="text"
+                        placeholder="e.g., TG2024001"
+                        value={formData.employeeId}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            employeeId: e.target.value.toUpperCase(),
+                          })
+                        }
+                        className="pl-10"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="department">Department</Label>
+                    <Select
+                      value={formData.department}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, department: value })
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your department" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="IT Department">
+                          IT Department
+                        </SelectItem>
+                        <SelectItem value="GHMC">GHMC</SelectItem>
+                        <SelectItem value="HMWS&SB">
+                          HMWS&SB (Water Board)
+                        </SelectItem>
+                        <SelectItem value="TSSPDCL">TSSPDCL (Power)</SelectItem>
+                        <SelectItem value="TSNPDCL">TSNPDCL (Power)</SelectItem>
+                        <SelectItem value="Traffic Police">
+                          Traffic Police
+                        </SelectItem>
+                        <SelectItem value="Public Health">
+                          Public Health
+                        </SelectItem>
+                        <SelectItem value="Revenue Department">
+                          Revenue Department
+                        </SelectItem>
+                        <SelectItem value="Municipal Administration">
+                          Municipal Administration
+                        </SelectItem>
+                        <SelectItem value="Urban Development">
+                          Urban Development
+                        </SelectItem>
+                        <SelectItem value="Roads & Buildings">
+                          Roads & Buildings
+                        </SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="role">Admin Role</Label>
+                    <Select
+                      value={formData.role}
+                      onValueChange={(
+                        value: "super_admin" | "admin" | "moderator",
+                      ) => setFormData({ ...formData, role: value })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select admin role" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="admin">Admin</SelectItem>
+                        <SelectItem value="moderator">Moderator</SelectItem>
+                        <SelectItem value="super_admin">Super Admin</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </>
+              )}
+
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
