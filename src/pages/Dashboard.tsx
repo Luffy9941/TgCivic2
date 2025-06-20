@@ -57,7 +57,13 @@ const Dashboard = () => {
     updateComplaintStatus,
     deleteResolvedComplaints,
   } = useComplaints();
-  const { notifications, unreadCount, addNotification } = useNotifications();
+  const {
+    notifications,
+    unreadCount,
+    addNotification,
+    markAsRead,
+    markAllAsRead,
+  } = useNotifications();
   const {
     schemes,
     getTotalViews,
