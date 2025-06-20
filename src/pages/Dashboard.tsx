@@ -1558,6 +1558,374 @@ const Dashboard = () => {
   );
 };
 
+// ComplaintRow component for managing individual complaints
+const ComplaintRow = ({
+  complaint,
+  onUpdateStatus,
+  onDelete,
+}: {
+  complaint: any;
+  onUpdateStatus: (
+    id: string,
+    status: string,
+    notes: string,
+    assignedTo?: string,
+  ) => void;
+  onDelete: (id: string) => void;
+}) => {
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+  const [newStatus, setNewStatus] = useState(complaint.status);
+  const [assignTo, setAssignTo] = useState(complaint.assignedTo || "");
+  const [notes, setNotes] = useState("");
+
+  const officials = [
+    "GHMC Roads Department",
+    "Hyderabad Water Board",
+    "TSRTC Transport",
+    "Electricity Board",
+    "Sanitation Department",
+    "Street Lighting Department",
+    "Parks & Recreation",
+    "Traffic Police",
+  ];
+
+  const handleStatusUpdate = () => {
+    if (!notes.trim()) {
+      alert("Please add notes for the status update");
+      return;
+    }
+    setIsUpdating(true);
+    onUpdateStatus(complaint.id, newStatus, notes, assignTo);
+    setNotes("");
+    setIsUpdating(false);
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "pending":
+        return "bg-yellow-100 text-yellow-800";
+      case "assigned":
+        return "bg-blue-100 text-blue-800";
+      case "in-progress":
+        return "bg-purple-100 text-purple-800";
+      case "resolved":
+        return "bg-green-100 text-green-800";
+      case "closed":
+        return "bg-gray-100 text-gray-800";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  };
+
+  const getPriorityColor = (priority: string) => {
+    switch (priority) {
+      case "high":
+        return "bg-red-100 text-red-800";
+      case "medium":
+        return "bg-yellow-100 text-yellow-800";
+      case "low":
+        return "bg-green-100 text-green-800";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  };
+
+  return (
+    <>
+      <tr className="border-b border-gray-100 hover:bg-gray-50">
+        <td className="py-4 px-6">
+          <div className="space-y-1">
+            <div className="font-medium text-gray-900 flex items-center gap-2">
+              {complaint.title}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowDetails(!showDetails)}
+                className="text-blue-600 hover:text-blue-800"
+              >
+                {showDetails ? (
+                  <ChevronDown className="w-4 h-4" />
+                ) : (
+                  <ArrowUpRight className="w-4 h-4" />
+                )}
+              </Button>
+            </div>
+            <p className="text-sm text-gray-600 max-w-md">
+              {complaint.description.length > 100
+                ? complaint.description.substring(0, 100) + "..."
+                : complaint.description}
+            </p>
+            <div className="flex items-center gap-2 text-xs text-gray-500">
+              <span>ID: {complaint.id}</span>
+              <span>•</span>
+              <span>{new Date(complaint.createdAt).toLocaleDateString()}</span>
+              <span>•</span>
+              <span>{complaint.landmark || complaint.location}</span>
+            </div>
+          </div>
+        </td>
+
+        <td className="py-4 px-6">
+          <div className="space-y-1">
+            <div className="font-medium text-gray-900">{complaint.name}</div>
+            <div className="text-sm text-gray-600">{complaint.phone}</div>
+            <div className="text-sm text-gray-600">{complaint.email}</div>
+          </div>
+        </td>
+
+        <td className="py-4 px-6">
+          <div className="space-y-2">
+            <Badge className={getPriorityColor(complaint.priority)}>
+              {complaint.priority.toUpperCase()}
+            </Badge>
+            <div className="text-sm font-medium text-gray-700">
+              {complaint.category.toUpperCase()}
+            </div>
+            <div className="text-xs text-gray-500">{complaint.subcategory}</div>
+          </div>
+        </td>
+
+        <td className="py-4 px-6">
+          <div className="space-y-2">
+            <Badge className={getStatusColor(complaint.status)}>
+              {complaint.status.toUpperCase()}
+            </Badge>
+            {complaint.assignedTo && (
+              <div className="text-sm text-gray-600">
+                <span className="font-medium">Assigned to:</span>
+                <br />
+                {complaint.assignedTo}
+              </div>
+            )}
+          </div>
+        </td>
+
+        <td className="py-4 px-6">
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowDetails(!showDetails)}
+            >
+              <Eye className="w-4 h-4 mr-1" />
+              {showDetails ? "Hide" : "View"}
+            </Button>
+
+            {complaint.status === "resolved" ||
+            complaint.status === "closed" ? (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onDelete(complaint.id)}
+                className="text-red-600 hover:text-red-800"
+              >
+                <Trash2 className="w-4 h-4 mr-1" />
+                Delete
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowDetails(!showDetails)}
+                className="text-blue-600 hover:text-blue-800"
+              >
+                <Edit className="w-4 h-4 mr-1" />
+                Manage
+              </Button>
+            )}
+          </div>
+        </td>
+      </tr>
+
+      {/* Expanded Details and Management Row */}
+      {showDetails && (
+        <tr className="bg-blue-50 border-b border-blue-200">
+          <td colSpan={5} className="py-6 px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Complaint Details */}
+              <div className="space-y-4">
+                <h4 className="font-semibold text-gray-900">
+                  Complaint Details
+                </h4>
+                <div className="space-y-2 text-sm">
+                  <p>
+                    <strong>Full Description:</strong> {complaint.description}
+                  </p>
+                  <p>
+                    <strong>Location:</strong> {complaint.location}
+                  </p>
+                  <p>
+                    <strong>Landmark:</strong> {complaint.landmark}
+                  </p>
+                  <p>
+                    <strong>Category:</strong> {complaint.category} /{" "}
+                    {complaint.subcategory}
+                  </p>
+                </div>
+
+                {/* History */}
+                <div className="space-y-2">
+                  <h5 className="font-medium text-gray-800">Status History</h5>
+                  <div className="space-y-2 max-h-40 overflow-y-auto">
+                    {complaint.history.map((entry: any, index: number) => (
+                      <div key={index} className="bg-white p-3 rounded text-sm">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <Badge
+                              className={getStatusColor(entry.status)}
+                              variant="outline"
+                            >
+                              {entry.status}
+                            </Badge>
+                            <p className="mt-1">{entry.notes}</p>
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            <div>
+                              {new Date(entry.timestamp).toLocaleString()}
+                            </div>
+                            <div>by {entry.updatedBy}</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Management Panel */}
+              {complaint.status !== "resolved" &&
+                complaint.status !== "closed" && (
+                  <div className="space-y-4">
+                    <h4 className="font-semibold text-gray-900">
+                      Manage Complaint
+                    </h4>
+
+                    {/* Status Update */}
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Update Status
+                        </label>
+                        <Select value={newStatus} onValueChange={setNewStatus}>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="pending">Pending</SelectItem>
+                            <SelectItem value="assigned">Assigned</SelectItem>
+                            <SelectItem value="in-progress">
+                              In Progress
+                            </SelectItem>
+                            <SelectItem value="resolved">Resolved</SelectItem>
+                            <SelectItem value="closed">Closed</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Assign to Official */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Assign to Official/Department
+                        </label>
+                        <Select value={assignTo} onValueChange={setAssignTo}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select department or official" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {officials.map((official) => (
+                              <SelectItem key={official} value={official}>
+                                {official}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Notes */}
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Update Notes (Required)
+                        </label>
+                        <Textarea
+                          value={notes}
+                          onChange={(e) => setNotes(e.target.value)}
+                          placeholder="Add notes about this status update..."
+                          rows={3}
+                        />
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-3">
+                        <Button
+                          onClick={handleStatusUpdate}
+                          disabled={isUpdating || !notes.trim()}
+                          className="bg-blue-600 hover:bg-blue-700"
+                        >
+                          {isUpdating ? (
+                            <>
+                              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                              Updating...
+                            </>
+                          ) : (
+                            <>
+                              <CheckCircle className="w-4 h-4 mr-2" />
+                              Update Status
+                            </>
+                          )}
+                        </Button>
+
+                        <Button
+                          variant="outline"
+                          onClick={() => setShowDetails(false)}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+              {/* Resolved/Closed Actions */}
+              {(complaint.status === "resolved" ||
+                complaint.status === "closed") && (
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-gray-900">
+                    Completed Complaint
+                  </h4>
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <span className="font-medium text-green-800">
+                        This complaint has been {complaint.status}
+                      </span>
+                    </div>
+                    {complaint.resolutionNotes && (
+                      <p className="text-sm text-green-700 mb-3">
+                        <strong>Resolution Notes:</strong>{" "}
+                        {complaint.resolutionNotes}
+                      </p>
+                    )}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => onDelete(complaint.id)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      <Trash2 className="w-4 h-4 mr-2" />
+                      Delete This Complaint
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </td>
+        </tr>
+      )}
+    </>
+  );
+};
+
 // Helper component for quick admin login during development
 const AdminLoginHelper = () => {
   const { login } = useAuth();
