@@ -48,6 +48,7 @@ interface ComplaintContextType {
       Complaint,
       "id" | "createdAt" | "updatedAt" | "status" | "history"
     >,
+    notificationCallback?: (notification: any) => void,
   ) => string;
   updateComplaint: (id: string, updates: Partial<Complaint>) => void;
   deleteComplaint: (id: string) => boolean;
