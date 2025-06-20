@@ -47,7 +47,14 @@ import { AdminSchemeModal } from "@/components/AdminSchemeModal";
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const { complaints, getComplaintStats } = useComplaints();
+  const {
+    complaints,
+    getComplaintStats,
+    updateComplaint,
+    deleteComplaint,
+    updateComplaintStatus,
+    deleteResolvedComplaints,
+  } = useComplaints();
   const { notifications, unreadCount, addNotification } = useNotifications();
   const {
     schemes,
