@@ -1452,7 +1452,13 @@ const Dashboard = () => {
                   {notifications.slice(0, 10).map((notification) => (
                     <Card
                       key={notification.id}
-                      className={`${!notification.isRead ? "border-l-4 border-l-red-500 bg-red-50/30" : "bg-white"}`}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-md ${!notification.isRead ? "border-l-4 border-l-red-500 bg-red-50/30" : "bg-white"}`}
+                      onClick={() => {
+                        // Mark as read when clicked
+                        if (!notification.isRead) {
+                          markAsRead(notification.id);
+                        }
+                      }}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between gap-4">
@@ -1474,7 +1480,7 @@ const Dashboard = () => {
                                 {notification.priority}
                               </Badge>
                               {!notification.isRead && (
-                                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                               )}
                             </div>
                             <p className="text-sm text-gray-600 mb-2">
@@ -1494,20 +1500,38 @@ const Dashboard = () => {
                               )}
                             </div>
                           </div>
-                          {notification.complaintId && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => {
-                                // Find and scroll to the complaint in the complaints tab
-                                setActiveTab("complaints");
-                                // You could add more sophisticated navigation here
-                              }}
-                            >
-                              <Eye className="w-4 h-4 mr-1" />
-                              View
-                            </Button>
-                          )}
+                          <div className="flex items-center gap-2">
+                            {!notification.isRead && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  markAsRead(notification.id);
+                                }}
+                                className="text-blue-600 hover:text-blue-800"
+                              >
+                                Mark Read
+                              </Button>
+                            )}
+                            {notification.complaintId && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  // Mark as read and navigate to complaints
+                                  if (!notification.isRead) {
+                                    markAsRead(notification.id);
+                                  }
+                                  setActiveTab("complaints");
+                                }}
+                              >
+                                <Eye className="w-4 h-4 mr-1" />
+                                View
+                              </Button>
+                            )}
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
