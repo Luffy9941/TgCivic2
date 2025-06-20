@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useComplaints } from "@/context/ComplaintContext";
+import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
 import {
   Card,
