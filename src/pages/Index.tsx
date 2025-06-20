@@ -315,11 +315,11 @@ const Index = () => {
     }
   }, [visibleStats, totalComplaints, resolvedComplaints, activeUsers]);
 
-  // Auto-rotate testimonials
+  // Auto-rotate testimonials every 1 minute
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % 3);
-    }, 4000);
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 60000); // 1 minute = 60,000ms
     return () => clearInterval(interval);
   }, []);
 
@@ -1373,22 +1373,22 @@ const Index = () => {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
-        
+
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
         }
-        
+
         @keyframes twinkle {
           0%, 100% { opacity: 0; }
           50% { opacity: 1; }
         }
-        
+
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .animate-gradient { animation: gradientShift 8s ease infinite; }
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-twinkle { animation: twinkle 2s ease-in-out infinite; }
