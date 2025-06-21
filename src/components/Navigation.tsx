@@ -244,11 +244,11 @@ const Navigation = () => {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="relative hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+                        className="relative hover:bg-gray-100 transition-all duration-300 lg:hover:scale-105 p-1 sm:p-2"
                       >
-                        <Bell className="w-5 h-5" />
+                        <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
                         {unreadCount > 0 && (
-                          <span className="absolute -top-1 -right-1 min-w-[20px] h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse font-medium">
+                          <span className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 min-w-[16px] h-4 sm:min-w-[20px] sm:h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse font-medium">
                             {unreadCount > 99 ? "99+" : unreadCount}
                           </span>
                         )}
