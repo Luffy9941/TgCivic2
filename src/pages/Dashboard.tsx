@@ -1631,6 +1631,7 @@ const ComplaintRow = ({
   complaint,
   onUpdateStatus,
   onDelete,
+  isHighlighted,
 }: {
   complaint: any;
   onUpdateStatus: (
@@ -1640,6 +1641,7 @@ const ComplaintRow = ({
     assignedTo?: string,
   ) => void;
   onDelete: (id: string) => void;
+  isHighlighted?: boolean;
 }) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
