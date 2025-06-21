@@ -1485,6 +1485,10 @@ const Dashboard = () => {
                         if (!notification.isRead) {
                           markAsRead(notification.id);
                         }
+                        // Navigate to complaints tab if notification has a complaint ID
+                        if (notification.complaintId) {
+                          setActiveTab("complaints");
+                        }
                       }}
                     >
                       <CardContent className="p-4">
