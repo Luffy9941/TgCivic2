@@ -411,17 +411,20 @@ const RegisterComplaint = () => {
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Error Display */}
           {error && (
-            <Alert variant="destructive">
+            <Alert
+              variant="destructive"
+              className="animate-in slide-in-from-top-1"
+            >
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription>
-                {error}
+              <AlertDescription className="flex items-center justify-between">
+                <span>{error}</span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setError("")}
-                  className="ml-2 h-auto p-1 text-xs underline"
+                  className="ml-2 h-auto p-1 text-xs underline hover:bg-transparent"
                 >
-                  Dismiss
+                  ×
                 </Button>
               </AlertDescription>
             </Alert>
