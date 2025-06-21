@@ -205,7 +205,7 @@ const RegisterComplaint = () => {
   // GPS Location Functions
   const getCurrentLocation = () => {
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by this browser.");
+      setError("Geolocation is not supported by this browser.");
       return;
     }
 
