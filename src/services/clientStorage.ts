@@ -108,9 +108,10 @@ class ClientStorageService {
     }
   }
 
-  private async createDefaultAdmin() {
-    const saltRounds = 12;
-    const hashedPassword = await bcrypt.hash("admin123", saltRounds);
+  private createDefaultAdmin() {
+    // Pre-hashed password for "admin123" with salt rounds 12
+    const hashedPassword =
+      "$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/lewE4GKV6zrjKH.zK";
 
     const defaultAdmin: AdminData = {
       id: "admin_default_001",
