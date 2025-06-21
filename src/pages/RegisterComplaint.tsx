@@ -789,13 +789,13 @@ const RegisterComplaint = () => {
 
       {/* Success Dialog */}
       <Dialog open={showSuccessDialog} onOpenChange={handleDialogClose}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md mx-4">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-green-600">
-              <CheckCircle2 className="w-6 h-6" />
+            <DialogTitle className="flex items-center gap-2 text-green-600 text-lg sm:text-xl">
+              <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6" />
               Complaint Registered Successfully!
             </DialogTitle>
-            <DialogDescription className="text-gray-600 text-center">
+            <DialogDescription className="text-gray-600 text-center text-sm sm:text-base">
               Your complaint has been successfully registered and assigned a
               unique tracking ID. Admins have been automatically notified and
               will review your complaint shortly. You can use this ID to track
