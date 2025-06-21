@@ -529,18 +529,18 @@ class ClientStorageService {
     };
   }
 
-  async clearAllUsers() {
+  clearAllUsers() {
     localStorage.removeItem(this.CITIZENS_KEY);
     localStorage.removeItem(this.ADMINS_KEY);
-    await this.initializeDefaultUsers();
+    this.initializeDefaultUsers();
   }
 
   // Force reset and recreate users with fresh passwords
-  async resetUsers() {
+  resetUsers() {
     console.log("=== RESETTING ALL USERS ===");
     localStorage.removeItem(this.CITIZENS_KEY);
     localStorage.removeItem(this.ADMINS_KEY);
-    await this.initializeDefaultUsers();
+    this.initializeDefaultUsers();
     console.log("=== USERS RESET COMPLETE ===");
   }
 
