@@ -63,6 +63,7 @@ const RegisterComplaint = () => {
   const [isGettingLocation, setIsGettingLocation] = useState(false);
   const [error, setError] = useState("");
   const recognitionRef = useRef<any>(null);
+  const errorRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     category: "",
