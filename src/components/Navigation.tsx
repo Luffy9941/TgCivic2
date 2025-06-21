@@ -378,7 +378,7 @@ const Navigation = () => {
                   </DropdownMenu>
 
                   {/* User Info Display - Desktop */}
-                  <div className="hidden md:flex flex-col text-right">
+                  <div className="hidden lg:flex flex-col text-right">
                     <span className="text-sm font-semibold text-gray-900">
                       {user?.name}
                     </span>
@@ -406,9 +406,9 @@ const Navigation = () => {
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="relative h-12 w-12 rounded-full p-0 hover:scale-105 transition-all duration-300"
+                        className="relative h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full p-0 lg:hover:scale-105 transition-all duration-300"
                       >
-                        <Avatar className="h-12 w-12 ring-2 ring-gray-200 hover:ring-blue-300 transition-all duration-300">
+                        <Avatar className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 ring-1 sm:ring-2 ring-gray-200 hover:ring-blue-300 transition-all duration-300">
                           <AvatarFallback
                             className={`text-white font-bold text-lg ${
                               user?.role === "admin"
