@@ -235,52 +235,59 @@ const Dashboard = () => {
           >
             <div className="w-full overflow-x-auto">
               <TabsList className="inline-flex h-10 items-center justify-start rounded-md bg-white p-1 text-muted-foreground min-w-full sm:w-auto">
-              <TabsTrigger value="overview" className="flex items-center gap-2">
-                <BarChart3 className="w-4 h-4" />
-                {t("overview")}
-              </TabsTrigger>
-              <TabsTrigger
-                value="complaints"
-                className="flex items-center gap-2"
-              >
-                <FileText className="w-4 h-4" />
-                {t("complaints")}
-              </TabsTrigger>
-              <TabsTrigger
-                value="notifications"
-                className="flex items-center gap-2 relative"
-              >
-                <AlertTriangle className="w-4 h-4" />
-                {t("notifications")}
-                {unreadCount > 0 && (
-                  <Badge className="ml-1 px-1.5 py-0.5 text-xs bg-red-500 text-white">
-                    {unreadCount}
-                  </Badge>
-                )}
-              </TabsTrigger>
-              <TabsTrigger value="schemes" className="flex items-center gap-2">
-                <Settings className="w-4 h-4" />
-                {t("schemes")}
-              </TabsTrigger>
-              <TabsTrigger
-                value="analytics"
-                className="flex items-center gap-2"
-              >
-                <TrendingUp className="w-4 h-4" />
-                {t("analytics")}
-              </TabsTrigger>
-              <TabsTrigger value="users" className="flex items-center gap-2">
-                <Users className="w-4 h-4" />
-                {t("users")}
-              </TabsTrigger>
-              <TabsTrigger
-                value="notifications"
-                className="flex items-center gap-2"
-              >
-                <AlertTriangle className="w-4 h-4" />
-                Notifications
-              </TabsTrigger>
-            </TabsList>
+                <TabsTrigger
+                  value="overview"
+                  className="flex items-center gap-2"
+                >
+                  <BarChart3 className="w-4 h-4" />
+                  {t("overview")}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="complaints"
+                  className="flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  {t("complaints")}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="notifications"
+                  className="flex items-center gap-2 relative"
+                >
+                  <AlertTriangle className="w-4 h-4" />
+                  {t("notifications")}
+                  {unreadCount > 0 && (
+                    <Badge className="ml-1 px-1.5 py-0.5 text-xs bg-red-500 text-white">
+                      {unreadCount}
+                    </Badge>
+                  )}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="schemes"
+                  className="flex items-center gap-2"
+                >
+                  <Settings className="w-4 h-4" />
+                  {t("schemes")}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="analytics"
+                  className="flex items-center gap-2"
+                >
+                  <TrendingUp className="w-4 h-4" />
+                  {t("analytics")}
+                </TabsTrigger>
+                <TabsTrigger value="users" className="flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  {t("users")}
+                </TabsTrigger>
+                <TabsTrigger
+                  value="notifications"
+                  className="flex items-center gap-2"
+                >
+                  <AlertTriangle className="w-4 h-4" />
+                  Notifications
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
             {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-6">
