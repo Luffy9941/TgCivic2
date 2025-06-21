@@ -297,7 +297,7 @@ const Login = () => {
                 )}
               </Button>
 
-              <div className="text-center">
+              <div className="text-center space-y-2">
                 <p className="text-sm text-gray-600">
                   Don't have an account?{" "}
                   <Link
@@ -307,6 +307,19 @@ const Login = () => {
                     Register here
                   </Link>
                 </p>
+
+                {/* Debug button - only show in development */}
+                {process.env.NODE_ENV === "development" && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={debugPasswords}
+                    className="text-xs"
+                  >
+                    Debug Passwords
+                  </Button>
+                )}
               </div>
             </form>
           </CardContent>
