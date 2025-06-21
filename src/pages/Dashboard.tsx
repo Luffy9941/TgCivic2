@@ -1703,7 +1703,13 @@ const ComplaintRow = ({
 
   return (
     <>
-      <tr className="border-b border-gray-100 hover:bg-gray-50">
+      <tr
+        className={`border-b border-gray-100 hover:bg-gray-50 transition-colors duration-300 ${
+          isHighlighted
+            ? "bg-blue-50 border-l-4 border-l-blue-500 animate-pulse"
+            : ""
+        }`}
+      >
         <td className="py-4 px-6">
           <div className="space-y-1">
             <div className="font-medium text-gray-900 flex items-center gap-2">
