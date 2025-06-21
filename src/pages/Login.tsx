@@ -34,6 +34,20 @@ const Login = () => {
   const location = useLocation();
   const { login, isLoading } = useAuth();
 
+  // Debug on component mount
+  React.useEffect(() => {
+    console.log("=== LOGIN PAGE MOUNTED - DEBUGGING ===");
+    const users = clientStorageService.getAllUsers();
+    console.log("Current users in storage:", users);
+    console.log("Admin count:", users.admins.length);
+    console.log("Citizen count:", users.citizens.length);
+
+    if (users.admins.length === 0 && users.citizens.length === 0) {
+      console.log("No users found, forcing initialization...");
+      clientStorageService.resetUsers();
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
