@@ -143,9 +143,10 @@ class ClientStorageService {
     this.saveAdmin(defaultAdmin);
   }
 
-  private async createDefaultCitizen() {
-    const saltRounds = 12;
-    const hashedPassword = await bcrypt.hash("citizen123", saltRounds);
+  private createDefaultCitizen() {
+    // Pre-hashed password for "citizen123" with salt rounds 12
+    const hashedPassword =
+      "$2a$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi";
 
     const defaultCitizen: CitizenData = {
       id: "citizen_default_001",
