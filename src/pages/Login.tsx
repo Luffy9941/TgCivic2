@@ -314,17 +314,28 @@ const Login = () => {
                   </Link>
                 </p>
 
-                {/* Debug button - only show in development */}
+                {/* Debug buttons - only show in development */}
                 {process.env.NODE_ENV === "development" && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={debugPasswords}
-                    className="text-xs"
-                  >
-                    Debug Passwords
-                  </Button>
+                  <div className="flex gap-2 justify-center">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={debugPasswords}
+                      className="text-xs"
+                    >
+                      Debug Passwords
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={resetUsers}
+                      className="text-xs bg-yellow-50 border-yellow-200 text-yellow-800 hover:bg-yellow-100"
+                    >
+                      Reset Users
+                    </Button>
+                  </div>
                 )}
               </div>
             </form>
