@@ -95,8 +95,8 @@ class ClientStorageService {
   }
 
   // Public method to force re-initialization (useful for debugging)
-  public forceInitializeUsers() {
-    this.initializeDefaultUsers();
+  public async forceInitializeUsers() {
+    await this.initializeDefaultUsers();
   }
 
   private async initializeDefaultUsers() {
