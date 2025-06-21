@@ -303,7 +303,7 @@ const RegisterComplaint = () => {
       setShowSuccessDialog(true);
     } catch (error) {
       console.error("Error submitting complaint:", error);
-      alert("Error submitting complaint. Please try again.");
+      setError("Error submitting complaint. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
