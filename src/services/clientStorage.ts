@@ -333,9 +333,13 @@ class ClientStorageService {
 
   async login(loginData: LoginData): Promise<AuthUser | null> {
     try {
+      console.log("ClientStorage - Login attempt:", loginData);
+
       if (loginData.userType === "citizen") {
         const citizens = this.getCitizens();
+        console.log("ClientStorage - Found citizens:", citizens.length);
         const citizen = citizens.find((c) => c.email === loginData.email);
+        console.log("ClientStorage - Found citizen for email:", !!citizen);
 
         if (!citizen) {
           throw new Error("Invalid credentials");
