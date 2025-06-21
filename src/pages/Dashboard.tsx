@@ -1490,7 +1490,12 @@ const Dashboard = () => {
                         }
                         // Navigate to complaints tab if notification has a complaint ID
                         if (notification.complaintId) {
+                          setHighlightedComplaintId(notification.complaintId);
                           setActiveTab("complaints");
+                          // Clear highlight after 5 seconds
+                          setTimeout(() => {
+                            setHighlightedComplaintId(null);
+                          }, 5000);
                         }
                       }}
                     >
