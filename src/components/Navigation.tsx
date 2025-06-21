@@ -140,34 +140,34 @@ const Navigation = () => {
             {/* Logo with Animation */}
             <Link
               to="/"
-              className="flex items-center space-x-4 group"
+              className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 group min-w-0"
               onMouseEnter={() => setHoveredItem("logo")}
               onMouseLeave={() => setHoveredItem(null)}
             >
               <div
                 className={`relative transition-all duration-300 ${
-                  hoveredItem === "logo" ? "scale-110 rotate-3" : ""
+                  hoveredItem === "logo" ? "lg:scale-110 lg:rotate-3" : ""
                 }`}
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <Building2 className="w-7 h-7 text-white" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
+                  <Building2 className="w-4 h-4 sm:w-5 sm:h-5 lg:w-7 lg:h-7 text-white" />
                   {hoveredItem === "logo" && (
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping" />
+                    <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-yellow-400 rounded-full animate-ping hidden lg:block" />
                   )}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl opacity-20 blur-lg transition-opacity duration-300 group-hover:opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg sm:rounded-xl opacity-20 blur-lg transition-opacity duration-300 group-hover:opacity-40 hidden lg:block" />
               </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+              <div className="flex flex-col min-w-0">
+                <span className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent truncate">
                   TG Civic
                 </span>
                 <span
-                  className={`text-xs sm:text-sm text-gray-600 flex items-center space-x-1 ${
+                  className={`text-xs lg:text-sm text-gray-600 items-center space-x-1 hidden sm:flex ${
                     language === "te" ? "telugu-text" : ""
                   }`}
                 >
-                  <Sparkles className="w-3 h-3 text-yellow-500 flex-shrink-0" />
-                  <span>{t("citizen_services")}</span>
+                  <Sparkles className="w-2 h-2 lg:w-3 lg:h-3 text-yellow-500 flex-shrink-0" />
+                  <span className="truncate">{t("citizen_services")}</span>
                 </span>
               </div>
             </Link>
