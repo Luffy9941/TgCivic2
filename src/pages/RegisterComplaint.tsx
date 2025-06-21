@@ -453,8 +453,10 @@ const RegisterComplaint = () => {
 
           {/* Issue Details */}
           <Card>
-            <CardHeader>
-              <CardTitle>Issue Details</CardTitle>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg sm:text-xl">
+                Issue Details
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
