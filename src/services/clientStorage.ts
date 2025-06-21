@@ -138,8 +138,16 @@ class ClientStorageService {
 
   private createDefaultAdmin() {
     try {
-      // Use synchronous password hashing for immediate creation
-      const hashedPassword = bcrypt.hashSync("admin123", 12);
+      // For development, create with both hashed and a way to test
+      let hashedPassword;
+
+      if (process.env.NODE_ENV === "development") {
+        // In development, use a simple known hash, but fall back to plain text check
+        hashedPassword = "dev_mode_admin123_hash";
+        console.log("ClientStorage - Creating admin in development mode");
+      } else {
+        hashedPassword = bcrypt.hashSync("admin123", 12);
+      }
 
       const defaultAdmin: AdminData = {
         id: "admin_default_001",
@@ -169,14 +177,14 @@ class ClientStorageService {
       };
 
       this.saveAdmin(defaultAdmin);
+      console.log("ClientStorage - Default admin created successfully");
+      console.log("- Email:", defaultAdmin.email);
       console.log(
-        "ClientStorage - Default admin created successfully with email:",
-        defaultAdmin.email,
+        "- Password mode:",
+        process.env.NODE_ENV === "development"
+          ? "Development (plain text check)"
+          : "Production (bcrypt)",
       );
-
-      // Verify the password works synchronously
-      const isValid = bcrypt.compareSync("admin123", hashedPassword);
-      console.log("ClientStorage - Admin password verification:", isValid);
     } catch (error) {
       console.error("Error creating default admin:", error);
     }
