@@ -321,23 +321,29 @@ const RegisterComplaint = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Simple Navigation */}
       <nav className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
-                <FileText className="w-6 h-6 text-white" />
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-14 sm:h-16">
+            <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                <FileText className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
               </div>
-              <div>
-                <span className="text-xl font-bold text-gray-900">
+              <div className="min-w-0">
+                <span className="text-lg sm:text-xl font-bold text-gray-900">
                   TG Civic
                 </span>
-                <span className="text-xs text-gray-600 ml-2">
+                <span className="text-xs text-gray-600 ml-1 sm:ml-2 hidden sm:inline">
                   Register Complaint
                 </span>
               </div>
             </div>
-            <Button variant="outline" onClick={() => navigate("/")}>
-              Back to Home
+            <Button
+              variant="outline"
+              onClick={() => navigate("/")}
+              size="sm"
+              className="text-xs sm:text-sm px-2 sm:px-3"
+            >
+              <span className="hidden sm:inline">Back to Home</span>
+              <span className="sm:hidden">Back</span>
             </Button>
           </div>
         </div>
