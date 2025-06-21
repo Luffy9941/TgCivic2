@@ -141,7 +141,12 @@ class ClientStorageService {
       // For development, create with both hashed and a way to test
       let hashedPassword;
 
-      if (process.env.NODE_ENV === "development") {
+      const isDev =
+        process.env.NODE_ENV === "development" ||
+        import.meta.env?.DEV ||
+        window.location.hostname === "localhost";
+
+      if (isDev) {
         // In development, use a simple known hash, but fall back to plain text check
         hashedPassword = "dev_mode_admin123_hash";
         console.log("ClientStorage - Creating admin in development mode");
