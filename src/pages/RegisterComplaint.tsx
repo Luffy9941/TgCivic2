@@ -423,6 +423,7 @@ const RegisterComplaint = () => {
           {/* Error Display */}
           {error && (
             <Alert
+              ref={errorRef}
               variant="destructive"
               className="animate-in slide-in-from-top-1"
             >
