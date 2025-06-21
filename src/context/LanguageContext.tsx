@@ -108,7 +108,7 @@ const translations = {
   },
   one_report_at_time: {
     en: "One Report at a Time",
-    hi: "ए�� समय में एक रिपोर्ट",
+    hi: "एक समय में एक रिपोर्ट",
     te: "ఒక సమయంలో ఒక రిపోర్ట్",
   },
   join_digital_revolution: {
@@ -168,7 +168,7 @@ const translations = {
   issues_resolved: {
     en: "Issues Resolved",
     hi: "समस्याएं हल",
-    te: "స���స్యలు పరిష్కరించబడ్డాయి",
+    te: "సమస్యలు పరిష్కరించబడ్డాయి",
   },
   days_average: {
     en: "Days Average",
@@ -229,7 +229,7 @@ const translations = {
   },
   multilingual_support_desc: {
     en: "Available in Telugu, Hindi & English with voice-to-text support",
-    hi: "वॉयस-टू-टेक्स्ट स���र्थन के साथ तेलुग��, हिंदी और अंग्रेजी में उपलब्ध",
+    hi: "वॉयस-टू-टेक्स्ट स���र्थन के साथ तेलुगु, हिंदी और अंग्रेजी में उपलब्ध",
     te: "వాయిస్-టు-టెక్స్ట్ మద్దతుతో తెలుగు, హిందీ మరియు ఇంగ్లీష్‌లో అందుబాటులో ఉంది",
   },
   ai_assistant: {
@@ -365,7 +365,7 @@ const translations = {
   // AI Chatbot Translations
   ai_greeting: {
     en: "Hello! I'm your TG Civic AI assistant. I can help you with complaint registration, tracking, and answer your questions. How can I assist you today?",
-    hi: "न������्ते! मैं आपका TG Civic AI सहायक हूं। मैं शिकायत पंजीकरण, ट्रैकिंग में आपकी मदद कर सक���ा हूं और आपके प्रश्नों का उत्तर दे सकता हूं। आज मैं आपकी कैसे सहायता कर सकता हूं?",
+    hi: "न������्ते! मैं आपका TG Civic AI सहायक हूं। मैं शिकायत पंजीकरण, ट्रैकिंग में आपकी मदद कर सकता हूं और आपके प्रश्नों का उत्तर दे सकता हूं। आज मैं आपकी कैसे सहायता कर सकता हूं?",
     te: "నమస్కారం! నేను మీ TG Civic AI అసిస్టెంట్. నేను ఫిర్యాదు నమోదు, ట్రాకింగ్‌లో మీకు స���ాయం చేయగలను మరియు మీ ప్రశ్నలకు సమాధానాలు ఇవ్వగలను. ఈ రోజు నేను మీకు ఎలా సహాయం చేయగలను?",
   },
   ai_online_status: {
@@ -375,12 +375,12 @@ const translations = {
   },
   ai_register_help: {
     en: "To register a complaint: 1) Click 'Register Complaint' in the navigation, 2) Select your issue category (roads, water, etc.), 3) Fill in all details including photos and location, 4) Submit to get your tracking ID. Would you like me to guide you through a specific step?",
-    hi: "शिकायत दर्ज करने के लिए: 1) नेवीगेशन में 'शिकायत दर्ज करें' पर क्लिक करें, 2) अपनी समस्या की श्रेणी चुनें (सड़कें, पानी, आदि), 3) फोटो और स्थान सहित सभी विवरण भरें, 4) अपना ट्रैकिंग ID प्राप्त करने के लिए सबमिट करें। क्या आप चाहेंगे कि मैं आपको किसी विशेष चरण के माध्यम से मार्गदर्शन करूं?",
+    hi: "शिकायत दर्ज करने के लिए: 1) नेवीगेशन में 'शिकायत दर्ज करें' पर क्लिक करें, 2) अपनी समस्या की श्रेणी चुनें (सड़कें, पानी, आदि), 3) फोटो और स्थान सहित सभी विवरण भरें, 4) अपना ट्रैकिंग ID प्राप्त करने के लिए स���मिट करें। क्या आप चाहेंगे कि मैं आपको किसी विशेष चरण के माध्यम से मार्गदर्शन करूं?",
     te: "ఫిర్యాదు నమోదు చేయడానికి: 1) నావిగేషన్‌లో 'ఫిర్యాదు నమోదు' మీద క్లిక్ చేయండి, 2) మీ సమస్య వర్గాన్ని ఎం��ుకోండి (రోడ్లు, నీరు, మొదలైనవి), 3) ఫోటోలు మరియు లొకేషన్‌తో సహా అన్ని వివరాలను పూరించండి, 4) మీ ట్రాకింగ్ ID పొందడానికి సమర్పించండి. నేను మిమ్మల్ని ఏదైనా నిర్దిష్ట దశ ద్వారా మార్గదర్శనం చేయాలని మీరు అనుకుంటున్నారా?",
   },
   ai_track_help: {
     en: "To track your complaint: 1) Go to 'Track Complaint' page, 2) Enter your complaint ID (format: TGC2024XXXXXX) or phone number, 3) View complete status history and details. Do you have your complaint ID?",
-    hi: "अपनी शिकायत को ट्रैक करने के लिए: 1) 'शिकायत ट्र���क करें' पेज पर जाएं, 2) अपना शिकायत ID (प्रारूप: TGC2024XXXXXX) या फोन नंबर दर्ज करें, 3) पूर्ण स्थिति इतिहास और विवरण देखें��� क्या आपके पास अपना शिकायत ID है?",
+    hi: "अपनी शिकायत को ट्रैक करने के लिए: 1) 'शिकायत ट्र���क करें' पेज पर जाएं, 2) अपना शिकायत ID (प्रारूप: TGC2024XXXXXX) या फोन नंबर दर्ज करें, 3) पूर्ण स्थि���ि इतिहास और विवरण देखें��� क्या आपके पास अपना शिकायत ID है?",
     te: "మీ ఫిర్యాదును ట్రాక్ చేయడానికి: 1) 'ఫిర్యాదు ట్రాక్ చేయండి' పేజీకి వెళ్లండి, 2) మీ ఫిర్యాదు ID (ఫార్మాట్: TGC2024XXXXXX) లేదా ఫోన్ నంబర్ నమోదు చేయండ��, 3) పూర్తి స్థితి చరిత్ర మరియు వివరాలను చూడండి. మీ దగ్గర మీ ఫిర్యాదు ID ఉందా?",
   },
   ai_time_help: {
@@ -390,7 +390,7 @@ const translations = {
   },
   ai_photo_help: {
     en: "You can upload up to 5 photos during complaint registration. Photos help officials understand the problem better. Supported formats: JPG, PNG, WebP. Click the camera icon or drag photos to the upload area.",
-    hi: "शिकायत पंजीकरण के दौरान आप 5 तक फोटो अपलोड कर सकते हैं। फोटो अधिकारियों को समस्या को बेहतर ढंग से समझने में मदद करती हैं। समर्थित प्रारूप: JPG, PNG, WebP। कैमरा आइकन पर क्लिक करें या फोटो को अपलोड क्षेत्र में खींचें।",
+    hi: "शिकायत पंजीकरण के दौरान आप 5 तक फोटो अपलोड कर सकते हैं। फोटो अधिकारियों को समस्या को ब���हतर ढंग से समझने में मदद करती हैं। समर्थित प्रारूप: JPG, PNG, WebP। कैमरा आइकन पर क्लिक करें या फोटो को अपलोड क्षेत्र में खींचें।",
     te: "ఫిర్యాదు నమోదు సమయంలో మీరు 5 ఫోటోలు వరకు అప్‌లోడ్ చేయవచ్చు. ఫోటోలు అధికారు��కు ��మస్యను బాగా అర్థం చేసుకోవడంలో సహాయపడతాయి. మద్దతు ఉన్న ఫార్మాట్‌లు: JPG, PNG, WebP. కెమెరా ఐకాన్‌పై క్లిక్ చేయండి లేదా ఫోటోలను అప్‌లోడ్ ప్రాంతానికి లాగండి.",
   },
   ai_location_help: {
@@ -405,12 +405,12 @@ const translations = {
   },
   ai_thanks: {
     en: "You're welcome! I'm here to help with any questions about TG Civic. Feel free to ask about complaint registration, tracking, or any other civic services. Is there anything else you'd like to know?",
-    hi: "आपका स्वागत है! मैं TG Civic के बारे में किसी भी प्रश्न में मदद के लिए यहां हूं। शिकायत पंजीकरण, ट्रैकिंग, या किसी अन्य नागरिक सेवा के बारे में बेझिझक प���छें। क्या कुछ और है जो आप जानना चाहते हैं?",
+    hi: "आपका स्वागत है! मैं TG Civic के बारे में किसी भी प्रश्न में मदद के ��िए यहां हूं। शिकायत पंजीकरण, ट्रैकिंग, या किसी अन्य नागरिक सेवा के बारे में बेझिझक प���छें। क्या कुछ और है जो आप जानना चाहते हैं?",
     te: "మీకు స్వాగతం! TG Civic గురించి ఏవైనా ప్రశ్నలతో సహాయం చేయడానికి నేను ఇక్కడ ఉన్నాను. ఫిర్యాదు నమోదు, ట్రాకింగ్ లేదా ఏవైనా ఇతర పౌర సేవల గురించి అడగడానికి వెనుకాడకండి. మీరు తెలుసుకోవాలని అనుకునే ఇంకేమైనా ఉందా?",
   },
   ai_emergency: {
     en: "For emergencies: 🚨 Call 100 (Police), 🚒 Call 101 (Fire), 🚑 Call 108 (Ambulance). For urgent civic issues, register a complaint and mark it as 'High Priority'. Emergency complaints are processed immediately.",
-    hi: "आपातकाल के लिए: 🚨 100 कॉल करें (पुलिस), 🚒 101 कॉल करें (फायर), 🚑 108 कॉल करें (एम्बुलेंस)। तत्काल नागरिक मुद्दों के लिए, एक शिकायत दर्ज करें और इसे 'उच्च प्राथमिकता' के रूप में चिह्नित करें। आपातकालीन शिकाय���ों को तुरंत संसाधित किया जाता है।",
+    hi: "आपातकाल के लिए: 🚨 100 कॉल करें (पुलिस), 🚒 101 कॉल करें (फायर), 🚑 108 कॉल करें (एम्बुलेंस)। त��्काल नागरिक मुद्दों के लिए, एक शिकायत दर्ज करें और इसे 'उच्च प्राथमिकता' के रूप में चिह्नित करें। आपातकालीन शिकायतों को तुरंत संसाधित किया जाता है।",
     te: "అత్యవసర పరిస్థితుల కోసం: 🚨 100కు కాల్ చేయండి (పోలీసు), 🚒 101కు కాల్ చేయ��డి (అగ్నిమాపక), 🚑 108కు కాల్ చేయండి (అంబులెన్స్). అత్యవసర పౌర సమస్యల కోసం, ఫిర్యాదు నమోదు చేసి దానిని 'అధిక ప్రాధాన్యత'గా గుర్తు పెట్టండి. అత్యవసర ఫిర్యాదులు వెంటనే ప్రాసెస్ చేయబడతాయి.",
   },
   ai_default: {
@@ -456,7 +456,7 @@ const translations = {
   ai_track_btn: {
     en: "Track",
     hi: "ट्रैक करें",
-    te: "ట్రాక్ చేయండి",
+    te: "ట్రాక్ చేయ���డి",
   },
   ai_support_btn: {
     en: "Support",
@@ -480,7 +480,7 @@ const translations = {
   testimonial_1_name: {
     en: "Rajesh Kumar",
     hi: "राजेश कुमार",
-    te: "రాజేష్ కుమార్",
+    te: "రాజేష్ క���మార్",
   },
   testimonial_1_role: {
     en: "Small Business Owner",
@@ -509,7 +509,7 @@ const translations = {
   },
   testimonial_2_location: {
     en: "Secunderabad",
-    hi: "सिकंदराबाद",
+    hi: "सि���ंदराबाद",
     te: "సికందరాబాద్",
   },
   testimonial_2_quote: {
@@ -534,7 +534,7 @@ const translations = {
   },
   testimonial_3_quote: {
     en: "Water supply issue resolved in 2 days. Great initiative by the government!",
-    hi: "पानी की आपूर्ति की समस्या 2 दिनों में हल हो गई। सरकार की शानदार पहल!",
+    hi: "पानी की आपूर्ति की समस्या 2 दिनों में हल हो गई। सरकार की ���ानदार पहल!",
     te: "నీటి సరఫరా సమస్య 2 రోజుల్లో పరిష్కరించబడింది. ప్రభుత్వం యొక్క గొప్ప చొరవ!",
   },
 
@@ -606,7 +606,7 @@ const translations = {
   },
   testimonial_7_role: {
     en: "Medical Professional",
-    hi: "चिकित्सा पेशेवर",
+    hi: "चिक���त्सा पेशेवर",
     te: "వైద్య నిపుణుడు",
   },
   testimonial_7_location: {
@@ -648,7 +648,7 @@ const translations = {
   },
   designed_for_citizens: {
     en: "Designed for citizens, powered by technology",
-    hi: "नागरिकों के लिए डिजाइन किया गया, प्रौद्योगिकी द्वारा संचालित",
+    hi: "नागरिकों के लिए डिजाइन किया गया, प्रौद्योगिक�� द्वारा संचालित",
     te: "పౌరుల కోసం రూపొందించబడింది, సాంకేతికతతో శక్తివంతం",
   },
   success_rate_label: {
@@ -688,7 +688,7 @@ const translations = {
   },
   get_started: {
     en: "Get Started",
-    hi: "श���रू करें",
+    hi: "शुरू करें",
     te: "ప్రారంభించండి",
   },
 
@@ -763,7 +763,7 @@ const translations = {
   platform_management: {
     en: "Complete platform management and oversight",
     hi: "पूर्ण प्लेटफॉर्म प्रबंधन और निरीक्षण",
-    te: "పూర్తి ప్లాట్‌ఫారమ్ నిర్వహణ మరియు పర్యవ��క్షణ",
+    te: "పూర్తి ప్లాట్‌ఫారమ్ నిర్వహణ మరియు పర్యవేక్షణ",
   },
   administrator_access: {
     en: "Administrator Access",
@@ -819,11 +819,6 @@ const translations = {
     en: "Avg Resolution Time",
     hi: "औसत समाधान समय",
     te: "సగటు రిజల్యూషన్ సమయం",
-  },
-  user_satisfaction: {
-    en: "User Satisfaction",
-    hi: "उपयोगकर्ता संतुष्टि",
-    te: "వినియోగదారు సంతృప్తి",
   },
   average_rating: {
     en: "Average rating",
@@ -1015,7 +1010,7 @@ const translations = {
   nearby_landmark: {
     en: "Nearby landmark for easy identification",
     hi: "आसान पहचान के लिए आस-पास का स्थलचिह्न",
-    te: "సులభ గుర్తింపు కోసం ���మీపంలోని మైలురాయి",
+    te: "సులభ గుర్తింపు కోసం సమీపంలోని మైలురాయి",
   },
   get_current_location: {
     en: "Get Current Location",
@@ -1106,7 +1101,7 @@ const translations = {
   },
   enter_complaint_id: {
     en: "Enter your Complaint ID or phone number to track status",
-    hi: "स्थिति ट्रैक करने के लिए अपना शिकायत ID या फ़ोन नंबर दर्ज करें",
+    hi: "स्थित�� ट्रैक करने के लिए अपना शिकायत ID या फ़ोन नंबर दर्ज करें",
     te: "స్థితిని ట్రాక్ చేయడానికి మీ ఫిర్యాదు ID లేదా ఫోన్ నంబర్ నమోదు చేయండి",
   },
   search_placeholder: {
@@ -1132,7 +1127,7 @@ const translations = {
   try_different_search: {
     en: "Try searching with a different complaint ID or phone number",
     hi: "किसी अन्य शिकायत ID या फ़ोन नंबर से खोजने का प्रयास करें",
-    te: "వేరే ఫిర���యాదు ID లేదా ఫోన్ నంబర్‌తో వెతకడానికి ప్రయత్నించండి",
+    te: "వేరే ఫిర్యాదు ID లేదా ఫోన్ నంబర్‌తో వెతకడానికి ప్రయత్నించండి",
   },
   complaint_status: {
     en: "Complaint Status",
@@ -1159,7 +1154,7 @@ const translations = {
   explore_schemes: {
     en: "Explore various government schemes and programs available for citizens",
     hi: "नागरिकों के लिए उपलब्ध विभिन्न सरकारी योजनाओं और कार्यक्रमों का अन्वेषण करें",
-    te: "పౌరులకు అందుబాటులో ఉన్న వివిధ ప్రభుత్వ పథకాలు మరియు కార్యక్రమాలను అన్��ేషించండి",
+    te: "పౌరులకు అందుబాటులో ఉన్న వివిధ ప్రభుత్వ పథకాలు మరియు కార్యక్రమాలను అన్వేషించండి",
   },
   search_schemes: {
     en: "Search schemes...",
