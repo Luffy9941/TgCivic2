@@ -214,9 +214,9 @@ const Navigation = () => {
             </div>
 
             {/* Right Side */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
               {/* Language Selector */}
-              <div className="hidden sm:block">
+              <div className="hidden lg:block">
                 <Select value={language} onValueChange={setLanguage}>
                   <SelectTrigger className="w-[140px] h-10 border-gray-200 bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300">
                     <SelectValue />
@@ -237,7 +237,7 @@ const Navigation = () => {
 
               {/* Authentication */}
               {isAuthenticated ? (
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-1 sm:space-x-2 lg:space-x-3">
                   {/* Notifications Dropdown */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
