@@ -45,11 +45,7 @@ const App = () => (
                     />
                     <Route
                       path="/track-complaint"
-                      element={
-                        <ProtectedRoute>
-                          <TrackComplaint />
-                        </ProtectedRoute>
-                      }
+                      element={<TrackComplaint />}
                     />
                     <Route
                       path="/dashboard"
