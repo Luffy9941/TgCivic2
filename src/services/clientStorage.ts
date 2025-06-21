@@ -104,11 +104,17 @@ class ClientStorageService {
     const admins = this.getAdmins();
     const citizens = this.getCitizens();
 
+    console.log("ClientStorage - Initializing default users");
+    console.log("ClientStorage - Existing admins:", admins.length);
+    console.log("ClientStorage - Existing citizens:", citizens.length);
+
     if (admins.length === 0) {
+      console.log("ClientStorage - Creating default admin");
       this.createDefaultAdmin();
     }
 
     if (citizens.length === 0) {
+      console.log("ClientStorage - Creating default citizen");
       this.createDefaultCitizen();
     }
   }
