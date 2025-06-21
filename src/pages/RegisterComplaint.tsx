@@ -579,9 +579,9 @@ const RegisterComplaint = () => {
 
           {/* Location */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
                 Location
               </CardTitle>
             </CardHeader>
