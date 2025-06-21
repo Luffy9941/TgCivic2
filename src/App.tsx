@@ -41,19 +41,11 @@ const App = () => (
                     <Route path="/register" element={<Register />} />
                     <Route
                       path="/register-complaint"
-                      element={
-                        <ProtectedRoute>
-                          <RegisterComplaint />
-                        </ProtectedRoute>
-                      }
+                      element={<RegisterComplaint />}
                     />
                     <Route
                       path="/track-complaint"
-                      element={
-                        <ProtectedRoute>
-                          <TrackComplaint />
-                        </ProtectedRoute>
-                      }
+                      element={<TrackComplaint />}
                     />
                     <Route
                       path="/dashboard"

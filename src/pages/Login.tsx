@@ -27,12 +27,26 @@ import {
   Users,
   ArrowLeft,
 } from "lucide-react";
-import { UserType } from "@/services/clientStorage";
+import { UserType, clientStorageService } from "@/services/clientStorage";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login, isLoading } = useAuth();
+
+  // Debug on component mount
+  React.useEffect(() => {
+    console.log("=== LOGIN PAGE MOUNTED - DEBUGGING ===");
+    const users = clientStorageService.getAllUsers();
+    console.log("Current users in storage:", users);
+    console.log("Admin count:", users.admins.length);
+    console.log("Citizen count:", users.citizens.length);
+
+    if (users.admins.length === 0 && users.citizens.length === 0) {
+      console.log("No users found, forcing initialization...");
+      clientStorageService.resetUsers();
+    }
+  }, []);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -54,16 +68,23 @@ const Login = () => {
       return;
     }
 
-    const success = await login(
-      formData.email,
-      formData.password,
-      formData.userType,
-    );
+    try {
+      const success = await login(
+        formData.email,
+        formData.password,
+        formData.userType,
+      );
 
-    if (success) {
-      navigate(from, { replace: true });
-    } else {
-      setError("Invalid email or password");
+      if (success) {
+        navigate(from, { replace: true });
+      } else {
+        setError(`Invalid email or password for ${formData.userType} account`);
+      }
+    } catch (error) {
+      console.error("Login error in component:", error);
+      setError(
+        `Login failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+      );
     }
   };
 
@@ -95,6 +116,19 @@ const Login = () => {
   ) => {
     setFormData({ email, password, userType });
     setError("");
+  };
+
+  const debugPasswords = async () => {
+    console.log("=== DEBUG: Testing password verification ===");
+    await clientStorageService.verifyDefaultPasswords();
+    const users = clientStorageService.getAllUsers();
+    console.log("All users:", users);
+  };
+
+  const resetUsers = () => {
+    console.log("=== RESETTING USERS ===");
+    clientStorageService.resetUsers();
+    setError("Users reset successfully! Try logging in again.");
   };
 
   return (
@@ -290,7 +324,7 @@ const Login = () => {
                 )}
               </Button>
 
-              <div className="text-center">
+              <div className="text-center space-y-2">
                 <p className="text-sm text-gray-600">
                   Don't have an account?{" "}
                   <Link
@@ -300,6 +334,30 @@ const Login = () => {
                     Register here
                   </Link>
                 </p>
+
+                {/* Debug buttons - only show in development */}
+                {process.env.NODE_ENV === "development" && (
+                  <div className="flex gap-2 justify-center">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={debugPasswords}
+                      className="text-xs"
+                    >
+                      Debug Passwords
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={resetUsers}
+                      className="text-xs bg-yellow-50 border-yellow-200 text-yellow-800 hover:bg-yellow-100"
+                    >
+                      Reset Users
+                    </Button>
+                  </div>
+                )}
               </div>
             </form>
           </CardContent>

@@ -63,6 +63,7 @@ const RegisterComplaint = () => {
   const [isGettingLocation, setIsGettingLocation] = useState(false);
   const [error, setError] = useState("");
   const recognitionRef = useRef<any>(null);
+  const errorRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     category: "",
@@ -266,22 +267,54 @@ const RegisterComplaint = () => {
     setIsSubmitting(true);
 
     try {
+      // Basic form validation
+      if (!formData.category) {
+        throw new Error("Please select a category for your complaint.");
+      }
+      if (!formData.subcategory) {
+        throw new Error("Please select a subcategory for your complaint.");
+      }
+      if (!formData.title.trim()) {
+        throw new Error("Please enter a title for your complaint.");
+      }
+      if (!formData.description.trim()) {
+        throw new Error("Please provide a description of your complaint.");
+      }
+      if (!formData.location.trim()) {
+        throw new Error("Please provide the location of your complaint.");
+      }
+      if (!formData.name.trim()) {
+        throw new Error("Please enter your full name.");
+      }
+      if (!formData.phone.trim()) {
+        throw new Error("Please enter your phone number.");
+      }
+      if (formData.phone.length !== 10 || !/^\d{10}$/.test(formData.phone)) {
+        throw new Error("Please enter a valid 10-digit phone number.");
+      }
+      if (
+        formData.email &&
+        !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
+      ) {
+        throw new Error("Please enter a valid email address.");
+      }
+
       // Convert images to base64
       const imageBase64 = await convertFilesToBase64(formData.images);
 
       // Submit complaint with automatic admin notification
       const id = addComplaint(
         {
-          title: formData.title,
-          description: formData.description,
+          title: formData.title.trim(),
+          description: formData.description.trim(),
           category: formData.category,
           subcategory: formData.subcategory,
-          location: formData.location,
-          landmark: formData.landmark,
+          location: formData.location.trim(),
+          landmark: formData.landmark.trim(),
           priority: formData.priority,
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim(),
           images: imageBase64,
           latitude: formData.latitude,
           longitude: formData.longitude,
@@ -289,23 +322,63 @@ const RegisterComplaint = () => {
         addNotification,
       ); // Pass the notification callback
 
+      if (!id) {
+        throw new Error("Failed to generate complaint ID. Please try again.");
+      }
+
       // Also send a notification for all officials
-      addNotification({
-        type: "complaint_submitted",
-        title: "📋 New Complaint Assigned",
-        message: `${formData.category.charAt(0).toUpperCase() + formData.category.slice(1)} complaint "${formData.title}" needs review. Location: ${formData.landmark || formData.location}`,
-        complaintId: id,
-        userId: "all-officials",
-        userRole: "official",
-        priority: formData.priority === "high" ? "high" : "medium",
-        actionUrl: "/dashboard",
-      });
+      try {
+        addNotification({
+          type: "complaint_submitted",
+          title: "📋 New Complaint Assigned",
+          message: `${formData.category.charAt(0).toUpperCase() + formData.category.slice(1)} complaint "${formData.title}" needs review. Location: ${formData.landmark || formData.location}`,
+          complaintId: id,
+          userId: "all-officials",
+          userRole: "official",
+          priority: formData.priority === "high" ? "high" : "medium",
+          actionUrl: "/dashboard",
+        });
+      } catch (notificationError) {
+        console.warn("Failed to send notification:", notificationError);
+        // Don't fail the whole process if notification fails
+      }
 
       setComplaintId(id);
       setShowSuccessDialog(true);
+
+      // Reset form after successful submission
+      setFormData({
+        category: "",
+        subcategory: "",
+        title: "",
+        description: "",
+        location: "",
+        landmark: "",
+        priority: "medium" as "low" | "medium" | "high",
+        name: "",
+        phone: "",
+        email: "",
+        images: [] as File[],
+        latitude: undefined as number | undefined,
+        longitude: undefined as number | undefined,
+      });
     } catch (error) {
       console.error("Error submitting complaint:", error);
-      setError("Error submitting complaint. Please try again.");
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Error submitting complaint. Please try again.";
+      setError(errorMessage);
+
+      // Scroll to error message
+      setTimeout(() => {
+        if (errorRef.current) {
+          errorRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      }, 100);
     } finally {
       setIsSubmitting(false);
     }
@@ -366,17 +439,21 @@ const RegisterComplaint = () => {
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Error Display */}
           {error && (
-            <Alert variant="destructive">
+            <Alert
+              ref={errorRef}
+              variant="destructive"
+              className="animate-in slide-in-from-top-1"
+            >
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription>
-                {error}
+              <AlertDescription className="flex items-center justify-between">
+                <span>{error}</span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setError("")}
-                  className="ml-2 h-auto p-1 text-xs underline"
+                  className="ml-2 h-auto p-1 text-xs underline hover:bg-transparent"
                 >
-                  Dismiss
+                  ×
                 </Button>
               </AlertDescription>
             </Alert>
@@ -778,11 +855,20 @@ const RegisterComplaint = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
+                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isSubmitting}
                 >
-                  <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  {isSubmitting ? "Submitting..." : "Submit Complaint"}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                      Submit Complaint
+                    </>
+                  )}
                 </Button>
               </div>
             </CardContent>
