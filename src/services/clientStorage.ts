@@ -529,10 +529,19 @@ class ClientStorageService {
     };
   }
 
-  clearAllUsers() {
+  async clearAllUsers() {
     localStorage.removeItem(this.CITIZENS_KEY);
     localStorage.removeItem(this.ADMINS_KEY);
-    this.initializeDefaultUsers();
+    await this.initializeDefaultUsers();
+  }
+
+  // Force reset and recreate users with fresh passwords
+  async resetUsers() {
+    console.log("=== RESETTING ALL USERS ===");
+    localStorage.removeItem(this.CITIZENS_KEY);
+    localStorage.removeItem(this.ADMINS_KEY);
+    await this.initializeDefaultUsers();
+    console.log("=== USERS RESET COMPLETE ===");
   }
 
   // Test password hashing for debugging
