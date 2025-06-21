@@ -233,7 +233,8 @@ const Dashboard = () => {
             onValueChange={setActiveTab}
             className="space-y-6"
           >
-            <TabsList className="grid w-full grid-cols-6 bg-white">
+            <div className="w-full overflow-x-auto">
+              <TabsList className="inline-flex h-10 items-center justify-start rounded-md bg-white p-1 text-muted-foreground min-w-full sm:w-auto">
               <TabsTrigger value="overview" className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" />
                 {t("overview")}
