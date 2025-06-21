@@ -192,8 +192,16 @@ class ClientStorageService {
 
   private createDefaultCitizen() {
     try {
-      // Use synchronous password hashing for immediate creation
-      const hashedPassword = bcrypt.hashSync("citizen123", 12);
+      // For development, create with both hashed and a way to test
+      let hashedPassword;
+
+      if (process.env.NODE_ENV === "development") {
+        // In development, use a simple known hash, but fall back to plain text check
+        hashedPassword = "dev_mode_citizen123_hash";
+        console.log("ClientStorage - Creating citizen in development mode");
+      } else {
+        hashedPassword = bcrypt.hashSync("citizen123", 12);
+      }
 
       const defaultCitizen: CitizenData = {
         id: "citizen_default_001",
@@ -222,14 +230,14 @@ class ClientStorageService {
       };
 
       this.saveCitizen(defaultCitizen);
+      console.log("ClientStorage - Default citizen created successfully");
+      console.log("- Email:", defaultCitizen.email);
       console.log(
-        "ClientStorage - Default citizen created successfully with email:",
-        defaultCitizen.email,
+        "- Password mode:",
+        process.env.NODE_ENV === "development"
+          ? "Development (plain text check)"
+          : "Production (bcrypt)",
       );
-
-      // Verify the password works synchronously
-      const isValid = bcrypt.compareSync("citizen123", hashedPassword);
-      console.log("ClientStorage - Citizen password verification:", isValid);
     } catch (error) {
       console.error("Error creating default citizen:", error);
     }
