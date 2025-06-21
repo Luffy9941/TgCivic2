@@ -1154,7 +1154,20 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="text-center">
+          {/* Call to Action Section */}
+          <div className="text-center mt-16 sm:mt-20 lg:mt-24">
+            <div className="bg-white/50 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-xl border border-white/20 max-w-2xl mx-auto">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+                Ready to Make a
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  {" "}
+                  Difference
+                </span>
+                ?
+              </h3>
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8">
+                Join thousands of citizens making their community better. Your report can spark positive change.
+              </p>
             <Link to="/register-complaint">
               <Button
                 size="lg"
