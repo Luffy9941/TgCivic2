@@ -113,7 +113,16 @@ const Notifications = () => {
     if (!notification.isRead) {
       markAsRead(notification.id);
     }
-    if (notification.actionUrl) {
+
+    // For complaint notifications, navigate to dashboard with complaints tab active
+    if (notification.complaintId && user?.userType === "admin") {
+      navigate("/dashboard", {
+        state: {
+          activeTab: "complaints",
+          highlightComplaintId: notification.complaintId,
+        },
+      });
+    } else if (notification.actionUrl) {
       navigate(notification.actionUrl);
     }
   };
