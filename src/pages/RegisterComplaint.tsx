@@ -676,13 +676,13 @@ const RegisterComplaint = () => {
                         <img
                           src={URL.createObjectURL(image)}
                           alt={`Upload ${index + 1}`}
-                          className="w-full h-32 object-cover rounded-lg"
+                          className="w-full h-24 sm:h-32 object-cover rounded-lg"
                         />
                         <Button
                           type="button"
                           variant="destructive"
                           size="sm"
-                          className="absolute top-2 right-2 h-6 w-6 p-0"
+                          className="absolute top-1 right-1 sm:top-2 sm:right-2 h-5 w-5 sm:h-6 sm:w-6 p-0 text-xs"
                           onClick={() => removeImage(index)}
                         >
                           ×
