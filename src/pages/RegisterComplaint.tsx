@@ -638,18 +638,18 @@ const RegisterComplaint = () => {
 
           {/* Images */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Camera className="w-5 h-5" />
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <Camera className="w-4 h-4 sm:w-5 sm:h-5" />
                 Photos
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-sm">
                 Upload photos related to the issue (max 5)
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 text-center">
                   <input
                     type="file"
                     accept="image/*"
@@ -658,16 +658,19 @@ const RegisterComplaint = () => {
                     className="hidden"
                     id="image-upload"
                   />
-                  <label htmlFor="image-upload" className="cursor-pointer">
-                    <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                    <p className="text-sm text-gray-600">
+                  <label
+                    htmlFor="image-upload"
+                    className="cursor-pointer block"
+                  >
+                    <Upload className="w-8 h-8 sm:w-12 sm:h-12 text-gray-400 mx-auto mb-2 sm:mb-4" />
+                    <p className="text-xs sm:text-sm text-gray-600">
                       Click to select photos or drag them here
                     </p>
                   </label>
                 </div>
 
                 {formData.images.length > 0 && (
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                     {formData.images.map((image, index) => (
                       <div key={index} className="relative">
                         <img
