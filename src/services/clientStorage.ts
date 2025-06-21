@@ -415,20 +415,35 @@ class ClientStorageService {
 
         let isPasswordValid = false;
 
-        // In development, also try plain text comparison as fallback
-        if (
-          process.env.NODE_ENV === "development" &&
-          loginData.password === "citizen123"
-        ) {
+        // Check if we're in development mode (multiple ways to detect)
+        const isDev =
+          process.env.NODE_ENV === "development" ||
+          import.meta.env?.DEV ||
+          window.location.hostname === "localhost" ||
+          citizen.password.startsWith("dev_mode_");
+
+        // In development or if using dev mode password, bypass bcrypt for default credentials
+        if (isDev && loginData.password === "citizen123") {
           console.log(
-            "ClientStorage - Development mode: bypassing bcrypt for default password",
+            "ClientStorage - Development/Debug mode: bypassing bcrypt for default password",
           );
           isPasswordValid = true;
         } else {
-          isPasswordValid = await bcrypt.compare(
-            loginData.password,
-            citizen.password,
-          );
+          try {
+            isPasswordValid = await bcrypt.compare(
+              loginData.password,
+              citizen.password,
+            );
+          } catch (bcryptError) {
+            console.error("ClientStorage - bcrypt compare error:", bcryptError);
+            // If bcrypt fails and we're in dev mode with default password, allow it
+            if (isDev && loginData.password === "citizen123") {
+              console.log(
+                "ClientStorage - bcrypt failed, allowing development bypass",
+              );
+              isPasswordValid = true;
+            }
+          }
         }
 
         console.log(
