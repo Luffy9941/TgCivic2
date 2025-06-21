@@ -104,9 +104,9 @@ const Login = () => {
     console.log("All users:", users);
   };
 
-  const resetUsers = async () => {
+  const resetUsers = () => {
     console.log("=== RESETTING USERS ===");
-    await clientStorageService.resetUsers();
+    clientStorageService.resetUsers();
     setError("Users reset successfully! Try logging in again.");
   };
 
