@@ -82,6 +82,9 @@ const Dashboard = () => {
   const [schemeModalMode, setSchemeModalMode] = useState<
     "view" | "edit" | "create"
   >("view");
+  const [highlightedComplaintId, setHighlightedComplaintId] = useState<
+    string | null
+  >(null);
 
   const handleViewScheme = (scheme: any) => {
     setSelectedScheme(scheme);
