@@ -1156,7 +1156,9 @@ const Index = () => {
 
           {/* Call to Action Section */}
           <div className="text-center mt-16 sm:mt-20 lg:mt-24">
-            <div className="bg-white/50 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-xl border border-white/20 max-w-2xl mx-auto">
+            <div className="bg-white/70 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-white/30 max-w-2xl mx-auto relative">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-3xl blur-xl" />
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
                 Ready to Make a
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
