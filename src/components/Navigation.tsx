@@ -410,7 +410,7 @@ const Navigation = () => {
                       >
                         <Avatar className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 ring-1 sm:ring-2 ring-gray-200 hover:ring-blue-300 transition-all duration-300">
                           <AvatarFallback
-                            className={`text-white font-bold text-lg ${
+                            className={`text-white font-bold text-xs sm:text-sm lg:text-lg ${
                               user?.role === "admin"
                                 ? "bg-gradient-to-br from-red-500 to-red-600"
                                 : user?.role === "official"
@@ -421,7 +421,7 @@ const Navigation = () => {
                             {user?.name.charAt(0).toUpperCase()}
                           </AvatarFallback>
                         </Avatar>
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full" />
+                        <div className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-2 h-2 sm:w-3 sm:h-3 lg:w-4 lg:h-4 bg-green-500 border-1 sm:border-2 border-white rounded-full" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
