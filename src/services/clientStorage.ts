@@ -119,10 +119,10 @@ class ClientStorageService {
     }
   }
 
-  private async createDefaultAdmin() {
+  private createDefaultAdmin() {
     try {
-      // Hash the password dynamically to ensure it's correct
-      const hashedPassword = await bcrypt.hash("admin123", 12);
+      // Use synchronous password hashing for immediate creation
+      const hashedPassword = bcrypt.hashSync("admin123", 12);
 
       const defaultAdmin: AdminData = {
         id: "admin_default_001",
@@ -153,22 +153,22 @@ class ClientStorageService {
 
       this.saveAdmin(defaultAdmin);
       console.log(
-        "ClientStorage - Default admin created successfully with password hash:",
-        hashedPassword.substring(0, 20) + "...",
+        "ClientStorage - Default admin created successfully with email:",
+        defaultAdmin.email,
       );
 
-      // Verify the password works
-      const isValid = await bcrypt.compare("admin123", hashedPassword);
+      // Verify the password works synchronously
+      const isValid = bcrypt.compareSync("admin123", hashedPassword);
       console.log("ClientStorage - Admin password verification:", isValid);
     } catch (error) {
       console.error("Error creating default admin:", error);
     }
   }
 
-  private async createDefaultCitizen() {
+  private createDefaultCitizen() {
     try {
-      // Hash the password dynamically to ensure it's correct
-      const hashedPassword = await bcrypt.hash("citizen123", 12);
+      // Use synchronous password hashing for immediate creation
+      const hashedPassword = bcrypt.hashSync("citizen123", 12);
 
       const defaultCitizen: CitizenData = {
         id: "citizen_default_001",
@@ -198,12 +198,12 @@ class ClientStorageService {
 
       this.saveCitizen(defaultCitizen);
       console.log(
-        "ClientStorage - Default citizen created successfully with password hash:",
-        hashedPassword.substring(0, 20) + "...",
+        "ClientStorage - Default citizen created successfully with email:",
+        defaultCitizen.email,
       );
 
-      // Verify the password works
-      const isValid = await bcrypt.compare("citizen123", hashedPassword);
+      // Verify the password works synchronously
+      const isValid = bcrypt.compareSync("citizen123", hashedPassword);
       console.log("ClientStorage - Citizen password verification:", isValid);
     } catch (error) {
       console.error("Error creating default citizen:", error);
