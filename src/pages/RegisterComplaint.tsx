@@ -766,19 +766,19 @@ const RegisterComplaint = () => {
 
           {/* Submit Button */}
           <Card>
-            <CardContent className="pt-6">
-              <div className="flex justify-between items-center">
-                <div className="flex items-center space-x-2 text-sm text-gray-600">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+            <CardContent className="pt-4 sm:pt-6">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
+                <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
+                  <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-600 flex-shrink-0" />
                   <span>Complaint ID will be auto-generated</span>
                 </div>
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700"
+                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
                   disabled={isSubmitting}
                 >
-                  <FileText className="w-5 h-5 mr-2" />
+                  <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   {isSubmitting ? "Submitting..." : "Submit Complaint"}
                 </Button>
               </div>
