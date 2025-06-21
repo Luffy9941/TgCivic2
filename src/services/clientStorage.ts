@@ -142,6 +142,39 @@ class ClientStorageService {
     this.saveAdmin(defaultAdmin);
   }
 
+  private async createDefaultCitizen() {
+    const saltRounds = 12;
+    const hashedPassword = await bcrypt.hash("citizen123", saltRounds);
+
+    const defaultCitizen: CitizenData = {
+      id: "citizen_default_001",
+      name: "Demo Citizen",
+      email: "citizen@email.com",
+      phone: "9876543210",
+      password: hashedPassword,
+      userType: "citizen",
+      address: {
+        street: "123 Demo Street",
+        city: "Hyderabad",
+        state: "Telangana",
+        pincode: "500001",
+      },
+      isVerified: true,
+      avatar: "",
+      dateOfBirth: "1990-01-01",
+      aadhaarNumber: "1234567890123",
+      emergencyContact: {
+        name: "Emergency Contact",
+        phone: "9876543211",
+        relation: "Family",
+      },
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    this.saveCitizen(defaultCitizen);
+  }
+
   private getCitizens(): CitizenData[] {
     try {
       const data = localStorage.getItem(this.CITIZENS_KEY);
