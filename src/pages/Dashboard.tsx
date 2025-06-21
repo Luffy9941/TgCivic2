@@ -835,46 +835,58 @@ const Dashboard = () => {
                 </Card>
 
                 <Card className="bg-gradient-to-br from-green-500 to-green-700 text-white">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-green-100">Resolution Rate</p>
-                        <p className="text-3xl font-bold">94.2%</p>
-                        <p className="text-sm text-green-200">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-green-100 text-sm">
+                          Resolution Rate
+                        </p>
+                        <p className="text-2xl sm:text-3xl font-bold truncate">
+                          94.2%
+                        </p>
+                        <p className="text-xs sm:text-sm text-green-200">
                           +2.1% improvement
                         </p>
                       </div>
-                      <Target className="w-10 h-10 text-green-200" />
+                      <Target className="w-8 h-8 sm:w-10 sm:h-10 text-green-200 flex-shrink-0 ml-2" />
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-gradient-to-br from-orange-500 to-orange-700 text-white">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-orange-100">Avg Resolution</p>
-                        <p className="text-3xl font-bold">3.2 days</p>
-                        <p className="text-sm text-orange-200">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-orange-100 text-sm">
+                          Avg Resolution
+                        </p>
+                        <p className="text-2xl sm:text-3xl font-bold truncate">
+                          3.2 days
+                        </p>
+                        <p className="text-xs sm:text-sm text-orange-200">
                           -0.8 days faster
                         </p>
                       </div>
-                      <Clock className="w-10 h-10 text-orange-200" />
+                      <Clock className="w-8 h-8 sm:w-10 sm:h-10 text-orange-200 flex-shrink-0 ml-2" />
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-gradient-to-br from-purple-500 to-purple-700 text-white">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-purple-100">User Satisfaction</p>
-                        <p className="text-3xl font-bold">4.8★</p>
-                        <p className="text-sm text-purple-200">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-purple-100 text-sm">
+                          User Satisfaction
+                        </p>
+                        <p className="text-2xl sm:text-3xl font-bold truncate">
+                          4.8★
+                        </p>
+                        <p className="text-xs sm:text-sm text-purple-200">
                           +0.3 rating increase
                         </p>
                       </div>
-                      <Star className="w-10 h-10 text-purple-200" />
+                      <Star className="w-8 h-8 sm:w-10 sm:h-10 text-purple-200 flex-shrink-0 ml-2" />
                     </div>
                   </CardContent>
                 </Card>
