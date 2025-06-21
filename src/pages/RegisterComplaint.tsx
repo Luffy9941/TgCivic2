@@ -377,7 +377,7 @@ const RegisterComplaint = () => {
                 {categories.map((category) => (
                   <div
                     key={category.id}
-                    className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                    className={`p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
                       formData.category === category.id
                         ? "border-blue-500 bg-blue-50"
                         : "border-gray-200 hover:border-gray-300"
@@ -390,9 +390,15 @@ const RegisterComplaint = () => {
                       })
                     }
                   >
-                    <div className="flex items-center space-x-3">
-                      {category.icon}
-                      <span className="font-medium">{category.label}</span>
+                    <div className="flex items-center space-x-2 sm:space-x-3">
+                      <div className="flex-shrink-0">
+                        {React.cloneElement(category.icon, {
+                          className: "w-4 h-4 sm:w-5 sm:h-5",
+                        })}
+                      </div>
+                      <span className="font-medium text-sm sm:text-base">
+                        {category.label}
+                      </span>
                     </div>
                   </div>
                 ))}
