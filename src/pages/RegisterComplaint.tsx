@@ -60,6 +60,7 @@ const RegisterComplaint = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [isGettingLocation, setIsGettingLocation] = useState(false);
+  const [error, setError] = useState("");
   const recognitionRef = useRef<any>(null);
 
   const [formData, setFormData] = useState({
