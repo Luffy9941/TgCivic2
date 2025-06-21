@@ -54,16 +54,23 @@ const Login = () => {
       return;
     }
 
-    const success = await login(
-      formData.email,
-      formData.password,
-      formData.userType,
-    );
+    try {
+      const success = await login(
+        formData.email,
+        formData.password,
+        formData.userType,
+      );
 
-    if (success) {
-      navigate(from, { replace: true });
-    } else {
-      setError("Invalid email or password");
+      if (success) {
+        navigate(from, { replace: true });
+      } else {
+        setError(`Invalid email or password for ${formData.userType} account`);
+      }
+    } catch (error) {
+      console.error("Login error in component:", error);
+      setError(
+        `Login failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+      );
     }
   };
 
