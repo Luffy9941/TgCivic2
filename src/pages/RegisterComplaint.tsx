@@ -266,22 +266,54 @@ const RegisterComplaint = () => {
     setIsSubmitting(true);
 
     try {
+      // Basic form validation
+      if (!formData.category) {
+        throw new Error("Please select a category for your complaint.");
+      }
+      if (!formData.subcategory) {
+        throw new Error("Please select a subcategory for your complaint.");
+      }
+      if (!formData.title.trim()) {
+        throw new Error("Please enter a title for your complaint.");
+      }
+      if (!formData.description.trim()) {
+        throw new Error("Please provide a description of your complaint.");
+      }
+      if (!formData.location.trim()) {
+        throw new Error("Please provide the location of your complaint.");
+      }
+      if (!formData.name.trim()) {
+        throw new Error("Please enter your full name.");
+      }
+      if (!formData.phone.trim()) {
+        throw new Error("Please enter your phone number.");
+      }
+      if (formData.phone.length !== 10 || !/^\d{10}$/.test(formData.phone)) {
+        throw new Error("Please enter a valid 10-digit phone number.");
+      }
+      if (
+        formData.email &&
+        !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
+      ) {
+        throw new Error("Please enter a valid email address.");
+      }
+
       // Convert images to base64
       const imageBase64 = await convertFilesToBase64(formData.images);
 
       // Submit complaint with automatic admin notification
       const id = addComplaint(
         {
-          title: formData.title,
-          description: formData.description,
+          title: formData.title.trim(),
+          description: formData.description.trim(),
           category: formData.category,
           subcategory: formData.subcategory,
-          location: formData.location,
-          landmark: formData.landmark,
+          location: formData.location.trim(),
+          landmark: formData.landmark.trim(),
           priority: formData.priority,
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim(),
           images: imageBase64,
           latitude: formData.latitude,
           longitude: formData.longitude,
@@ -289,23 +321,36 @@ const RegisterComplaint = () => {
         addNotification,
       ); // Pass the notification callback
 
+      if (!id) {
+        throw new Error("Failed to generate complaint ID. Please try again.");
+      }
+
       // Also send a notification for all officials
-      addNotification({
-        type: "complaint_submitted",
-        title: "📋 New Complaint Assigned",
-        message: `${formData.category.charAt(0).toUpperCase() + formData.category.slice(1)} complaint "${formData.title}" needs review. Location: ${formData.landmark || formData.location}`,
-        complaintId: id,
-        userId: "all-officials",
-        userRole: "official",
-        priority: formData.priority === "high" ? "high" : "medium",
-        actionUrl: "/dashboard",
-      });
+      try {
+        addNotification({
+          type: "complaint_submitted",
+          title: "📋 New Complaint Assigned",
+          message: `${formData.category.charAt(0).toUpperCase() + formData.category.slice(1)} complaint "${formData.title}" needs review. Location: ${formData.landmark || formData.location}`,
+          complaintId: id,
+          userId: "all-officials",
+          userRole: "official",
+          priority: formData.priority === "high" ? "high" : "medium",
+          actionUrl: "/dashboard",
+        });
+      } catch (notificationError) {
+        console.warn("Failed to send notification:", notificationError);
+        // Don't fail the whole process if notification fails
+      }
 
       setComplaintId(id);
       setShowSuccessDialog(true);
     } catch (error) {
       console.error("Error submitting complaint:", error);
-      setError("Error submitting complaint. Please try again.");
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Error submitting complaint. Please try again.";
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
