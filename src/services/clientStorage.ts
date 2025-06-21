@@ -119,75 +119,95 @@ class ClientStorageService {
     }
   }
 
-  private createDefaultAdmin() {
-    // Pre-hashed password for "admin123" with salt rounds 12
-    const hashedPassword =
-      "$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/lewE4GKV6zrjKH.zK";
+  private async createDefaultAdmin() {
+    try {
+      // Hash the password dynamically to ensure it's correct
+      const hashedPassword = await bcrypt.hash("admin123", 12);
 
-    const defaultAdmin: AdminData = {
-      id: "admin_default_001",
-      name: "System Administrator",
-      email: "admin@tgcivic.gov.in",
-      phone: "9999999999",
-      password: hashedPassword,
-      userType: "admin",
-      role: "super_admin",
-      department: "IT Department",
-      employeeId: "TG2024ADMIN",
-      permissions: [
-        "read_complaints",
-        "update_complaints",
-        "delete_complaints",
-        "manage_citizens",
-        "manage_admins",
-        "view_analytics",
-        "system_settings",
-        "bulk_operations",
-        "export_data",
-      ],
-      isActive: true,
-      loginHistory: [],
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
+      const defaultAdmin: AdminData = {
+        id: "admin_default_001",
+        name: "System Administrator",
+        email: "admin@tgcivic.gov.in",
+        phone: "9999999999",
+        password: hashedPassword,
+        userType: "admin",
+        role: "super_admin",
+        department: "IT Department",
+        employeeId: "TG2024ADMIN",
+        permissions: [
+          "read_complaints",
+          "update_complaints",
+          "delete_complaints",
+          "manage_citizens",
+          "manage_admins",
+          "view_analytics",
+          "system_settings",
+          "bulk_operations",
+          "export_data",
+        ],
+        isActive: true,
+        loginHistory: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
 
-    this.saveAdmin(defaultAdmin);
-    console.log("ClientStorage - Default admin created successfully");
+      this.saveAdmin(defaultAdmin);
+      console.log(
+        "ClientStorage - Default admin created successfully with password hash:",
+        hashedPassword.substring(0, 20) + "...",
+      );
+
+      // Verify the password works
+      const isValid = await bcrypt.compare("admin123", hashedPassword);
+      console.log("ClientStorage - Admin password verification:", isValid);
+    } catch (error) {
+      console.error("Error creating default admin:", error);
+    }
   }
 
-  private createDefaultCitizen() {
-    // Pre-hashed password for "citizen123" with salt rounds 12
-    const hashedPassword =
-      "$2a$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi";
+  private async createDefaultCitizen() {
+    try {
+      // Hash the password dynamically to ensure it's correct
+      const hashedPassword = await bcrypt.hash("citizen123", 12);
 
-    const defaultCitizen: CitizenData = {
-      id: "citizen_default_001",
-      name: "Demo Citizen",
-      email: "citizen@email.com",
-      phone: "9876543210",
-      password: hashedPassword,
-      userType: "citizen",
-      address: {
-        street: "123 Demo Street",
-        city: "Hyderabad",
-        state: "Telangana",
-        pincode: "500001",
-      },
-      isVerified: true,
-      avatar: "",
-      dateOfBirth: "1990-01-01",
-      aadhaarNumber: "1234567890123",
-      emergencyContact: {
-        name: "Emergency Contact",
-        phone: "9876543211",
-        relation: "Family",
-      },
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
+      const defaultCitizen: CitizenData = {
+        id: "citizen_default_001",
+        name: "Demo Citizen",
+        email: "citizen@email.com",
+        phone: "9876543210",
+        password: hashedPassword,
+        userType: "citizen",
+        address: {
+          street: "123 Demo Street",
+          city: "Hyderabad",
+          state: "Telangana",
+          pincode: "500001",
+        },
+        isVerified: true,
+        avatar: "",
+        dateOfBirth: "1990-01-01",
+        aadhaarNumber: "1234567890123",
+        emergencyContact: {
+          name: "Emergency Contact",
+          phone: "9876543211",
+          relation: "Family",
+        },
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
 
-    this.saveCitizen(defaultCitizen);
-    console.log("ClientStorage - Default citizen created successfully");
+      this.saveCitizen(defaultCitizen);
+      console.log(
+        "ClientStorage - Default citizen created successfully with password hash:",
+        hashedPassword.substring(0, 20) + "...",
+      );
+
+      // Verify the password works
+      const isValid = await bcrypt.compare("citizen123", hashedPassword);
+      console.log("ClientStorage - Citizen password verification:", isValid);
+    } catch (error) {
+      console.error("Error creating default citizen:", error);
+    }
   }
 
   private getCitizens(): CitizenData[] {
