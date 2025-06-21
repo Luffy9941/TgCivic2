@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useComplaints } from "@/context/ComplaintContext";
 import { useNotifications } from "@/context/NotificationContext";
