@@ -50,6 +50,7 @@ import {
 import { AdminSchemeModal } from "@/components/AdminSchemeModal";
 
 const Dashboard = () => {
+  const location = useLocation();
   const { user } = useAuth();
   const {
     complaints,
