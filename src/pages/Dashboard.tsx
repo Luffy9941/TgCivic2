@@ -213,15 +213,20 @@ const Dashboard = () => {
         {/* Account for fixed navigation */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8">
+            <div className="mb-4 sm:mb-0">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
                 {t("admin_dashboard")}
               </h1>
-              <p className="text-gray-600 mt-1">{t("platform_management")}</p>
+              <p className="text-sm sm:text-base text-gray-600 mt-1">
+                {t("platform_management")}
+              </p>
             </div>
-            <div className="flex items-center space-x-3 mt-4 sm:mt-0">
-              <Button size="sm" className="bg-red-600 hover:bg-red-700">
+            <div className="flex items-center space-x-3">
+              <Button
+                size="sm"
+                className="bg-red-600 hover:bg-red-700 text-xs sm:text-sm"
+              >
                 {t("administrator_access")}
               </Button>
             </div>
