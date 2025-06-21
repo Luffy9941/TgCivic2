@@ -370,9 +370,11 @@ class ClientStorageService {
         };
       } else if (loginData.userType === "admin") {
         const admins = this.getAdmins();
+        console.log("ClientStorage - Found admins:", admins.length);
         const admin = admins.find(
           (a) => a.email === loginData.email && a.isActive,
         );
+        console.log("ClientStorage - Found admin for email:", !!admin);
 
         if (!admin) {
           throw new Error("Invalid credentials or account inactive");
