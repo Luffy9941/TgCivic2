@@ -97,6 +97,13 @@ const Login = () => {
     setError("");
   };
 
+  const debugPasswords = async () => {
+    console.log("=== DEBUG: Testing password verification ===");
+    await clientStorageService.verifyDefaultPasswords();
+    const users = clientStorageService.getAllUsers();
+    console.log("All users:", users);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-6">
