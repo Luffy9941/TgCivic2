@@ -338,19 +338,33 @@ class ClientStorageService {
       if (loginData.userType === "citizen") {
         const citizens = this.getCitizens();
         console.log("ClientStorage - Found citizens:", citizens.length);
+        console.log(
+          "ClientStorage - Available citizen emails:",
+          citizens.map((c) => c.email),
+        );
         const citizen = citizens.find((c) => c.email === loginData.email);
         console.log("ClientStorage - Found citizen for email:", !!citizen);
 
         if (!citizen) {
+          console.log(
+            "ClientStorage - No citizen found with email:",
+            loginData.email,
+          );
           throw new Error("Invalid credentials");
         }
 
+        console.log("ClientStorage - Comparing password for citizen");
         const isPasswordValid = await bcrypt.compare(
           loginData.password,
           citizen.password,
         );
+        console.log(
+          "ClientStorage - Password valid for citizen:",
+          isPasswordValid,
+        );
 
         if (!isPasswordValid) {
+          console.log("ClientStorage - Password does not match for citizen");
           throw new Error("Invalid credentials");
         }
 
