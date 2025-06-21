@@ -345,6 +345,23 @@ const RegisterComplaint = () => {
 
       setComplaintId(id);
       setShowSuccessDialog(true);
+
+      // Reset form after successful submission
+      setFormData({
+        category: "",
+        subcategory: "",
+        title: "",
+        description: "",
+        location: "",
+        landmark: "",
+        priority: "medium" as "low" | "medium" | "high",
+        name: "",
+        phone: "",
+        email: "",
+        images: [] as File[],
+        latitude: undefined as number | undefined,
+        longitude: undefined as number | undefined,
+      });
     } catch (error) {
       console.error("Error submitting complaint:", error);
       const errorMessage =
