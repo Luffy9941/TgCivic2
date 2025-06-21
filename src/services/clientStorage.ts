@@ -587,12 +587,46 @@ class ClientStorageService {
       const defaultAdmin = admins[0];
       console.log("Testing admin password:");
       await this.testPassword("admin123", defaultAdmin.password);
+    } else {
+      console.log("No admin found for testing");
     }
 
     if (citizens.length > 0) {
       const defaultCitizen = citizens[0];
       console.log("Testing citizen password:");
       await this.testPassword("citizen123", defaultCitizen.password);
+    } else {
+      console.log("No citizen found for testing");
+    }
+
+    // Test actual login process
+    console.log("=== Testing Login Process ===");
+    try {
+      const adminLogin = await this.login({
+        email: "admin@tgcivic.gov.in",
+        password: "admin123",
+        userType: "admin",
+      });
+      console.log(
+        "Admin login test result:",
+        adminLogin ? "SUCCESS" : "FAILED",
+      );
+    } catch (error) {
+      console.log("Admin login test error:", error.message);
+    }
+
+    try {
+      const citizenLogin = await this.login({
+        email: "citizen@email.com",
+        password: "citizen123",
+        userType: "citizen",
+      });
+      console.log(
+        "Citizen login test result:",
+        citizenLogin ? "SUCCESS" : "FAILED",
+      );
+    } catch (error) {
+      console.log("Citizen login test error:", error.message);
     }
   }
 }
