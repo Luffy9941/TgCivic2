@@ -385,21 +385,40 @@ class ClientStorageService {
       } else if (loginData.userType === "admin") {
         const admins = this.getAdmins();
         console.log("ClientStorage - Found admins:", admins.length);
+        console.log(
+          "ClientStorage - Available admin emails:",
+          admins.map((a) => a.email),
+        );
+        console.log(
+          "ClientStorage - Admin active states:",
+          admins.map((a) => ({ email: a.email, isActive: a.isActive })),
+        );
         const admin = admins.find(
           (a) => a.email === loginData.email && a.isActive,
         );
         console.log("ClientStorage - Found admin for email:", !!admin);
 
         if (!admin) {
+          console.log(
+            "ClientStorage - No admin found with email:",
+            loginData.email,
+            "or admin is inactive",
+          );
           throw new Error("Invalid credentials or account inactive");
         }
 
+        console.log("ClientStorage - Comparing password for admin");
         const isPasswordValid = await bcrypt.compare(
           loginData.password,
           admin.password,
         );
+        console.log(
+          "ClientStorage - Password valid for admin:",
+          isPasswordValid,
+        );
 
         if (!isPasswordValid) {
+          console.log("ClientStorage - Password does not match for admin");
           throw new Error("Invalid credentials");
         }
 
