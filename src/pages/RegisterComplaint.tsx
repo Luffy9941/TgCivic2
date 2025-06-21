@@ -363,6 +363,24 @@ const RegisterComplaint = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          {/* Error Display */}
+          {error && (
+            <Alert variant="destructive">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                {error}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setError("")}
+                  className="ml-2 h-auto p-1 text-xs underline"
+                >
+                  Dismiss
+                </Button>
+              </AlertDescription>
+            </Alert>
+          )}
+
           {/* Category Selection */}
           <Card>
             <CardHeader className="pb-4">
