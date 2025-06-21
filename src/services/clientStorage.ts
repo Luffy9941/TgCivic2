@@ -187,6 +187,7 @@ class ClientStorageService {
     };
 
     this.saveCitizen(defaultCitizen);
+    console.log("ClientStorage - Default citizen created successfully");
   }
 
   private getCitizens(): CitizenData[] {
