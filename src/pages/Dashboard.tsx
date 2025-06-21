@@ -738,6 +738,9 @@ const Dashboard = () => {
                           <ComplaintRow
                             key={complaint.id}
                             complaint={complaint}
+                            isHighlighted={
+                              highlightedComplaintId === complaint.id
+                            }
                             onUpdateStatus={(id, status, notes, assignedTo) => {
                               updateComplaintStatus(
                                 id,
