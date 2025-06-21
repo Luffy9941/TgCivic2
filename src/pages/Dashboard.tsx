@@ -301,12 +301,12 @@ const Dashboard = () => {
               {/* Key Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 <Card className="bg-white border-0 shadow-sm">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="text-center">
-                      <h3 className="text-sm font-medium text-gray-600 mb-2">
+                      <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-2">
                         Resolution Rate
                       </h3>
-                      <div className="text-4xl font-bold text-green-600 mb-1">
+                      <div className="text-2xl sm:text-4xl font-bold text-green-600 mb-1">
                         {resolutionRate}%
                       </div>
                       <p className="text-xs text-gray-500">
@@ -317,12 +317,12 @@ const Dashboard = () => {
                 </Card>
 
                 <Card className="bg-white border-0 shadow-sm">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="text-center">
-                      <h3 className="text-sm font-medium text-gray-600 mb-2">
+                      <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-2">
                         Avg Resolution Time
                       </h3>
-                      <div className="text-4xl font-bold text-blue-600 mb-1">
+                      <div className="text-2xl sm:text-4xl font-bold text-blue-600 mb-1">
                         {avgResolutionTime}
                       </div>
                       <p className="text-xs text-gray-500">Days on average</p>
@@ -331,12 +331,12 @@ const Dashboard = () => {
                 </Card>
 
                 <Card className="bg-white border-0 shadow-sm">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="text-center">
-                      <h3 className="text-sm font-medium text-gray-600 mb-2">
+                      <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-2">
                         User Satisfaction
                       </h3>
-                      <div className="text-4xl font-bold text-yellow-600 mb-1">
+                      <div className="text-2xl sm:text-4xl font-bold text-yellow-600 mb-1">
                         {userSatisfaction}★
                       </div>
                       <p className="text-xs text-gray-500">Average rating</p>
