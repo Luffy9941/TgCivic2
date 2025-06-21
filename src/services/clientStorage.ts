@@ -152,6 +152,7 @@ class ClientStorageService {
     };
 
     this.saveAdmin(defaultAdmin);
+    console.log("ClientStorage - Default admin created successfully");
   }
 
   private createDefaultCitizen() {
