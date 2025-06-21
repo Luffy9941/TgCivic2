@@ -99,7 +99,7 @@ class ClientStorageService {
     this.initializeDefaultUsers();
   }
 
-  private initializeDefaultUsers() {
+  private async initializeDefaultUsers() {
     // Initialize with default admin and citizen if none exist
     const admins = this.getAdmins();
     const citizens = this.getCitizens();
@@ -110,12 +110,12 @@ class ClientStorageService {
 
     if (admins.length === 0) {
       console.log("ClientStorage - Creating default admin");
-      this.createDefaultAdmin();
+      await this.createDefaultAdmin();
     }
 
     if (citizens.length === 0) {
       console.log("ClientStorage - Creating default citizen");
-      this.createDefaultCitizen();
+      await this.createDefaultCitizen();
     }
   }
 
