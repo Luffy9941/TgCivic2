@@ -1158,12 +1158,13 @@ const Index = () => {
             <Link to="/register-complaint">
               <Button
                 size="lg"
-                className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white px-16 py-8 text-2xl rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 group overflow-hidden"
+                className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white px-6 py-4 sm:px-12 sm:py-6 lg:px-16 lg:py-8 text-lg sm:text-xl lg:text-2xl rounded-xl lg:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 group overflow-hidden font-bold border-2 border-white/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 transform translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-                <FileText className="w-8 h-8 mr-4 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
-                Start Your Report Now
-                <ArrowRight className="w-8 h-8 ml-4 group-hover:translate-x-2 transition-transform duration-300" />
+                <FileText className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 mr-2 sm:mr-3 lg:mr-4 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="hidden sm:inline">Start Your Report Now</span>
+                <span className="sm:hidden">Report Issue</span>
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 ml-2 sm:ml-3 lg:ml-4 group-hover:translate-x-2 transition-transform duration-300" />
               </Button>
             </Link>
           </div>
