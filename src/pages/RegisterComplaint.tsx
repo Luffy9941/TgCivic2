@@ -352,6 +352,16 @@ const RegisterComplaint = () => {
           ? error.message
           : "Error submitting complaint. Please try again.";
       setError(errorMessage);
+
+      // Scroll to error message
+      setTimeout(() => {
+        if (errorRef.current) {
+          errorRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      }, 100);
     } finally {
       setIsSubmitting(false);
     }
