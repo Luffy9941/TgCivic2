@@ -88,6 +88,20 @@ const Dashboard = () => {
     string | null
   >(null);
 
+  // Handle navigation from notifications page
+  useEffect(() => {
+    if (location.state?.activeTab) {
+      setActiveTab(location.state.activeTab);
+    }
+    if (location.state?.highlightComplaintId) {
+      setHighlightedComplaintId(location.state.highlightComplaintId);
+      // Clear highlight after 5 seconds
+      setTimeout(() => {
+        setHighlightedComplaintId(null);
+      }, 5000);
+    }
+  }, [location.state]);
+
   const handleViewScheme = (scheme: any) => {
     setSelectedScheme(scheme);
     setSchemeModalMode("view");
