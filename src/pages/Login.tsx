@@ -27,7 +27,7 @@ import {
   Users,
   ArrowLeft,
 } from "lucide-react";
-import { UserType } from "@/services/clientStorage";
+import { UserType, clientStorageService } from "@/services/clientStorage";
 
 const Login = () => {
   const navigate = useNavigate();
