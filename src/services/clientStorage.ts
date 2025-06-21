@@ -514,6 +514,41 @@ class ClientStorageService {
     localStorage.removeItem(this.ADMINS_KEY);
     this.initializeDefaultUsers();
   }
+
+  // Test password hashing for debugging
+  async testPassword(
+    plainPassword: string,
+    hashedPassword: string,
+  ): Promise<boolean> {
+    try {
+      const result = await bcrypt.compare(plainPassword, hashedPassword);
+      console.log(`Password test: "${plainPassword}" against hash: ${result}`);
+      return result;
+    } catch (error) {
+      console.error("Password test error:", error);
+      return false;
+    }
+  }
+
+  // Debug method to verify default passwords
+  async verifyDefaultPasswords() {
+    console.log("=== Verifying Default Passwords ===");
+
+    const admins = this.getAdmins();
+    const citizens = this.getCitizens();
+
+    if (admins.length > 0) {
+      const defaultAdmin = admins[0];
+      console.log("Testing admin password:");
+      await this.testPassword("admin123", defaultAdmin.password);
+    }
+
+    if (citizens.length > 0) {
+      const defaultCitizen = citizens[0];
+      console.log("Testing citizen password:");
+      await this.testPassword("citizen123", defaultCitizen.password);
+    }
+  }
 }
 
 export const clientStorageService = new ClientStorageService();
