@@ -91,7 +91,24 @@ class ClientStorageService {
   private readonly ADMINS_KEY = "tg_civic_admins";
 
   constructor() {
+    console.log("ClientStorageService - Constructor called");
     this.initializeDefaultUsers();
+
+    // Verify users were created
+    setTimeout(() => {
+      const users = this.getAllUsers();
+      console.log(
+        "ClientStorageService - Final user count after initialization:",
+      );
+      console.log("- Admins:", users.admins.length);
+      console.log("- Citizens:", users.citizens.length);
+      if (users.admins.length > 0) {
+        console.log("- Default admin email:", users.admins[0].email);
+      }
+      if (users.citizens.length > 0) {
+        console.log("- Default citizen email:", users.citizens[0].email);
+      }
+    }, 100);
   }
 
   // Public method to force re-initialization (useful for debugging)
