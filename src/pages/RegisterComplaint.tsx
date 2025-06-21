@@ -804,21 +804,21 @@ const RegisterComplaint = () => {
           </DialogHeader>
 
           <div className="space-y-4">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <Label className="text-sm font-medium text-gray-700">
+            <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
+              <Label className="text-xs sm:text-sm font-medium text-gray-700">
                 Your Complaint ID
               </Label>
-              <div className="flex items-center justify-between mt-2">
-                <span className="font-mono text-lg font-bold text-blue-600">
+              <div className="flex items-center justify-between mt-2 gap-2">
+                <span className="font-mono text-sm sm:text-lg font-bold text-blue-600 truncate">
                   {complaintId}
                 </span>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={copyComplaintId}
-                  className="ml-2"
+                  className="flex-shrink-0"
                 >
-                  <Copy className="w-4 h-4 mr-1" />
+                  <Copy className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                   Copy
                 </Button>
               </div>
