@@ -248,7 +248,7 @@ const RegisterComplaint = () => {
       },
       (error) => {
         console.error("Error getting location:", error);
-        alert("Unable to get your location. Please enter it manually.");
+        setError("Unable to get your location. Please enter it manually.");
         setIsGettingLocation(false);
       },
       {
