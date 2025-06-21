@@ -855,11 +855,20 @@ const RegisterComplaint = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
+                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={isSubmitting}
                 >
-                  <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  {isSubmitting ? "Submitting..." : "Submit Complaint"}
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                      Submit Complaint
+                    </>
+                  )}
                 </Button>
               </div>
             </CardContent>
