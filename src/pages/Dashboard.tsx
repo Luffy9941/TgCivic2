@@ -816,16 +816,20 @@ const Dashboard = () => {
               {/* Key Performance Indicators */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <Card className="bg-gradient-to-br from-blue-500 to-blue-700 text-white">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-blue-100">Total Complaints</p>
-                        <p className="text-3xl font-bold">2,847</p>
-                        <p className="text-sm text-blue-200">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-blue-100 text-sm">
+                          Total Complaints
+                        </p>
+                        <p className="text-2xl sm:text-3xl font-bold truncate">
+                          2,847
+                        </p>
+                        <p className="text-xs sm:text-sm text-blue-200">
                           +18% vs last month
                         </p>
                       </div>
-                      <FileText className="w-10 h-10 text-blue-200" />
+                      <FileText className="w-8 h-8 sm:w-10 sm:h-10 text-blue-200 flex-shrink-0 ml-2" />
                     </div>
                   </CardContent>
                 </Card>
