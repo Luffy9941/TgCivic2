@@ -247,10 +247,13 @@ class ClientStorageService {
       console.log("- Email:", defaultCitizen.email);
       console.log(
         "- Password mode:",
-        process.env.NODE_ENV === "development"
-          ? "Development (plain text check)"
-          : "Production (bcrypt)",
+        isDev ? "Development (plain text check)" : "Production (bcrypt)",
       );
+      console.log("- Environment:", {
+        NODE_ENV: process.env.NODE_ENV,
+        VITE_DEV: import.meta.env?.DEV,
+        hostname: window.location.hostname,
+      });
     } catch (error) {
       console.error("Error creating default citizen:", error);
     }
