@@ -237,24 +237,27 @@ const Dashboard = () => {
               <TabsList className="inline-flex h-10 items-center justify-start rounded-md bg-white p-1 text-muted-foreground min-w-full sm:w-auto">
                 <TabsTrigger
                   value="overview"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-1 sm:gap-2 whitespace-nowrap px-2 sm:px-3"
                 >
-                  <BarChart3 className="w-4 h-4" />
-                  {t("overview")}
+                  <BarChart3 className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{t("overview")}</span>
+                  <span className="sm:hidden">Overview</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="complaints"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-1 sm:gap-2 whitespace-nowrap px-2 sm:px-3"
                 >
-                  <FileText className="w-4 h-4" />
-                  {t("complaints")}
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{t("complaints")}</span>
+                  <span className="sm:hidden">Complaints</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="notifications"
-                  className="flex items-center gap-2 relative"
+                  className="flex items-center gap-1 sm:gap-2 relative whitespace-nowrap px-2 sm:px-3"
                 >
-                  <AlertTriangle className="w-4 h-4" />
-                  {t("notifications")}
+                  <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{t("notifications")}</span>
+                  <span className="sm:hidden">Notifications</span>
                   {unreadCount > 0 && (
                     <Badge className="ml-1 px-1.5 py-0.5 text-xs bg-red-500 text-white">
                       {unreadCount}
@@ -263,28 +266,27 @@ const Dashboard = () => {
                 </TabsTrigger>
                 <TabsTrigger
                   value="schemes"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-1 sm:gap-2 whitespace-nowrap px-2 sm:px-3"
                 >
-                  <Settings className="w-4 h-4" />
-                  {t("schemes")}
+                  <Settings className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{t("schemes")}</span>
+                  <span className="sm:hidden">Schemes</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="analytics"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-1 sm:gap-2 whitespace-nowrap px-2 sm:px-3"
                 >
-                  <TrendingUp className="w-4 h-4" />
-                  {t("analytics")}
-                </TabsTrigger>
-                <TabsTrigger value="users" className="flex items-center gap-2">
-                  <Users className="w-4 h-4" />
-                  {t("users")}
+                  <TrendingUp className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{t("analytics")}</span>
+                  <span className="sm:hidden">Analytics</span>
                 </TabsTrigger>
                 <TabsTrigger
-                  value="notifications"
-                  className="flex items-center gap-2"
+                  value="users"
+                  className="flex items-center gap-1 sm:gap-2 whitespace-nowrap px-2 sm:px-3"
                 >
-                  <AlertTriangle className="w-4 h-4" />
-                  Notifications
+                  <Users className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{t("users")}</span>
+                  <span className="sm:hidden">Users</span>
                 </TabsTrigger>
               </TabsList>
             </div>
