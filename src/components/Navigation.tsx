@@ -496,22 +496,23 @@ const Navigation = () => {
                   </Button>
                 </div>
               ) : (
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-1 sm:space-x-2 lg:space-x-3">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => navigate("/login")}
-                    className="hover:scale-105 transition-all duration-300 hover:shadow-md"
+                    className="lg:hover:scale-105 transition-all duration-300 lg:hover:shadow-md text-xs sm:text-sm px-2 sm:px-3"
                   >
-                    <LogIn className="w-4 h-4 mr-2" />
-                    {t("sign_in")}
+                    <LogIn className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">{t("sign_in")}</span>
+                    <span className="sm:hidden">Login</span>
                   </Button>
                   <Button
                     size="sm"
                     onClick={() => navigate("/register")}
-                    className="hidden sm:flex bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:scale-105 transition-all duration-300 hover:shadow-lg"
+                    className="hidden sm:flex bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 lg:hover:scale-105 transition-all duration-300 lg:hover:shadow-lg text-xs sm:text-sm px-2 sm:px-3"
                   >
-                    <UserPlus className="w-4 h-4 mr-2" />
+                    <UserPlus className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     {t("register")}
                   </Button>
                 </div>
