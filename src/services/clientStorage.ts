@@ -94,6 +94,11 @@ class ClientStorageService {
     this.initializeDefaultUsers();
   }
 
+  // Public method to force re-initialization (useful for debugging)
+  public forceInitializeUsers() {
+    this.initializeDefaultUsers();
+  }
+
   private initializeDefaultUsers() {
     // Initialize with default admin and citizen if none exist
     const admins = this.getAdmins();
